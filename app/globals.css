@@ -136,3 +136,44 @@ body {
 .modal-backdrop {
   backdrop-filter: blur(4px);
 }
+
+@media print {
+  /* Hide navigation, CTAs, and interactive elements */
+  nav,
+  footer,
+  button,
+  .quick-view-overlay,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Reset backgrounds to white */
+  body, main, section, div {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Show full URL after links */
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 10px;
+    color: #666;
+  }
+
+  /* Ensure two-column layout holds on print */
+  .lg\:grid-cols-2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Add Kingsport branding footer on print */
+  main::after {
+    content: 'Kingsport Investments (Pvt) Ltd — kingsport.co.zw — Harare, Zimbabwe';
+    display: block;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    font-size: 10px;
+    color: #999;
+    font-family: sans-serif;
+  }
+}

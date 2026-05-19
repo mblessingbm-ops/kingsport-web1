@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ShoppingBag, Download, Check, ArrowLeft, ChevronRight } from 'lucide-react'
+import { ShoppingBag, Download, Check, ArrowLeft, ChevronRight, Link2, Paintbrush } from 'lucide-react'
 import { getProductBySlug, getRelatedProducts, categories } from '@/data/products'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import ProductCardStatic from '@/components/catalog/ProductCardStatic'
@@ -30,7 +30,15 @@ export default function ProductDetailPage({ params }: Props) {
   const [added, setAdded] = useState(false)
   const [qty, setQty] = useState(1)
   const [selectedColor, setSelectedColor] = useState<string>(product.availableColors[0]?.name || '')
+  const [copied, setCopied] = useState(false)
   const gradClass = placeholderGradients[product.category] || 'from-gray-700 to-gray-900'
+
+  const handleCopyLink = () => {
+    if (typeof window === 'undefined') return
+    navigator.clipboard.writeText(window.location.href)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   const handleAdd = () => {
     addItem({ productId: product.id, productName: product.name, quantity: qty, color: selectedColor })
@@ -135,9 +143,18 @@ Incorporated 1998
             <div className="text-[10px] tracking-widest uppercase text-oxblood-700 font-sans font-medium mb-3">
               {catMeta?.label}
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-light text-charcoal-800 mb-4">
-              {product.name}
-            </h1>
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <h1 className="font-display text-4xl md:text-5xl font-light text-charcoal-800">
+                {product.name}
+              </h1>
+              <button
+                onClick={handleCopyLink}
+                className="inline-flex items-center gap-1.5 border border-charcoal-800/15 hover:border-oxblood-700 text-charcoal-600/50 hover:text-oxblood-700 px-3 py-1.5 text-[10px] font-sans tracking-widest uppercase transition-all duration-200 flex-shrink-0 mt-2"
+              >
+                {copied ? <Check size={11} /> : <Link2 size={11} />}
+                {copied ? 'Copied' : 'Copy Link'}
+              </button>
+            </div>
             <div className="flex items-center gap-3 mb-6">
               {product.tags.slice(0, 3).map(tag => (
                 <span key={tag} className="text-[10px] tracking-widest uppercase bg-gray-100 text-gray-600 px-3 py-1 font-sans">
@@ -145,9 +162,29 @@ Incorporated 1998
                 </span>
               ))}
             </div>
-            <p className="text-charcoal-600/80 font-sans leading-relaxed mb-8 text-sm md:text-base">
+            <p className="text-charcoal-600/80 font-sans leading-relaxed mb-6 text-sm md:text-base">
               {product.description}
             </p>
+
+            {/* MOQ + Lead Time strip */}
+            <div className="grid grid-cols-2 gap-3 py-5 border-y border-charcoal-800/8 mb-8">
+              <div>
+                <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1">
+                  Min. Order Qty
+                </p>
+                <p className="font-sans font-semibold text-charcoal-800 text-sm">
+                  {product.moq} units
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1">
+                  Lead Time
+                </p>
+                <p className="font-sans font-semibold text-charcoal-800 text-sm">
+                  {product.leadTime}
+                </p>
+              </div>
+            </div>
 
             {/* Colour selector */}
             {product.availableColors.length > 0 && (
@@ -195,6 +232,24 @@ Incorporated 1998
                 <button onClick={() => setQty(q => Math.max(1, q - 1))} className="px-4 py-2 text-gray-500 hover:bg-gray-50 transition-colors text-lg">−</button>
                 <span className="px-6 py-2 text-sm font-sans font-medium border-x border-gray-200 min-w-[60px] text-center">{qty}</span>
                 <button onClick={() => setQty(q => q + 1)} className="px-4 py-2 text-gray-500 hover:bg-gray-50 transition-colors text-lg">+</button>
+              </div>
+            </div>
+
+            {/* Customisation Methods */}
+            <div className="mt-6 mb-6">
+              <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-3">
+                Customisation Methods
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {product.customisationMethods.map(method => (
+                  <span
+                    key={method}
+                    className="inline-flex items-center gap-1.5 border border-charcoal-800/10 bg-cream-50 text-charcoal-700 text-[10px] font-sans tracking-wide uppercase px-3 py-1.5"
+                  >
+                    <Paintbrush size={10} className="text-oxblood-700" />
+                    {method}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -262,7 +317,7 @@ Incorporated 1998
             <div className="flex items-center gap-4 mb-8">
               <span className="block w-10 h-px bg-oxblood-900" />
               <h2 className="font-display text-3xl font-light text-charcoal-800">
-                Related Products
+                Commonly Ordered <span className="italic text-oxblood-800">Together</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

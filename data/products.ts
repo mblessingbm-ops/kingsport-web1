@@ -68,6 +68,9 @@ export const products: Product[] = [
     relatedIds: ['ppe-002', 'ppe-004', 'ppe-006'],
     featured: true,
     tags: ['industrial', 'protective', 'workwear'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-002',
@@ -92,6 +95,9 @@ export const products: Product[] = [
     relatedIds: ['ppe-001', 'ppe-009', 'ppe-010'],
     featured: false,
     tags: ['chemical', 'laboratory', 'protective'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-003',
@@ -115,6 +121,9 @@ export const products: Product[] = [
     image: '/images/products/industrial-dustcoat.png',
     relatedIds: ['ppe-001', 'ppe-010'],
     tags: ['light industrial', 'food processing', 'retail'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-004',
@@ -140,6 +149,9 @@ export const products: Product[] = [
     relatedIds: ['ppe-005', 'ppe-001', 'ppe-006'],
     featured: true,
     tags: ['boots', 'footwear', 'S5', 'steel toecap'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-005',
@@ -162,6 +174,9 @@ export const products: Product[] = [
     image: '/images/products/safety-shoes.png',
     relatedIds: ['ppe-004'],
     tags: ['footwear', 'S3', 'composite', 'lightweight'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-006',
@@ -185,6 +200,9 @@ export const products: Product[] = [
     relatedIds: ['ppe-007', 'ppe-001'],
     featured: true,
     tags: ['high-vis', 'reflective', 'road safety'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-007',
@@ -209,6 +227,9 @@ export const products: Product[] = [
     image: '/images/products/hard-hat.png',
     relatedIds: ['ppe-006', 'ppe-009'],
     tags: ['head protection', 'construction', 'hard hat'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-008',
@@ -232,6 +253,9 @@ export const products: Product[] = [
     image: '/images/products/heavy-gumboots.png',
     relatedIds: ['ppe-004', 'ppe-005'],
     tags: ['waterproof', 'gumboots', 'agriculture'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-009',
@@ -252,6 +276,9 @@ export const products: Product[] = [
     image: '/images/products/safety-goggles.png',
     relatedIds: ['ppe-010', 'ppe-002'],
     tags: ['eye protection', 'chemical', 'laboratory'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-010',
@@ -274,6 +301,9 @@ export const products: Product[] = [
     image: '/images/products/latex-safety-gloves.png',
     relatedIds: ['ppe-011', 'ppe-009'],
     tags: ['gloves', 'hand protection', 'latex'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-011',
@@ -293,6 +323,9 @@ export const products: Product[] = [
     image: '/images/products/work-gloves.png',
     relatedIds: ['ppe-010'],
     tags: ['gloves', 'leather', 'construction'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-012',
@@ -317,6 +350,9 @@ export const products: Product[] = [
     relatedIds: ['ppe-013', 'ppe-014', 'ppe-015'],
     featured: true,
     tags: ['motorcycle', 'delivery', 'branded', 'reflective'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-013',
@@ -336,6 +372,9 @@ export const products: Product[] = [
     image: '/images/products/rider-boots.png',
     relatedIds: ['ppe-012', 'ppe-004'],
     tags: ['motorcycle', 'boots', 'delivery'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-014',
@@ -358,6 +397,9 @@ export const products: Product[] = [
     image: '/images/products/rider-gloves.png',
     relatedIds: ['ppe-012', 'ppe-013'],
     tags: ['motorcycle', 'gloves', 'delivery'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-015',
@@ -380,6 +422,9 @@ export const products: Product[] = [
     image: '/images/products/delivery-helmet.png',
     relatedIds: ['ppe-012', 'ppe-013', 'ppe-014'],
     tags: ['helmet', 'ECE', 'delivery', 'branded'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
   {
     id: 'ppe-016',
@@ -398,6 +443,9 @@ export const products: Product[] = [
     image: '/images/products/kidney-belt.png',
     relatedIds: ['ppe-012'],
     tags: ['lumbar support', 'motorcycle', 'safety'],
+    moq: 10,
+    leadTime: '7–10 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
 
   // CORPORATE WEAR
@@ -429,6 +477,9 @@ export const products: Product[] = [
     relatedIds: ['corp-002', 'corp-003', 'corp-010'],
     featured: true,
     tags: ['polo', 'embroidery', 'corporate', 'uniform'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-002',
@@ -455,6 +506,9 @@ export const products: Product[] = [
     image: '/images/products/oxford-shirt.png',
     relatedIds: ['corp-001', 'corp-003', 'corp-006'],
     tags: ['shirt', 'formal', 'Oxford', 'corporate'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-003',
@@ -479,6 +533,9 @@ export const products: Product[] = [
     image: '/images/products/ladies-blouse.png',
     relatedIds: ['corp-007', 'corp-006'],
     tags: ['ladies', 'blouse', 'corporate', 'formal'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-004',
@@ -506,6 +563,9 @@ export const products: Product[] = [
     relatedIds: ['corp-001', 'corp-010'],
     featured: true,
     tags: ['jacket', 'softshell', 'corporate', 'outerwear'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-005',
@@ -531,6 +591,9 @@ export const products: Product[] = [
     image: '/images/products/chino-trousers.png',
     relatedIds: ['corp-001', 'corp-002'],
     tags: ['trousers', 'chinos', 'corporate', 'bottoms'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-006',
@@ -555,6 +618,9 @@ export const products: Product[] = [
     image: '/images/products/corporate-blazer.png',
     relatedIds: ['corp-002', 'corp-005', 'corp-003'],
     tags: ['blazer', 'formal', 'corporate', 'tailored'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-007',
@@ -578,6 +644,9 @@ export const products: Product[] = [
     image: '/images/products/formal-pencil-skirt.png',
     relatedIds: ['corp-003', 'corp-006'],
     tags: ['ladies', 'skirt', 'corporate', 'formal'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-008',
@@ -600,6 +669,9 @@ export const products: Product[] = [
     image: '/images/products/denim-shirt.png',
     relatedIds: ['corp-009', 'corp-001'],
     tags: ['denim', 'casual', 'corporate', 'hospitality'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-009',
@@ -622,6 +694,9 @@ export const products: Product[] = [
     image: '/images/products/industrial-jeans.png',
     relatedIds: ['corp-008', 'ppe-001'],
     tags: ['jeans', 'denim', 'industrial', 'construction'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'corp-010',
@@ -641,6 +716,9 @@ export const products: Product[] = [
     relatedIds: ['corp-001', 'corp-002', 'corp-004', 'corp-005'],
     featured: true,
     tags: ['pack', 'bundle', 'full uniform', 'corporate'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer', 'Sublimation'],
   },
 
   // PROMOTIONAL
@@ -673,6 +751,9 @@ export const products: Product[] = [
     relatedIds: ['promo-002', 'promo-003', 'promo-004'],
     featured: true,
     tags: ['t-shirt', 'promotional', 'screen print', '180gsm'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-002',
@@ -698,6 +779,9 @@ export const products: Product[] = [
     relatedIds: ['promo-003', 'promo-004', 'promo-001'],
     featured: true,
     tags: ['cap', 'snapback', 'headwear', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-003',
@@ -721,6 +805,9 @@ export const products: Product[] = [
     image: '/images/products/baseball-cap.png',
     relatedIds: ['promo-002', 'promo-004'],
     tags: ['cap', 'baseball', 'headwear'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-004',
@@ -742,6 +829,9 @@ export const products: Product[] = [
     image: '/images/products/trucker-cap.png',
     relatedIds: ['promo-002', 'promo-003'],
     tags: ['cap', 'trucker', 'headwear'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-005',
@@ -761,6 +851,9 @@ export const products: Product[] = [
     image: '/images/products/branded-lanyard.png',
     relatedIds: ['promo-001'],
     tags: ['lanyard', 'ID', 'event', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-006',
@@ -784,6 +877,9 @@ export const products: Product[] = [
     image: '/images/products/drawstring-bag.png',
     relatedIds: ['promo-007', 'promo-008'],
     tags: ['bag', 'drawstring', 'event', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-007',
@@ -807,6 +903,9 @@ export const products: Product[] = [
     relatedIds: ['promo-006', 'promo-008'],
     featured: true,
     tags: ['bag', 'sports', 'team', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-008',
@@ -828,6 +927,9 @@ export const products: Product[] = [
     image: '/images/products/insulated-cooler-bag.png',
     relatedIds: ['promo-007'],
     tags: ['cooler', 'bag', 'insulated', 'events'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-009',
@@ -850,6 +952,9 @@ export const products: Product[] = [
     image: '/images/products/knitted-beanie.png',
     relatedIds: ['promo-002', 'promo-010'],
     tags: ['beanie', 'headwear', 'winter', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-010',
@@ -868,6 +973,9 @@ export const products: Product[] = [
     image: '/images/products/reversible-bucket-hat.png',
     relatedIds: ['promo-002', 'promo-003'],
     tags: ['bucket hat', 'reversible', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Screen Print', 'Embroidery', 'Heat Transfer', 'Sublimation'],
   },
   {
     id: 'promo-011',
@@ -892,6 +1000,9 @@ export const products: Product[] = [
     image: '/images/products/water-bottle.png',
     relatedIds: ['promo-022'],
     tags: ['bottle', 'stainless', 'gift', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-012',
@@ -915,6 +1026,9 @@ export const products: Product[] = [
     relatedIds: ['promo-013', 'promo-014'],
     featured: true,
     tags: ['pen', 'executive', 'gift', 'stationery'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-013',
@@ -938,6 +1052,9 @@ export const products: Product[] = [
     image: '/images/products/a5-diary.png',
     relatedIds: ['promo-014', 'promo-012'],
     tags: ['diary', 'stationery', 'executive gift', 'A5'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-014',
@@ -957,6 +1074,9 @@ export const products: Product[] = [
     image: '/images/products/wall-calendar.png',
     relatedIds: ['promo-013'],
     tags: ['calendar', 'stationery', 'promotional', 'print'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-015',
@@ -980,6 +1100,9 @@ export const products: Product[] = [
     image: '/images/products/executive-umbrella.png',
     relatedIds: ['promo-007'],
     tags: ['umbrella', 'executive', 'gift', 'promotional'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-016',
@@ -998,6 +1121,9 @@ export const products: Product[] = [
     image: '/images/products/coffee-mug.png',
     relatedIds: ['promo-011', 'promo-013'],
     tags: ['mug', 'ceramic', 'gift', 'corporate'],
+    moq: 50,
+    leadTime: '7–14 business days',
+    customisationMethods: ['Pad Print', 'Laser Engraving', 'Screen Print'],
   },
   {
     id: 'promo-017',
@@ -1017,6 +1143,9 @@ export const products: Product[] = [
     relatedIds: ['promo-018', 'promo-019', 'promo-020'],
     featured: true,
     tags: ['banner', 'pull-up', 'event', 'display'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
 
   // EVENT BRANDING
@@ -1039,6 +1168,9 @@ export const products: Product[] = [
     relatedIds: ['event-002', 'event-003', 'promo-017'],
     featured: true,
     tags: ['gazebo', 'event', 'outdoor', 'display'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-002',
@@ -1058,6 +1190,9 @@ export const products: Product[] = [
     relatedIds: ['event-003', 'event-004', 'event-001'],
     featured: true,
     tags: ['flag', 'sharkfin', 'event', 'outdoor'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-003',
@@ -1075,6 +1210,9 @@ export const products: Product[] = [
     image: '/images/products/teardrop-flag.png',
     relatedIds: ['event-002', 'event-004'],
     tags: ['flag', 'teardrop', 'event', 'outdoor'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-004',
@@ -1092,6 +1230,9 @@ export const products: Product[] = [
     image: '/images/products/telescopic-flag.png',
     relatedIds: ['event-002', 'event-003'],
     tags: ['flag', 'telescopic', 'indoor', 'corporate'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-005',
@@ -1111,6 +1252,9 @@ export const products: Product[] = [
     relatedIds: ['event-001', 'promo-017'],
     featured: true,
     tags: ['backdrop', 'exhibition', 'media wall', 'event'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-006',
@@ -1130,6 +1274,9 @@ export const products: Product[] = [
     image: '/images/products/pvc-banner.png',
     relatedIds: ['promo-017', 'event-005'],
     tags: ['banner', 'PVC', 'outdoor', 'event'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
   {
     id: 'event-007',
@@ -1148,6 +1295,9 @@ export const products: Product[] = [
     image: '/images/products/billboard-construction.png',
     relatedIds: ['event-006', 'event-005'],
     tags: ['billboard', 'outdoor', 'construction', 'large format'],
+    moq: 1,
+    leadTime: '5–7 business days',
+    customisationMethods: ['Full-Colour Digital Print', 'Sublimation'],
   },
 
   // SPORTS WEAR
@@ -1171,6 +1321,9 @@ export const products: Product[] = [
     relatedIds: ['sport-002', 'sport-003'],
     featured: true,
     tags: ['tracksuit', 'sublimation', 'sports', 'team kit'],
+    moq: 12,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Sublimation', 'Screen Print', 'Embroidery'],
   },
   {
     id: 'sport-002',
@@ -1192,6 +1345,9 @@ export const products: Product[] = [
     relatedIds: ['sport-003', 'sport-004', 'sport-001'],
     featured: true,
     tags: ['soccer', 'football', 'kit', 'team', 'sublimation'],
+    moq: 12,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Sublimation', 'Screen Print', 'Embroidery'],
   },
   {
     id: 'sport-003',
@@ -1211,6 +1367,9 @@ export const products: Product[] = [
     image: '/images/products/netball-kit.png',
     relatedIds: ['sport-002', 'sport-004'],
     tags: ['netball', 'kit', 'sports', 'sublimation'],
+    moq: 12,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Sublimation', 'Screen Print', 'Embroidery'],
   },
   {
     id: 'sport-004',
@@ -1228,6 +1387,9 @@ export const products: Product[] = [
     image: '/images/products/volleyball-kit.png',
     relatedIds: ['sport-002', 'sport-003'],
     tags: ['volleyball', 'kit', 'sports', 'sublimation'],
+    moq: 12,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Sublimation', 'Screen Print', 'Embroidery'],
   },
 
   // SCHOOL WEAR
@@ -1251,6 +1413,9 @@ export const products: Product[] = [
     relatedIds: ['school-002', 'school-003'],
     featured: true,
     tags: ['school', 'uniform', 'crest', 'kids'],
+    moq: 20,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print'],
   },
   {
     id: 'school-002',
@@ -1273,6 +1438,9 @@ export const products: Product[] = [
     image: '/images/products/school-backpack.png',
     relatedIds: ['school-001', 'school-003'],
     tags: ['school', 'backpack', 'bag', 'kids'],
+    moq: 20,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print'],
   },
   {
     id: 'school-003',
@@ -1298,6 +1466,9 @@ export const products: Product[] = [
     image: '/images/products/kids-cotton-tshirt.png',
     relatedIds: ['school-001', 'school-002'],
     tags: ['school', 't-shirt', 'kids', 'sports day'],
+    moq: 20,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Embroidery', 'Screen Print'],
   },
 ]
 

@@ -12,6 +12,9 @@ export interface Product {
   relatedIds: string[]
   featured?: boolean
   tags: string[]
+  moq: number
+  leadTime: string
+  customisationMethods: string[]
 }
 
 export interface ProductSpec {

@@ -8,6 +8,7 @@ const navLinks: { label: string; href: string; badge?: string }[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Catalog', href: '/catalog' },
+  { label: 'Gifts', href: '/imported-gifts' },
   { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/contact' },
 ]

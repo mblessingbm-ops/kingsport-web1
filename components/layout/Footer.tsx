@@ -1,125 +1,128 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
 
-const categories = [
-  { label: 'PPE & Safety', href: '/catalog?category=ppe-safety' },
-  { label: 'Corporate Wear', href: '/catalog?category=corporate-wear' },
-  { label: 'Promotional', href: '/catalog?category=promotional' },
-  { label: 'Event Branding', href: '/catalog?category=event-branding' },
-  { label: 'Sports Wear', href: '/catalog?category=sports-wear' },
-  { label: 'School Wear', href: '/catalog?category=school-wear' },
+const catalogLinks = [
+  { label: 'Personal Protective Equipment', href: '/catalog' },
+  { label: 'Corporate Wear', href: '/catalog' },
+  { label: 'Promotional', href: '/catalog' },
+  { label: 'Event Branding', href: '/catalog' },
+  { label: 'Sports Wear', href: '/catalog' },
+  { label: 'School Wear', href: '/catalog' },
+]
+
+const companyLinks = [
+  { label: 'About Kingsport', href: '/about' },
+  { label: 'Factory tours', href: '/contact' },
+  { label: 'Journal', href: '#' },
+  { label: 'Careers', href: '#' },
+]
+
+const quoteLinks = [
+  { label: 'Request a quote', href: '/quote' },
+  { label: 'Uniform Builder', href: '/catalog' },
+  { label: 'Browse catalogue', href: '/catalog' },
+  { label: 'Contact us', href: '/contact' },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal-900 text-white">
-      {/* Main footer */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        {/* Brand */}
-        <div className="lg:col-span-1">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-14 h-14 relative flex-shrink-0">
-              <Image src="/images/kingsport-logo.png" alt="Kingsport" fill className="object-contain" />
-            </div>
-            <div>
-              <div className="font-display text-xl font-semibold tracking-wide">KINGSPORT</div>
-              <div className="text-oxblood-400 text-[10px] tracking-[0.2em] uppercase">Investments</div>
-            </div>
-          </div>
-          <p className="text-white/60 text-sm leading-relaxed font-sans">
-            Zimbabwe&apos;s trusted manufacturer of protective clothing, corporate uniforms, and promotional merchandise since 1998.
-          </p>
-          <div className="flex gap-4 mt-6">
-            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-oxblood-700 hover:bg-oxblood-900/30 transition-all duration-200"
+    <footer className="bg-[#0f0f0f] text-[#fdfbf7]/70 pt-[72px] pb-8">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-9">
+        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-11">
+          {/* Brand block */}
+          <div>
+            <div className="flex items-center gap-3">
+              <div
+                className="w-9 h-9 flex items-center justify-center text-[#fdfbf7] text-[22px] italic font-semibold"
+                style={{ background: '#800020', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
-                <Icon size={15} />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Product Categories */}
-        <div>
-          <h4 className="font-display text-lg font-semibold mb-6 text-white">Product Range</h4>
-          <ul className="space-y-3">
-            {categories.map(cat => (
-              <li key={cat.href}>
-                <Link
-                  href={cat.href}
-                  className="text-white/60 hover:text-oxblood-400 text-sm transition-colors font-sans flex items-center gap-2"
+                K
+              </div>
+              <div className="leading-[1.05]">
+                <div
+                  className="text-[#fdfbf7] text-[20px] font-semibold tracking-[1.4px]"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
                 >
-                  <span className="block w-3 h-px bg-oxblood-700" />
-                  {cat.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  KINGSPORT
+                </div>
+                <div className="text-[9.5px] text-[#fdfbf7]/55 tracking-[1.5px] uppercase font-medium mt-px">
+                  Investments · Est. 1998
+                </div>
+              </div>
+            </div>
+            <p className="mt-[18px] text-[13px] leading-[1.65] text-[#fdfbf7]/55 max-w-[280px]">
+              Workwear, PPE, corporate uniforms and branded merchandise — manufactured in Harare, Zimbabwe.
+            </p>
+            <div className="mt-[18px] text-[13px] leading-[1.8] text-[#fdfbf7]/70">
+              <b className="text-[#fdfbf7] font-semibold">+263 24 277 0712</b>
+              <br />
+              info@kingsport.co.zw
+              <br />
+              4 Grant Street, Harare, Zimbabwe
+            </div>
+          </div>
 
-        {/* Quick Links */}
-        <div>
-          <h4 className="font-display text-lg font-semibold mb-6 text-white">Quick Links</h4>
-          <ul className="space-y-3">
-            {[
-              { label: 'About Kingsport', href: '/about' },
-              { label: 'Request a Quote', href: '/quote' },
-              { label: 'Uniform Builder', href: '/uniform-builder' },
-              { label: 'Contact Us', href: '/contact' },
-            ].map(link => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-white/60 hover:text-oxblood-400 text-sm transition-colors font-sans flex items-center gap-2"
-                >
-                  <span className="block w-3 h-px bg-oxblood-700" />
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* Catalogue */}
+          <div>
+            <h4 className="text-[10.5px] tracking-[1.6px] uppercase text-[#fdfbf7]/50 mb-4 font-semibold">
+              Catalogue
+            </h4>
+            <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+              {catalogLinks.map((l, i) => (
+                <li key={l.label + i}>
+                  <Link
+                    href={l.href}
+                    className="text-[13.5px] text-[#fdfbf7]/70 hover:text-[#fdfbf7] transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Contact */}
-        <div>
-          <h4 className="font-display text-lg font-semibold mb-6 text-white">Get In Touch</h4>
-          <ul className="space-y-4">
-            <li className="flex items-start gap-3 text-white/60 text-sm font-sans">
-              <MapPin size={15} className="text-oxblood-400 mt-0.5 flex-shrink-0" />
-              <span>Harare, Zimbabwe</span>
-            </li>
-            <li className="flex items-start gap-3 text-white/60 text-sm font-sans">
-              <Phone size={15} className="text-oxblood-400 mt-0.5 flex-shrink-0" />
-              <span>024 277 0712 / 0607 / 0922</span>
-            </li>
-            <li className="flex items-start gap-3 text-white/60 text-sm font-sans">
-              <Mail size={15} className="text-oxblood-400 mt-0.5 flex-shrink-0" />
-              <span>info@kingsport.co.zw</span>
-            </li>
-          </ul>
-          <div className="mt-8">
-            <p className="text-white/40 text-xs font-sans uppercase tracking-widest mb-2">Operating Hours</p>
-            <p className="text-white/60 text-sm font-sans">Mon–Fri: 08:00 – 17:00</p>
-            <p className="text-white/60 text-sm font-sans">Sat: 08:00 – 12:00</p>
+          {/* Company */}
+          <div>
+            <h4 className="text-[10.5px] tracking-[1.6px] uppercase text-[#fdfbf7]/50 mb-4 font-semibold">
+              Company
+            </h4>
+            <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+              {companyLinks.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-[13.5px] text-[#fdfbf7]/70 hover:text-[#fdfbf7] transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quote */}
+          <div>
+            <h4 className="text-[10.5px] tracking-[1.6px] uppercase text-[#fdfbf7]/50 mb-4 font-semibold">
+              Quote &amp; account
+            </h4>
+            <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
+              {quoteLinks.map((l) => (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className="text-[13.5px] text-[#fdfbf7]/70 hover:text-[#fdfbf7] transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-white/40 text-xs font-sans">
-            © {new Date().getFullYear()} Kingsport Investments (Pvt) Ltd. Incorporated 1998. All rights reserved.
-          </p>
-          <div className="flex items-center gap-1">
-            <span className="block w-8 h-px bg-oxblood-900" />
-            <span className="text-oxblood-700 text-xs font-sans tracking-widest uppercase">Est. 1998</span>
-            <span className="block w-8 h-px bg-oxblood-900" />
-          </div>
+        {/* Legal */}
+        <div className="mt-14 pt-[26px] border-t border-[#fdfbf7]/10 flex flex-col sm:flex-row justify-between gap-3 text-[10.5px] tracking-[1.2px] text-[#fdfbf7]/50 uppercase font-medium">
+          <span>© 2026 Kingsport Investments (Pvt) Ltd · Incorporated 1998</span>
+          <span>Privacy · Terms · Sitemap</span>
         </div>
       </div>
     </footer>

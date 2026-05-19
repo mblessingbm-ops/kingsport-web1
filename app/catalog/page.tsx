@@ -226,8 +226,6 @@ function CatalogContent() {
 
       <PDPDrawer state={state} dispatch={dispatch} />
       <QuoteDrawer state={state} dispatch={dispatch} />
-
-      <FloatingQuoteOpener onOpen={() => dispatch({ type: 'OPEN_QUOTE' })} />
     </div>
   )
 }
@@ -872,18 +870,6 @@ function QuoteDrawer({ state, dispatch }: { state: CatalogState; dispatch: React
         </div>
       </aside>
     </>
-  )
-}
-
-// ── Floating quote opener ─────────────────────────────────────────────
-function FloatingQuoteOpener({ onOpen }: { onOpen: () => void }) {
-  const { count } = useQuoteCart()
-  return (
-    <button onClick={onOpen} className={styles.quoteOpener}>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M6 7h13l-2 9H8z" /><circle cx="9" cy="20" r="1.5" /><circle cx="17" cy="20" r="1.5" /><path d="M3 4h2l1 3" /></svg>
-      Quote
-      <span className={styles.quoteOpenerBadge}>{String(count).padStart(2, '0')}</span>
-    </button>
   )
 }
 

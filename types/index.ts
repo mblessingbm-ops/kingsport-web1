@@ -61,3 +61,15 @@ export interface QuoteRequest {
   deliveryDate?: string
   additionalNotes?: string
 }
+
+export interface JournalPost {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  category: string
+  date: string
+  readTime: string
+  coverImage: string
+  embeddedProductIds: string[]
+}

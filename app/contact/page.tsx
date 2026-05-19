@@ -40,8 +40,18 @@ export default function ContactPage() {
                   <div>
                     <p className="font-sans font-medium text-charcoal-800 text-sm">Head Office</p>
                     <p className="font-sans text-charcoal-600/70 text-sm leading-relaxed mt-0.5">
+                      4 Grant Street<br />
                       Harare, Zimbabwe
                     </p>
+                    <a
+                      href="https://www.google.com/maps/dir/?api=1&destination=4+Grant+Street,+Harare,+Zimbabwe"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-sans text-xs text-oxblood-700 hover:text-oxblood-900 transition-colors mt-1.5"
+                    >
+                      Get directions
+                      <ArrowRight size={11} />
+                    </a>
                   </div>
                 </div>
 
@@ -132,6 +142,27 @@ export default function ContactPage() {
 
               <ContactForm />
             </div>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="mt-20">
+          <span className="block w-10 h-px bg-oxblood-700 mb-4" />
+          <h2 className="font-display text-3xl font-light text-charcoal-800 mb-2">
+            Find <span className="italic text-oxblood-800">Us</span>
+          </h2>
+          <p className="text-charcoal-600/50 text-xs font-sans mb-6">
+            4 Grant Street, Harare — visitors welcome during business hours.
+          </p>
+          <div className="border border-charcoal-800/8 overflow-hidden aspect-[16/9] md:aspect-[21/9]">
+            <iframe
+              title="Kingsport Investments — 4 Grant Street, Harare"
+              src="https://www.google.com/maps?q=4+Grant+Street,+Harare,+Zimbabwe&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full border-0"
+              allowFullScreen
+            />
           </div>
         </div>
       </div>

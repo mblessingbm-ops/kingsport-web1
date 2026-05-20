@@ -139,39 +139,76 @@ const journalPosts = [
 export default function HomePage() {
   return (
     <div className={styles.home}>
-      {/* ── Hero ───────────────────────────────────────────────────── */}
-      <section className={styles.hero}>
-        <div className={`${styles.wrap} ${styles.heroGrid}`}>
-          <div className={styles.heroLeft}>
-            <div className={styles.heroEyebrow}>Manufactured in Harare &mdash; since 1998</div>
-            <h1 className={styles.heroH1}>Outfit your team.</h1>
-            <p className={styles.heroItalic}>We&rsquo;ll handle the rest.</p>
-            <p className={styles.heroTagline}>
-              Workwear, protective equipment and corporate uniforms &mdash; designed, cut and stitched under one roof in Zimbabwe.
-            </p>
-            <div className={styles.heroMeta}>
-              <Link href="/catalog" className={styles.heroLink}>
-                Browse the catalogue <span className="arrow">→</span>
-              </Link>
-              <span className={styles.heroIssue}>Vol. XXVI / 2026</span>
-            </div>
-          </div>
+      {/* ── Hero · Cover (C) ─────────────────────────────────────── */}
+      <section className={styles.heroCover}>
+        <div className={styles.heroCoverMast}>
+          <span className="left">Kingsport Investments</span>
+          <span className="center">Vol. XXVI · 2026</span>
+          <span className="right">Issue 01</span>
+        </div>
 
-          <div className={styles.heroImage}>
-            <div className="frameNum"><b>F. 01</b> &mdash; Heavy Duty Conti</div>
-            <div className="frameIssue">EN ISO 13688</div>
-            <Image
-              src="/images/products/conti-suit.png"
-              alt="Heavy duty conti suit"
-              width={520}
-              height={540}
-              priority
-            />
-            <div className="floor" />
-            <div className="credit">
-              <div className="name">Heavy Duty Conti Suit</div>
-              <div className="meta">KS-CS-001 · MOQ 25 sets</div>
-            </div>
+        <div className={styles.heroCoverBody}>
+          <div className={styles.heroCoverStack}>
+            <div className={styles.heroCoverEyebrow}>Manufactured in Harare &mdash; since 1998</div>
+            <h1 className={styles.heroCoverH1}>
+              <span className="word">Outfit</span>
+              <span className="word">your team.</span>
+            </h1>
+            <p className={styles.heroCoverItalic}>We&rsquo;ll handle the rest.</p>
+          </div>
+        </div>
+
+        <div className={styles.heroCoverFoot}>
+          <span className="left">Edition XXVI &middot; Autumn 2026</span>
+          <Link className="center" href="/catalog">
+            Browse the catalogue <span className="arrow">→</span>
+          </Link>
+          <span className="right">Turn the page ↓</span>
+        </div>
+      </section>
+
+      {/* ── Hero · Plate I (feature plate · full-bleed lineup) ───── */}
+      <section className={styles.heroPlate}>
+        <div className={styles.heroPlateBg}>
+          <div className="panel">
+            <Image src="/images/hero/plate-1.png" alt="Cargo workwear" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+          </div>
+          <div className="panel">
+            <Image src="/images/hero/plate-2.png" alt="Heavy duty conti suit" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+          </div>
+          <div className="panel">
+            <Image src="/images/hero/plate-3.png" alt="Pink polo" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+          </div>
+          <div className="panel">
+            <Image src="/images/hero/plate-4.png" alt="Green branded vest" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+          </div>
+          <div className="panel">
+            <Image src="/images/hero/plate-5.png" alt="Navy tee and tan shorts" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+          </div>
+        </div>
+        <div className={styles.heroPlateScrim} />
+        <span className={styles.heroPlateMast}>Plate I · The lineup</span>
+        <span className={styles.heroPlateSeal}>F. 01–05 &mdash; Featured ranges</span>
+        <div className={styles.heroPlateInner}>
+          <div className={styles.heroPlateText}>
+            <div className={styles.heroPlateTag}>Plate I</div>
+            <div className={styles.heroPlateRule} />
+            <div className={styles.heroPlateCat}>PPE · Corporate · Promo · Event · Sports</div>
+            <h2 className={styles.heroPlateName}>
+              Five ranges,<br />one factory floor.
+            </h2>
+            <p className={styles.heroPlateBody}>
+              From hi-vis softshells to executive polos, sublimated sports kits to branded promo &mdash; every garment cut, stitched and finished under one roof in Harare.
+            </p>
+            <dl className={styles.heroPlateSpecs}>
+              <dt>Ranges</dt><dd>Six categories</dd>
+              <dt>Lead time</dt><dd>7&ndash;14 days</dd>
+              <dt>MOQ</dt><dd>From 12 sets</dd>
+              <dt>Ships to</dt><dd>SADC × 5</dd>
+            </dl>
+            <Link className={styles.heroPlateLink} href="/catalog">
+              Browse the catalogue <span className="arrow">→</span>
+            </Link>
           </div>
         </div>
       </section>

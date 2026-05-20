@@ -106,11 +106,14 @@
 .heroCoverH1 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 500;
-  font-size: clamp(112px, 17vw, 252px);
-  letter-spacing: -7px;
-  line-height: 0.86;
+  /* Sized for ~24-char lines: max ~104px keeps the longest word group
+     within the 1240px content stack without overflow */
+  font-size: clamp(56px, 8vw, 108px);
+  letter-spacing: -3px;
+  line-height: 0.94;
   color: var(--ink);
   margin: 0;
+  text-wrap: balance;
 }
 .heroCoverH1 :global(.word) { display: block; }
 .heroCoverH1 :global(.word) + :global(.word) { margin-top: -4px; }
@@ -321,7 +324,7 @@
 }
 
 @media (max-width: 1024px) {
-  .heroCoverH1 { font-size: clamp(72px, 14vw, 160px); letter-spacing: -4px; }
+  .heroCoverH1 { font-size: clamp(48px, 7vw, 84px); letter-spacing: -2px; }
   .heroCoverItalic { font-size: clamp(40px, 6vw, 72px); letter-spacing: -1.8px; }
   .heroPlateBg { grid-template-columns: repeat(5, 1fr); }
   .heroPlateName { font-size: 56px; letter-spacing: -1.4px; }
@@ -331,8 +334,8 @@
   .heroCover { padding: 20px; }
   .heroCoverMast :global(.right) { display: none; }
   .heroCoverEyebrow { font-size: 14px; margin-bottom: 28px; }
-  .heroCoverH1 { font-size: clamp(56px, 14vw, 96px); letter-spacing: -2px; }
-  .heroCoverItalic { font-size: 36px; letter-spacing: -1px; margin-top: 18px; }
+  .heroCoverH1 { font-size: clamp(34px, 8vw, 56px); letter-spacing: -1.2px; line-height: 0.98; }
+  .heroCoverItalic { font-size: 40px; letter-spacing: -1px; margin-top: 18px; }
   .heroCoverFoot :global(.right) { display: none; }
   .heroPlateBg { grid-template-columns: repeat(3, 1fr); }
   .heroPlateBg :global(.panel):nth-child(4),

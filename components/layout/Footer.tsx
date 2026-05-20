@@ -1,19 +1,18 @@
 import Link from 'next/link'
 
 const catalogLinks = [
-  { label: 'Personal Protective Equipment', href: '/catalog' },
-  { label: 'Corporate Wear', href: '/catalog' },
-  { label: 'Promotional', href: '/catalog' },
-  { label: 'Event Branding', href: '/catalog' },
-  { label: 'Sports Wear', href: '/catalog' },
-  { label: 'School Wear', href: '/catalog' },
+  { label: 'Personal Protective Equipment', href: '/catalog?category=ppe-safety' },
+  { label: 'Corporate Wear',                href: '/catalog?category=corporate-wear' },
+  { label: 'Promotional',                   href: '/catalog?category=promotional' },
+  { label: 'Event Branding',                href: '/catalog?category=event-branding' },
+  { label: 'Sports Wear',                   href: '/catalog?category=sports-wear' },
+  { label: 'School Wear',                   href: '/catalog?category=school-wear' },
 ]
 
 const companyLinks = [
   { label: 'About Kingsport', href: '/about' },
-  { label: 'Factory tours', href: '/contact' },
-  { label: 'Journal', href: '#' },
-  { label: 'Careers', href: '#' },
+  { label: 'Factory tours',   href: '/contact' },
+  { label: 'Journal',         href: '/journal' },
 ]
 
 const quoteLinks = [

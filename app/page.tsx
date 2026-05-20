@@ -5,6 +5,7 @@ import styles from './page.module.css'
 const categories = [
   {
     name: 'Personal Protective Equipment',
+    href: '/catalog?category=ppe-safety',
     desc: 'Conti suits, hi-vis, boots, gloves, hard hats — all EN ISO certified.',
     items: 84,
     moq: '12+',
@@ -14,6 +15,7 @@ const categories = [
   },
   {
     name: 'Corporate Wear',
+    href: '/catalog?category=corporate-wear',
     desc: 'Executive polos, oxford shirts, blazers, dustcoats — branded to your standard.',
     items: 62,
     moq: '20+',
@@ -23,6 +25,7 @@ const categories = [
   },
   {
     name: 'Promotional',
+    href: '/catalog?category=promotional',
     desc: 'T-shirts, caps, mugs, bags, notebooks — branded for events, schools, and giveaways.',
     items: 138,
     moq: '50+',
@@ -32,6 +35,7 @@ const categories = [
   },
   {
     name: 'Event Branding',
+    href: '/catalog?category=event-branding',
     desc: 'Gazebos, pull-up banners, sharkfin flags, tablecloths — built for activations.',
     items: 41,
     moq: '1+',
@@ -41,6 +45,7 @@ const categories = [
   },
   {
     name: 'Sports Wear',
+    href: '/catalog?category=sports-wear',
     desc: 'Sublimated jerseys, tracksuits, sports kits — for clubs, schools, and corporates.',
     items: 53,
     moq: '20+',
@@ -50,6 +55,7 @@ const categories = [
   },
   {
     name: 'School Wear',
+    href: '/catalog?category=school-wear',
     desc: 'Tunics, blazers, backpacks, tracksuits — kitted for the academic calendar.',
     items: 47,
     moq: '25+',
@@ -62,6 +68,7 @@ const categories = [
 const industries = [
   {
     name: 'Construction & Engineering',
+    href: '/catalog?industry=construction',
     count: '84 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V10l7-4 7 4v11"/><path d="M9 21v-6h6v6"/></svg>
@@ -69,6 +76,7 @@ const industries = [
   },
   {
     name: 'Banking & Finance',
+    href: '/catalog?industry=banking',
     count: '41 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 10l9-5 9 5"/><path d="M5 10v8M9 10v8M15 10v8M19 10v8"/><path d="M3 21h18"/></svg>
@@ -76,6 +84,7 @@ const industries = [
   },
   {
     name: 'Government',
+    href: '/catalog?industry=government',
     count: '62 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18M5 21V9l7-4 7 4v12"/><circle cx="12" cy="13" r="1.5"/></svg>
@@ -83,6 +92,7 @@ const industries = [
   },
   {
     name: 'Retail & FMCG',
+    href: '/catalog?industry=retail',
     count: '53 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 7h14l-1 13H6z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg>
@@ -90,6 +100,7 @@ const industries = [
   },
   {
     name: 'Education',
+    href: '/catalog?industry=education',
     count: '47 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-4 9 4-9 4z"/><path d="M7 11v5c2 1.5 8 1.5 10 0v-5"/></svg>
@@ -97,6 +108,7 @@ const industries = [
   },
   {
     name: 'NGOs & Aid',
+    href: '/catalog?industry=ngo',
     count: '28 items',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-5-7-11a4 4 0 017-2.5A4 4 0 0119 10c0 6-7 11-7 11z"/></svg>
@@ -151,10 +163,10 @@ export default function HomePage() {
           <div className={styles.heroCoverStack}>
             <div className={styles.heroCoverEyebrow}>Manufactured in Harare &mdash; since 1998</div>
             <h1 className={styles.heroCoverH1}>
-              <span className="word">Outfit</span>
-              <span className="word">your team.</span>
+              <span className="word">If you are proud</span>
+              <span className="word">of your corporate image&hellip;</span>
             </h1>
-            <p className={styles.heroCoverItalic}>We&rsquo;ll handle the rest.</p>
+            <p className={styles.heroCoverItalic}>Show it!</p>
           </div>
         </div>
 
@@ -279,7 +291,7 @@ export default function HomePage() {
           </div>
           <div className={styles.catsGrid}>
             {categories.map((c) => (
-              <Link key={c.name} className={styles.cat} href="/catalog">
+              <Link key={c.name} className={styles.cat} href={c.href}>
                 <div className="icon">{c.icon}</div>
                 <div style={{ flex: 1 }}>
                   <h3>{c.name}</h3>
@@ -360,7 +372,7 @@ export default function HomePage() {
           </div>
           <div className={styles.industriesGrid}>
             {industries.map((i) => (
-              <Link key={i.name} className={styles.ind} href="/catalog">
+              <Link key={i.name} className={styles.ind} href={i.href}>
                 <div className="icon">{i.icon}</div>
                 <div className="name">{i.name}</div>
                 <div className="count">{i.count}</div>

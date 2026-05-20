@@ -29,7 +29,6 @@ interface CatalogState {
   ind: IndustryId | null
   path: Path
   pdpId: string | null
-  quoteOpen: boolean
   sort: SortKey
 }
 
@@ -39,8 +38,6 @@ type Action =
   | { type: 'SET_PATH'; path: Path }
   | { type: 'OPEN_PDP'; id: string }
   | { type: 'CLOSE_PDP' }
-  | { type: 'OPEN_QUOTE' }
-  | { type: 'CLOSE_QUOTE' }
   | { type: 'SET_SORT'; sort: SortKey }
 
 function reducer(state: CatalogState, action: Action): CatalogState {
@@ -50,8 +47,6 @@ function reducer(state: CatalogState, action: Action): CatalogState {
     case 'SET_PATH': return { ...state, path: action.path }
     case 'OPEN_PDP': return { ...state, pdpId: action.id }
     case 'CLOSE_PDP': return { ...state, pdpId: null }
-    case 'OPEN_QUOTE': return { ...state, quoteOpen: true }
-    case 'CLOSE_QUOTE': return { ...state, quoteOpen: false }
     case 'SET_SORT': return { ...state, sort: action.sort }
     default: return state
   }
@@ -103,27 +98,38 @@ function normalizeCat(raw: string | null): KsCategoryId {
   return liveCatMap[raw] ?? 'all'
 }
 
+const VALID_INDUSTRIES = new Set(['construction', 'banking', 'government', 'retail', 'education', 'ngo'])
+function normalizeInd(raw: string | null): IndustryId | null {
+  if (!raw) return null
+  return VALID_INDUSTRIES.has(raw) ? (raw as IndustryId) : null
+}
+
 // ── Page ─────────────────────────────────────────────────────────────
 function CatalogContent() {
   const search = useSearchParams()
   const urlCat = normalizeCat(search.get('category'))
+  const urlInd = normalizeInd(search.get('industry'))
 
   const [state, dispatch] = useReducer(reducer, {
     cat: urlCat,
-    ind: null,
+    ind: urlInd,
     path: 'catalog',
     pdpId: null,
-    quoteOpen: false,
     sort: 'requested',
   })
   const [builderOpen, setBuilderOpen] = useState(false)
 
-  // Keep reducer state in sync when the URL category param changes
-  // (e.g. when the user clicks the navbar dropdown or the × clear-filter link)
+  // Keep reducer state in sync when the URL category or industry param changes
+  // (e.g. when the user clicks the navbar dropdown, a homepage tile, or the
+  // × clear-filter link)
   useEffect(() => {
     if (state.cat !== urlCat) dispatch({ type: 'SET_CAT', cat: urlCat })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlCat])
+  useEffect(() => {
+    if (state.ind !== urlInd) dispatch({ type: 'SET_IND', ind: urlInd })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlInd])
 
   const filtered = useMemo(() => {
     let list: Product[] = state.cat === 'all'
@@ -225,7 +231,6 @@ function CatalogContent() {
       </div>
 
       <PDPDrawer state={state} dispatch={dispatch} />
-      <QuoteDrawer state={state} dispatch={dispatch} />
     </div>
   )
 }
@@ -787,7 +792,8 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
                   if (inQuote) updateItem(p.id, line)
                   else addItem(line)
                   dispatch({ type: 'CLOSE_PDP' })
-                  dispatch({ type: 'OPEN_QUOTE' })
+                  // Site-wide QuotePill pulses to signal the new item;
+                  // user can click the pill to review the cart.
                 }}
               >
                 {inQuote ? '✓ Update in quote' : 'Add to quote'}
@@ -795,88 +801,6 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
                 {qty} {meta.unit}{qty > 1 ? 's' : ''}
               </button>
             </div>
-          </div>
-        </div>
-      </aside>
-    </>
-  )
-}
-
-// ── Quote Drawer ──────────────────────────────────────────────────────
-function QuoteDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.Dispatch<Action> }) {
-  const { items, updateItem, removeItem } = useQuoteCart()
-  if (!state.quoteOpen) return null
-  const totalUnits = items.reduce((a, i) => a + (i.quantity || 0), 0)
-
-  return (
-    <>
-      <div className={styles.overlay} onClick={() => dispatch({ type: 'CLOSE_QUOTE' })} />
-      <aside className={`${styles.drawer} ${styles.drawerQuote}`}>
-        <div className={styles.drawerHead}>
-          <div>
-            <div style={{ fontSize: 10, letterSpacing: 0.6, textTransform: 'uppercase', color: '#800020', fontWeight: 600 }}>Your quote</div>
-            <div style={{ fontWeight: 600, fontSize: 17, marginTop: 4 }}>
-              {items.length} {items.length === 1 ? 'item' : 'items'} · {totalUnits.toLocaleString()} units
-            </div>
-          </div>
-          <button className={styles.drawerClose} onClick={() => dispatch({ type: 'CLOSE_QUOTE' })}>×</button>
-        </div>
-
-        <div className={styles.qList}>
-          {items.length === 0 ? (
-            <div className={styles.qEmpty}>
-              <div style={{ fontSize: 32, marginBottom: 12 }}>∅</div>
-              <div style={{ fontSize: 13, lineHeight: 1.55, color: '#6b5f4c' }}>
-                Your quote is empty.<br />Add products from the catalogue to start.
-              </div>
-            </div>
-          ) : (
-            items.map(it => {
-              const p = products.find(x => x.id === it.productId)
-              if (!p) return null
-              return (
-                <div key={it.productId} className={styles.qItem}>
-                  <div className={styles.qThumb}>
-                    <Image src={p.image} alt={p.name} fill style={{ objectFit: 'contain', padding: 6 }} sizes="60px" />
-                  </div>
-                  <div className={styles.qInfo}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'flex-start' }}>
-                      <div>
-                        <div className={styles.qName}>{p.name}</div>
-                        <div className={styles.qSub}>
-                          {p.id.toUpperCase()}{it.size ? ' · ' + it.size : ''}{it.color ? ' · ' + it.color : ''}
-                        </div>
-                      </div>
-                      <button className={styles.qRemove} onClick={() => removeItem(it.productId)} aria-label="Remove">×</button>
-                    </div>
-                    <div className={styles.qStepper}>
-                      <button onClick={() => updateItem(it.productId, { quantity: Math.max(0, (it.quantity || 0) - 10) })}>−</button>
-                      <input type="number" value={it.quantity} onChange={(e) => updateItem(it.productId, { quantity: parseInt(e.target.value) || 0 })} />
-                      <button onClick={() => updateItem(it.productId, { quantity: (it.quantity || 0) + 10 })}>+</button>
-                    </div>
-                  </div>
-                </div>
-              )
-            })
-          )}
-        </div>
-
-        <div className={styles.qFoot}>
-          <div className={styles.qStats}>
-            <div><div className={styles.qStatK}>Line items</div><div className={styles.qStatV}>{String(items.length).padStart(2, '0')}</div></div>
-            <div><div className={styles.qStatK}>Total units</div><div className={styles.qStatV}>{totalUnits.toLocaleString()}</div></div>
-            <div><div className={styles.qStatK}>Est. lead time</div><div className={styles.qStatV}>{items.length ? '10–14 days' : '—'}</div></div>
-            <div><div className={styles.qStatK}>Estimate</div><div className={`${styles.qStatV} ${styles.qStatEmp}`}>On request</div></div>
-          </div>
-          <div className={styles.qFootCtas}>
-            <button className={styles.qSaveBtn} disabled={!items.length}>Save draft</button>
-            <Link
-              href="/quote"
-              className={`${styles.qSubmitBtn} ${!items.length ? styles.qSubmitDisabled : ''}`}
-              onClick={() => dispatch({ type: 'CLOSE_QUOTE' })}
-            >
-              Review &amp; submit RFQ →
-            </Link>
           </div>
         </div>
       </aside>

@@ -3,7 +3,7 @@ import { useReducer, useMemo, useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import { Palette } from 'lucide-react'
+import { Palette, X, ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import {
   KS_CATEGORIES,
@@ -84,13 +84,32 @@ function IndustryGlyph({ id, size = 11, color = 'currentColor' }: { id: Industry
   }
 }
 
+// Map live product category IDs (used by the navbar dropdown and elsewhere)
+// to the design IDs this page filters on, so /catalog?category=ppe-safety
+// resolves to the same filter as /catalog?category=ppe.
+const liveCatMap: Record<string, KsCategoryId> = {
+  'ppe-safety':     'ppe',
+  'corporate-wear': 'corporate',
+  'promotional':    'promo',
+  'event-branding': 'event',
+  'sports-wear':    'sports',
+  'school-wear':    'school',
+}
+const KS_CAT_IDS = new Set(['all', 'ppe', 'corporate', 'promo', 'event', 'sports', 'school'])
+
+function normalizeCat(raw: string | null): KsCategoryId {
+  if (!raw) return 'all'
+  if (KS_CAT_IDS.has(raw)) return raw as KsCategoryId
+  return liveCatMap[raw] ?? 'all'
+}
+
 // ── Page ─────────────────────────────────────────────────────────────
 function CatalogContent() {
   const search = useSearchParams()
-  const initialCat = search.get('category') as KsCategoryId | null
+  const urlCat = normalizeCat(search.get('category'))
 
   const [state, dispatch] = useReducer(reducer, {
-    cat: initialCat || 'all',
+    cat: urlCat,
     ind: null,
     path: 'catalog',
     pdpId: null,
@@ -98,6 +117,13 @@ function CatalogContent() {
     sort: 'requested',
   })
   const [builderOpen, setBuilderOpen] = useState(false)
+
+  // Keep reducer state in sync when the URL category param changes
+  // (e.g. when the user clicks the navbar dropdown or the × clear-filter link)
+  useEffect(() => {
+    if (state.cat !== urlCat) dispatch({ type: 'SET_CAT', cat: urlCat })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlCat])
 
   const filtered = useMemo(() => {
     let list: Product[] = state.cat === 'all'
@@ -143,32 +169,6 @@ function CatalogContent() {
       >
         <div className="px-9 pt-6">
           <UniformBuilderPanel />
-        </div>
-      </div>
-
-      {/* Category tile row */}
-      <div className={styles.catRow}>
-        <div className={styles.stepLabel}><b>01 ·</b> Category</div>
-        <div className={styles.catRowGrid}>
-          <CategoryTile
-            id="all"
-            label="All catalogue"
-            short="All"
-            count={products.length}
-            active={state.cat === 'all'}
-            onClick={() => dispatch({ type: 'SET_CAT', cat: 'all' })}
-          />
-          {KS_CATEGORIES.map(c => (
-            <CategoryTile
-              key={c.id}
-              id={c.id}
-              label={c.label}
-              short={c.short}
-              count={categoryCount(c.id)}
-              active={state.cat === c.id}
-              onClick={() => dispatch({ type: 'SET_CAT', cat: c.id })}
-            />
-          ))}
         </div>
       </div>
 
@@ -227,35 +227,6 @@ function CatalogContent() {
       <PDPDrawer state={state} dispatch={dispatch} />
       <QuoteDrawer state={state} dispatch={dispatch} />
     </div>
-  )
-}
-
-// ── Tiles ─────────────────────────────────────────────────────────────
-function CategoryTile({ id, label, short, count, active, onClick }: { id: KsCategoryId; label: string; short: string; count: number; active: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      title={label}
-      style={{
-        textAlign: 'left',
-        cursor: 'pointer',
-        border: '1px solid ' + (active ? '#1a1a1a' : '#ece1c8'),
-        background: active ? '#1a1a1a' : '#fff',
-        color: active ? '#fdfbf7' : '#1a1a1a',
-        padding: '11px 13px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10,
-        fontFamily: 'inherit',
-        minWidth: 0,
-      }}
-    >
-      <CategoryGlyph id={id} size={20} color={active ? '#800020' : '#1a1a1a'} />
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontWeight: 600, fontSize: 12.5, lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{short}</div>
-        <div style={{ fontSize: 9.5, opacity: 0.6, marginTop: 2 }}>{count} items</div>
-      </div>
-    </button>
   )
 }
 
@@ -392,6 +363,7 @@ function Sidebar({ state, dispatch }: { state: CatalogState; dispatch: React.Dis
 function CatalogPane({ state, dispatch, products: list, catObj }: { state: CatalogState; dispatch: React.Dispatch<Action>; products: Product[]; catObj: ReturnType<typeof KS_CATEGORIES.find> | null }) {
   const indObj = state.ind ? KS_INDUSTRIES.find(i => i.id === state.ind) : null
   const headline = catObj ? catObj.label : 'All catalogue'
+  const activeCategory = state.cat !== 'all' ? state.cat : null
 
   return (
     <section className={styles.pane}>
@@ -412,10 +384,49 @@ function CatalogPane({ state, dispatch, products: list, catObj }: { state: Catal
         </div>
       </div>
 
+      {/* Active filter indicator */}
+      {activeCategory && (
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40">
+              Showing
+            </span>
+            <span className="inline-flex items-center gap-2 bg-oxblood-900/[0.08] border border-oxblood-700/20 text-oxblood-800 text-xs font-sans font-medium px-3 py-1.5">
+              {KS_CATEGORIES.find(c => c.id === activeCategory)?.label}
+              <Link
+                href="/catalog"
+                onClick={() => dispatch({ type: 'SET_IND', ind: null })}
+                className="text-oxblood-600/50 hover:text-oxblood-900 transition-colors"
+                aria-label="Clear filter"
+              >
+                <X size={11} />
+              </Link>
+            </span>
+          </div>
+          <span className="text-[11px] font-sans text-charcoal-600/40">
+            {list.length} {list.length === 1 ? 'product' : 'products'}
+          </span>
+        </div>
+      )}
+
       {list.length === 0 ? (
-        <div className={styles.empty}>
-          <div className={styles.emptyMsg}>No products match this category × industry combination.</div>
-          <button className={styles.emptyBtn} onClick={() => dispatch({ type: 'SET_IND', ind: null })}>Clear industry filter</button>
+        <div className="text-center py-24 col-span-full">
+          <p className="font-display text-2xl font-light text-charcoal-700 mb-2">
+            No products found
+          </p>
+          <p className="font-sans text-sm text-charcoal-600/50 mb-6">
+            {activeCategory
+              ? `No products in ${KS_CATEGORIES.find(c => c.id === activeCategory)?.label} match your search.`
+              : 'No products match your search.'}
+          </p>
+          <Link
+            href="/catalog"
+            onClick={() => dispatch({ type: 'SET_IND', ind: null })}
+            className="inline-flex items-center gap-2 text-oxblood-700 hover:text-oxblood-900 font-sans text-sm transition-colors"
+          >
+            Clear filters
+            <ArrowRight size={13} />
+          </Link>
         </div>
       ) : (
         <div className={styles.grid}>

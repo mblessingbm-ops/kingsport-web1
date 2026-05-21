@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Info, ExternalLink, ArrowRight } from 'lucide-react'
+import { Info, ExternalLink } from 'lucide-react'
 import type { Metadata } from 'next'
 import { importedCatalogues } from '@/data/catalogues'
+import EnquiryCTA from '@/components/imported-gifts/EnquiryCTA'
 
 export const metadata: Metadata = {
   title: 'Imported Gifts & Merchandise',
@@ -160,13 +161,7 @@ export default function ImportedGiftsPage() {
             >
               Contact Us
             </Link>
-            <Link
-              href="/quote"
-              className="btn-glass-primary inline-flex items-center gap-2 px-5 py-3 font-sans font-medium text-sm tracking-wide"
-            >
-              Send an Enquiry
-              <ArrowRight size={14} />
-            </Link>
+            <EnquiryCTA />
           </div>
         </div>
       </div>

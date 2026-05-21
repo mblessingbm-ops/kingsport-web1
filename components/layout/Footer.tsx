@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 const catalogLinks = [
   { label: 'Personal Protective Equipment', href: '/catalog?category=ppe-safety' },
-  { label: 'Corporate Wear',                href: '/catalog?category=corporate-wear' },
-  { label: 'Promotional',                   href: '/catalog?category=promotional' },
+  { label: 'Corporate & Promotional Wear',  href: '/catalog?category=corporate-wear' },
+  { label: 'Promotional Gifts',             href: '/catalog?category=promotional' },
   { label: 'Event Branding',                href: '/catalog?category=event-branding' },
   { label: 'Sports Wear',                   href: '/catalog?category=sports-wear' },
   { label: 'School Wear',                   href: '/catalog?category=school-wear' },

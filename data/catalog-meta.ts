@@ -5,8 +5,8 @@ export type KsCategoryId = 'all' | 'ppe' | 'corporate' | 'promo' | 'event' | 'sp
 
 export const KS_CATEGORIES: { id: Exclude<KsCategoryId, 'all'>; label: string; short: string; live: ProductCategory }[] = [
   { id: 'ppe',       label: 'Personal Protective Equipment', short: 'PPE',       live: 'ppe-safety' },
-  { id: 'corporate', label: 'Corporate Wear',                short: 'Corporate', live: 'corporate-wear' },
-  { id: 'promo',     label: 'Promotional',                   short: 'Promo',     live: 'promotional' },
+  { id: 'corporate', label: 'Corporate & Promotional Wear',  short: 'Corp & Promo', live: 'corporate-wear' },
+  { id: 'promo',     label: 'Promotional Gifts',             short: 'Gifts',     live: 'promotional' },
   { id: 'event',     label: 'Event Branding',                short: 'Event',     live: 'event-branding' },
   { id: 'sports',    label: 'Sports Wear',                   short: 'Sports',    live: 'sports-wear' },
   { id: 'school',    label: 'School Wear',                   short: 'School',    live: 'school-wear' },

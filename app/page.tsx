@@ -14,20 +14,20 @@ const categories = [
     ),
   },
   {
-    name: 'Corporate Wear',
+    name: 'Corporate & Promotional Wear',
     href: '/catalog?category=corporate-wear',
-    desc: 'Executive polos, oxford shirts, blazers, dustcoats — branded to your standard.',
-    items: 62,
+    desc: 'Branded apparel — polos, shirts, t-shirts, caps and outerwear for uniformed teams and promotional runs.',
+    items: 122,
     moq: '20+',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7l5 3 5-3"/><path d="M5 7l7-4 7 4v12a2 2 0 01-2 2h-3v-7H10v7H7a2 2 0 01-2-2z"/></svg>
     ),
   },
   {
-    name: 'Promotional',
+    name: 'Promotional Gifts',
     href: '/catalog?category=promotional',
-    desc: 'T-shirts, caps, mugs, bags, notebooks — branded for events, schools, and giveaways.',
-    items: 138,
+    desc: 'Lanyards, bags, water bottles, pens, mugs, diaries, calendars and umbrellas — branded for events and giveaways.',
+    items: 78,
     moq: '50+',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="8" width="18" height="4"/><path d="M5 12v9h14v-9M12 8V21M12 8s-2-5-5-5-3 3 0 5h5zm0 0s2-5 5-5 3 3 0 5h-5z"/></svg>

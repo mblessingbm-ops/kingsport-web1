@@ -9,14 +9,14 @@ export const categories: CategoryMeta[] = [
   },
   {
     id: 'corporate-wear',
-    label: 'Corporate Wear',
-    description: 'Tailored uniforms that project professionalism across your entire team',
+    label: 'Corporate & Promotional Wear',
+    description: 'Branded apparel for uniformed teams and promotional campaigns — shirts, polos, t-shirts, caps, beanies and outerwear',
     icon: '👔',
   },
   {
     id: 'promotional',
-    label: 'Promotional',
-    description: 'Brand merchandise that keeps your name front of mind',
+    label: 'Promotional Gifts',
+    description: 'Branded gift and giveaway items — lanyards, bags, water bottles, pens, mugs, diaries and umbrellas',
     icon: '🎁',
   },
   {
@@ -731,7 +731,7 @@ export const products: Product[] = [
     id: 'promo-001',
     name: 'Cotton T-Shirt',
     slug: '180g-cotton-t-shirt',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'Our best-selling promotional tee. 180gsm ring-spun cotton with a side-seamed, tubular construction for a flattering fit. Shoulder tape for shape retention. Available in 30+ colours with screen print or DTF transfer branding.',
     specs: [
       { label: 'Fabric', value: '180gsm Ring-spun Cotton' },
@@ -769,7 +769,7 @@ export const products: Product[] = [
     id: 'promo-002',
     name: 'Snapback Cap',
     slug: 'snapback-cap',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'A structured 6-panel snapback with a flat peak, embroidered front panel, and adjustable plastic snap closure. The most popular branded cap in our range — front and side embroidery available.',
     specs: [
       { label: 'Construction', value: '6-panel, structured' },
@@ -797,7 +797,7 @@ export const products: Product[] = [
     id: 'promo-003',
     name: 'Baseball Cap (6-Panel)',
     slug: 'baseball-cap-6-panel',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'Classic 6-panel unstructured baseball cap with a curved peak and velcro or strap back closure. A clean canvas for front and side embroidery.',
     specs: [
       { label: 'Construction', value: '6-panel unstructured' },
@@ -823,7 +823,7 @@ export const products: Product[] = [
     id: 'promo-004',
     name: 'Trucker Cap',
     slug: 'trucker-cap',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'High-profile structured front panel trucker cap with open foam back for ventilation. The oversized front panel offers maximum embroidery or print real estate.',
     specs: [
       { label: 'Front', value: 'Structured foam, high-profile' },
@@ -945,7 +945,7 @@ export const products: Product[] = [
     id: 'promo-009',
     name: 'Knitted Beanie',
     slug: 'knitted-beanie',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: '100% acrylic fine-knit beanie with a folded cuff. Available in single and dual-colour options with front embroidery patch.',
     specs: [
       { label: 'Material', value: '100% Acrylic fine knit' },
@@ -970,7 +970,7 @@ export const products: Product[] = [
     id: 'promo-010',
     name: 'Reversible Bucket Hat',
     slug: 'reversible-bucket-hat',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'A dual-sided wearable bucket hat — one side in a block colour, the reverse in a custom sublimation print. Two branded looks in one product.',
     specs: [
       { label: 'Fabric', value: '100% Polyester (sublimation side)' },
@@ -1161,7 +1161,7 @@ export const products: Product[] = [
     id: 'promo-018',
     name: 'Knitted Stripe Polo',
     slug: 'knitted-stripe-polo',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'A textured short-sleeve polo in our signature knitted-stripe fabric — a subtle striped jersey-knit that adds depth without competing with branding. Twin-tipped contrast collar, two-button placket, and a flattering modern fit. Works equally well as corporate uniform wear or as a premium promotional piece.',
     specs: [
       { label: 'Fabric', value: 'Knitted stripe — 210gsm cotton-poly blend' },
@@ -1188,7 +1188,7 @@ export const products: Product[] = [
     id: 'promo-019',
     name: 'Honeycomb Performance Tee',
     slug: 'honeycomb-performance-tee',
-    category: 'promotional',
+    category: 'corporate-wear',
     description: 'A short-sleeve performance tee cut in our honeycomb sweat-management fabric — an engineered synthetic knit that wicks moisture away from the skin and dries fast. Built for activewear, event-day giveaways, and sports kit. White body with contrast emerald-green sleeves and matching ring collar.',
     specs: [
       { label: 'Fabric', value: 'Honeycomb sweat-management synthetic — 150gsm' },

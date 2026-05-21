@@ -666,6 +666,7 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
   const [colorIdx, setColorIdx] = useState(0)
   const [size, setSize] = useState<string | undefined>(undefined)
   const [qty, setQty] = useState(50)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   useEffect(() => {
     if (!p) return
@@ -673,12 +674,15 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
     const mid = Math.floor((p.sizes?.length || 1) / 2)
     setSize(p.sizes?.[mid])
     setQty(Math.max(50, productMeta(p).moq))
+    setSelectedImage(p.image)
   }, [p])
 
   if (!p) return null
   const meta = productMeta(p)
   const inQuote = items.some(i => i.productId === p.id)
   const cat = KS_CATEGORIES.find(c => designCat(p) === c.id)
+  const galleryImages = [p.image, ...(p.additionalImages ?? [])]
+  const activeImage = selectedImage ?? p.image
 
   return (
     <>
@@ -695,18 +699,33 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
         <div className={styles.pdpBody}>
           <div className={styles.pdpGallery}>
             <div className={styles.pdpMain}>
-              <Image src={p.image} alt={p.name} fill style={{ objectFit: 'contain', padding: 32 }} sizes="340px" />
+              <Image src={activeImage} alt={p.name} fill style={{ objectFit: 'contain', padding: 32 }} sizes="340px" />
             </div>
             <div className={styles.pdpThumbs}>
-              <div className={`${styles.pdpThumb} ${styles.pdpThumbActive}`}>
-                <Image src={p.image} alt={p.name} fill style={{ objectFit: 'contain', padding: 6 }} sizes="80px" />
-              </div>
-              <div className={`${styles.pdpThumb} ${styles.pdpThumbPlaceholder}`} />
-              <div className={`${styles.pdpThumb} ${styles.pdpThumbPlaceholder}`} />
-              <div className={`${styles.pdpThumb} ${styles.pdpThumbPlaceholder}`} />
+              {galleryImages.map((src) => {
+                const isActive = src === activeImage
+                return (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setSelectedImage(src)}
+                    aria-label={`View image ${src.split('/').pop()}`}
+                    className={`${styles.pdpThumb} ${isActive ? styles.pdpThumbActive : ''}`}
+                    style={{ border: 0, padding: 0, cursor: 'pointer', background: 'transparent' }}
+                  >
+                    <Image src={src} alt={p.name} fill style={{ objectFit: 'contain', padding: 6 }} sizes="80px" />
+                  </button>
+                )
+              })}
+              {/* Fill remaining slots with placeholders so the strip keeps its 4-up layout */}
+              {Array.from({ length: Math.max(0, 4 - galleryImages.length) }).map((_, i) => (
+                <div key={`ph-${i}`} className={`${styles.pdpThumb} ${styles.pdpThumbPlaceholder}`} />
+              ))}
             </div>
             <div style={{ padding: '4px 18px 18px', fontSize: 10, color: '#9a8e75', letterSpacing: 0.4 }}>
-              Branded mock-up on request
+              {galleryImages.length > 1
+                ? `${galleryImages.length} views · click to swap`
+                : 'Branded mock-up on request'}
             </div>
           </div>
 

@@ -186,19 +186,19 @@ export default function Navbar() {
                           )
                         })}
                       </div>
-                      <div className="border-t border-charcoal-800/8 mt-1 px-4 py-3 flex items-center justify-between">
+                      <div className="border-t border-charcoal-800/8 mt-1 px-4 py-3 flex items-center justify-between gap-3">
                         <Link
                           href="/catalog"
                           onClick={() => setCatalogOpen(false)}
-                          className="font-sans text-[11px] text-charcoal-600/50 hover:text-oxblood-700 tracking-wide transition-colors flex items-center gap-1.5"
+                          className="btn-glass-primary inline-flex items-center gap-1.5 px-4 py-2 font-sans text-[11px] font-medium tracking-widest uppercase"
                         >
                           View full catalog
-                          <ArrowRight size={10} />
+                          <ArrowRight size={11} />
                         </Link>
                         <Link
                           href="/catalog"
                           onClick={() => setCatalogOpen(false)}
-                          className="font-sans text-[11px] text-charcoal-600/40 hover:text-oxblood-700 tracking-wide transition-colors"
+                          className="font-sans text-[11px] text-charcoal-600/40 hover:text-oxblood-700 tracking-wide transition-colors text-right"
                         >
                           {catalogCategories.length} categories · 60+ products
                         </Link>

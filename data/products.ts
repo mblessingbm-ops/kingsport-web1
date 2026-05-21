@@ -726,7 +726,7 @@ export const products: Product[] = [
   // PROMOTIONAL
   {
     id: 'promo-001',
-    name: '180g Cotton T-Shirt',
+    name: 'Cotton T-Shirt',
     slug: '180g-cotton-t-shirt',
     category: 'promotional',
     description: 'Our best-selling promotional tee. 180gsm ring-spun cotton with a side-seamed, tubular construction for a flattering fit. Shoulder tape for shape retention. Available in 30+ colours with screen print or DTF transfer branding.',
@@ -749,7 +749,8 @@ export const products: Product[] = [
       { name: 'Grey Melange', hex: '#9ca3af' },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL'],
-    image: '/images/products/cotton-tshirt.png',
+    image: '/images/products/cotton-tshirt-lifestyle.png',
+    additionalImages: ['/images/products/cotton-tshirt.png'],
     relatedIds: ['promo-002', 'promo-003', 'promo-004'],
     featured: true,
     tags: ['t-shirt', 'promotional', 'screen print', '180gsm'],

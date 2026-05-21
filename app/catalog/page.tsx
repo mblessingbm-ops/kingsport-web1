@@ -467,13 +467,13 @@ function ProductCard({ p, onOpen }: { p: Product; onOpen: () => void }) {
           ✓ In quote
         </div>
       )}
-      <div style={{ aspectRatio: '1 / 1', background: '#faf6ef', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ aspectRatio: '4 / 5', background: '#faf6ef', position: 'relative', overflow: 'hidden' }}>
         <Image
           src={p.image}
           alt={p.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          style={{ objectFit: 'contain', padding: 12 }}
         />
       </div>
       <div style={{ padding: '12px 14px', borderTop: '1px solid #ece1c8', display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>

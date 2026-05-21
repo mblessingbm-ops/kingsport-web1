@@ -9,6 +9,9 @@ export interface Product {
   availableColors: ColorOption[]
   sizes?: string[]
   image: string
+  /** Optional gallery of additional product photos shown alongside the
+      main `image` on the PDP page. */
+  additionalImages?: string[]
   relatedIds: string[]
   featured?: boolean
   tags: string[]

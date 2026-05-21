@@ -31,6 +31,8 @@ export default function ProductDetailPage({ params }: Props) {
   const [qty, setQty] = useState(1)
   const [selectedColor, setSelectedColor] = useState<string>(product.availableColors[0]?.name || '')
   const [copied, setCopied] = useState(false)
+  const galleryImages = [product.image, ...(product.additionalImages ?? [])]
+  const [selectedImage, setSelectedImage] = useState<string>(product.image)
   const gradClass = placeholderGradients[product.category] || 'from-gray-700 to-gray-900'
 
   const handleCopyLink = () => {
@@ -118,9 +120,9 @@ Incorporated 1998
           {/* Left: Image */}
           <div>
             <div className={`relative h-96 lg:h-[500px] bg-gradient-to-br ${gradClass} overflow-hidden`}>
-              {product.image ? (
+              {selectedImage ? (
                 <img
-                  src={product.image}
+                  src={selectedImage}
                   alt={product.name}
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
@@ -136,6 +138,34 @@ Incorporated 1998
                 </div>
               )}
             </div>
+
+            {/* Thumbnail strip — only shows when there's more than one image */}
+            {galleryImages.length > 1 && (
+              <div className="mt-3 flex gap-2 flex-wrap">
+                {galleryImages.map((src) => {
+                  const active = src === selectedImage
+                  return (
+                    <button
+                      key={src}
+                      type="button"
+                      onClick={() => setSelectedImage(src)}
+                      aria-label={`View image ${src.split('/').pop()}`}
+                      className={`relative w-20 h-20 sm:w-24 sm:h-24 overflow-hidden border transition-all ${
+                        active
+                          ? 'border-oxblood-700 ring-1 ring-oxblood-700/40'
+                          : 'border-charcoal-800/10 hover:border-oxblood-700/60'
+                      } bg-cream-50`}
+                    >
+                      <img
+                        src={src}
+                        alt={product.name}
+                        className="absolute inset-0 w-full h-full object-cover object-center"
+                      />
+                    </button>
+                  )
+                })}
+              </div>
+            )}
           </div>
 
           {/* Right: Info */}

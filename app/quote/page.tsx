@@ -54,14 +54,14 @@ export default function QuotePage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 bg-oxblood-900 hover:bg-oxblood-700 text-white px-7 py-3 font-sans font-medium text-sm tracking-wide transition-colors"
+              className="btn-glass-primary inline-flex items-center gap-2 px-7 py-3 font-sans font-medium text-sm tracking-wide"
             >
               Continue Browsing
               <ArrowRight size={15} />
             </Link>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 border border-charcoal-800/20 hover:border-oxblood-700 text-charcoal-700 px-7 py-3 font-sans font-medium text-sm tracking-wide transition-colors"
+              className="btn-glass inline-flex items-center gap-2 text-charcoal-700 px-7 py-3 font-sans font-medium text-sm tracking-wide"
             >
               Back to Home
             </Link>
@@ -97,7 +97,7 @@ export default function QuotePage() {
             </p>
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 bg-oxblood-900 hover:bg-oxblood-700 text-white px-7 py-3 font-sans font-medium text-sm tracking-wide transition-colors"
+              className="btn-glass-primary inline-flex items-center gap-2 px-7 py-3 font-sans font-medium text-sm tracking-wide"
             >
               Browse Catalog
               <ArrowRight size={15} />
@@ -298,7 +298,7 @@ export default function QuotePage() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full bg-oxblood-900 hover:bg-oxblood-700 disabled:opacity-60 text-white py-4 font-sans font-medium text-sm tracking-widest uppercase transition-colors flex items-center justify-center gap-2"
+                    className="btn-glass-primary w-full disabled:opacity-60 py-4 font-sans font-medium text-sm tracking-widest uppercase flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       <>

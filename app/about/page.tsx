@@ -369,14 +369,14 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/quote"
-              className="inline-flex items-center gap-2 bg-oxblood-900 hover:bg-oxblood-700 text-white px-8 py-4 font-sans font-medium text-sm tracking-wide transition-all duration-200"
+              className="btn-glass-primary inline-flex items-center gap-2 px-8 py-4 font-sans font-medium text-sm tracking-wide"
             >
               Request a Quote
               <ArrowRight size={15} />
             </Link>
             <Link
               href="/catalog"
-              className="inline-flex items-center gap-2 border border-charcoal-800/20 hover:border-oxblood-700 text-charcoal-700 hover:text-oxblood-700 px-8 py-4 font-sans font-medium text-sm tracking-wide transition-all duration-200"
+              className="btn-glass inline-flex items-center gap-2 text-charcoal-700 hover:text-oxblood-700 px-8 py-4 font-sans font-medium text-sm tracking-wide"
             >
               Browse the Catalog
             </Link>

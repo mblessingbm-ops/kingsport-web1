@@ -253,7 +253,7 @@ function ContactForm() {
 
       <button
         type="submit"
-        className="w-full bg-oxblood-900 hover:bg-oxblood-700 text-white py-4 font-sans font-medium text-sm tracking-widest uppercase transition-colors flex items-center justify-center gap-2"
+        className="btn-glass-primary w-full py-4 font-sans font-medium text-sm tracking-widest uppercase flex items-center justify-center gap-2"
       >
         Send Message
         <ArrowRight size={15} />

@@ -500,16 +500,14 @@ function ProductCard({ p, onOpen }: { p: Product; onOpen: () => void }) {
                 color: p.availableColors?.[0]?.name,
               })
             }}
+            className={inQuote ? 'btn-glass-dark' : 'btn-glass'}
             style={{
               width: '100%',
-              border: '1px solid #1a1a1a',
-              background: inQuote ? '#1a1a1a' : '#fff',
-              color: inQuote ? '#fdfbf7' : '#1a1a1a',
               padding: '8px 0',
               fontSize: 11.5,
               fontFamily: 'inherit',
-              cursor: inQuote ? 'default' : 'pointer',
               fontWeight: 500,
+              cursor: inQuote ? 'default' : 'pointer',
             }}
           >
             {inQuote ? '✓ Added to quote' : 'Add to quote +'}

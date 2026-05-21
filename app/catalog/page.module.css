@@ -19,7 +19,8 @@
 
 /* ── Hero strip ──────────────────────────────────────────────────── */
 .heroStrip {
-  padding: 28px 36px 22px;
+  /* Top padding clears the floating glass nav (top: 18px + ~60px height). */
+  padding: 110px 36px 22px;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: flex-end;
@@ -340,18 +341,32 @@
 }
 .bundleCta button {
   flex: 1;
-  border: 0;
-  background: var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(180deg, rgba(172, 24, 64, 0.95) 0%, rgba(128, 0, 32, 0.95) 100%);
   color: #fff;
   padding: 11px 14px;
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background .15s;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 8px 22px -6px rgba(128, 0, 32, 0.55),
+    0 2px 6px rgba(128, 0, 32, 0.25);
+  transition: all .18s;
 }
-.bundleCta button:hover { background: var(--accent-italic); }
-.bundleCta button:disabled { background: #c8b8a4; cursor: not-allowed; }
+.bundleCta button:hover {
+  background: linear-gradient(180deg, rgba(192, 32, 76, 1) 0%, rgba(144, 8, 40, 1) 100%);
+  transform: translateY(-1px);
+}
+.bundleCta button:disabled {
+  background: #c8b8a4;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
 
 /* ── Builder pane ────────────────────────────────────────────────── */
 .builderPane {
@@ -391,16 +406,27 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(180deg, rgba(172, 24, 64, 0.95) 0%, rgba(128, 0, 32, 0.95) 100%);
   color: #fff;
   padding: 13px 22px;
   font-family: inherit;
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  transition: background .15s;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 8px 22px -6px rgba(128, 0, 32, 0.55),
+    0 2px 6px rgba(128, 0, 32, 0.25);
+  transition: all .18s;
+  cursor: pointer;
 }
-.builderCta:hover { background: var(--accent-italic); }
+.builderCta:hover {
+  background: linear-gradient(180deg, rgba(192, 32, 76, 1) 0%, rgba(144, 8, 40, 1) 100%);
+  transform: translateY(-1px);
+}
 .builderArt {
   background: var(--soft);
   aspect-ratio: 4/3;
@@ -718,9 +744,9 @@
 }
 .pdpAddBtn {
   margin-left: auto;
-  background: var(--accent);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(180deg, rgba(172, 24, 64, 0.95) 0%, rgba(128, 0, 32, 0.95) 100%);
   color: #fff;
-  border: 0;
   padding: 13px 22px;
   font-family: inherit;
   font-size: 13px;
@@ -729,10 +755,23 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background .15s;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 8px 22px -6px rgba(128, 0, 32, 0.55),
+    0 2px 6px rgba(128, 0, 32, 0.25);
+  transition: all .18s;
 }
-.pdpAddBtn:hover { background: var(--accent-italic); }
-.pdpAddBtnInQuote { background: var(--ink); }
+.pdpAddBtn:hover {
+  background: linear-gradient(180deg, rgba(192, 32, 76, 1) 0%, rgba(144, 8, 40, 1) 100%);
+  transform: translateY(-1px);
+}
+.pdpAddBtnInQuote {
+  background: rgba(20, 16, 16, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.pdpAddBtnInQuote:hover { background: rgba(0, 0, 0, 0.92); }
 
 /* ── Quote pill (floating) ──────────────────────────────────────── */
 .quoteOpener {

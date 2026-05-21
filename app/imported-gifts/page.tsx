@@ -130,7 +130,7 @@ export default function ImportedGiftsPage() {
                     href={catalogue.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-oxblood-900 hover:bg-oxblood-700 text-white px-5 py-3 font-sans font-medium text-sm tracking-wide transition-all duration-200 self-start"
+                    className="btn-glass-primary inline-flex items-center gap-2 px-5 py-3 font-sans font-medium text-sm tracking-wide self-start"
                   >
                     Browse Catalogue
                     <ExternalLink size={13} />
@@ -156,13 +156,13 @@ export default function ImportedGiftsPage() {
           <div className="flex gap-3 flex-shrink-0">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 border border-charcoal-800/20 hover:border-oxblood-700 text-charcoal-700 hover:text-oxblood-700 px-5 py-3 font-sans font-medium text-sm tracking-wide transition-all duration-200"
+              className="btn-glass inline-flex items-center gap-2 text-charcoal-700 px-5 py-3 font-sans font-medium text-sm tracking-wide"
             >
               Contact Us
             </Link>
             <Link
               href="/quote"
-              className="inline-flex items-center gap-2 bg-oxblood-900 hover:bg-oxblood-700 text-white px-5 py-3 font-sans font-medium text-sm tracking-wide transition-all duration-200"
+              className="btn-glass-primary inline-flex items-center gap-2 px-5 py-3 font-sans font-medium text-sm tracking-wide"
             >
               Send an Enquiry
               <ArrowRight size={14} />

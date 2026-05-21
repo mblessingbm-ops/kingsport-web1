@@ -257,8 +257,8 @@ Incorporated 1998
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <button
                 onClick={handleAdd}
-                className={`flex-1 flex items-center justify-center gap-2 py-4 font-sans font-medium text-sm transition-all duration-200 ${
-                  added ? 'bg-green-600 text-white' : 'bg-oxblood-900 text-white hover:bg-oxblood-700'
+                className={`flex-1 flex items-center justify-center gap-2 py-4 px-6 font-sans font-medium text-sm ${
+                  added ? 'bg-green-600 text-white rounded-full transition-all duration-200' : 'btn-glass-primary'
                 }`}
               >
                 {added ? <Check size={16} /> : <ShoppingBag size={16} />}
@@ -266,7 +266,7 @@ Incorporated 1998
               </button>
               <button
                 onClick={handleDownloadSpec}
-                className="flex items-center justify-center gap-2 py-4 px-6 border border-charcoal-700 text-charcoal-700 font-sans font-medium text-sm hover:bg-charcoal-700 hover:text-white transition-all duration-200"
+                className="btn-glass flex items-center justify-center gap-2 py-4 px-6 text-charcoal-700 font-sans font-medium text-sm"
               >
                 <Download size={16} />
                 Spec Sheet

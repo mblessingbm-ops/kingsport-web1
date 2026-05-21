@@ -127,14 +127,14 @@ export default function QuoteDrawer({ isOpen, onClose }: Props) {
             <Link
               href="/quote"
               onClick={onClose}
-              className="flex items-center justify-center gap-2 w-full bg-oxblood-900 hover:bg-oxblood-700 text-white py-3.5 font-sans font-medium text-sm tracking-wide transition-all duration-200"
+              className="btn-glass-primary flex items-center justify-center gap-2 w-full py-3.5 font-sans font-medium text-sm tracking-wide"
             >
               Proceed to Full Quote
               <ArrowRight size={14} />
             </Link>
             <button
               onClick={onClose}
-              className="flex items-center justify-center gap-2 w-full border border-charcoal-800/15 hover:border-charcoal-800/30 text-charcoal-600/60 hover:text-charcoal-700 py-2.5 font-sans text-xs tracking-wide transition-all duration-200"
+              className="btn-glass flex items-center justify-center gap-2 w-full text-charcoal-600/70 hover:text-charcoal-800 py-2.5 font-sans text-xs tracking-wide"
             >
               Continue Browsing
             </button>

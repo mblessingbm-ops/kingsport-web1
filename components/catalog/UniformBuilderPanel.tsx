@@ -969,10 +969,10 @@ export default function UniformBuilderPanel() {
               type="button"
               onClick={onAddToQuote}
               disabled={!meetsMinimum}
-              className={`w-full inline-flex items-center justify-center gap-2 py-3 text-sm font-sans font-medium tracking-wide transition-colors ${
+              className={`w-full inline-flex items-center justify-center gap-2 py-3 text-sm font-sans font-medium tracking-wide ${
                 meetsMinimum
-                  ? 'bg-oxblood-900 hover:bg-oxblood-700 text-white'
-                  : 'bg-charcoal-800/10 text-charcoal-600/40 cursor-not-allowed'
+                  ? 'btn-glass-primary'
+                  : 'bg-charcoal-800/10 text-charcoal-600/40 cursor-not-allowed rounded-full'
               }`}
             >
               <ShoppingBag size={14} />
@@ -982,7 +982,7 @@ export default function UniformBuilderPanel() {
             <button
               type="button"
               onClick={downloadBrief}
-              className="w-full flex items-center justify-center gap-2 border border-charcoal-800/15 hover:border-oxblood-700 text-charcoal-700 hover:text-oxblood-700 py-3 font-sans text-sm font-medium tracking-wide transition-all duration-200"
+              className="btn-glass w-full flex items-center justify-center gap-2 text-charcoal-700 hover:text-oxblood-700 py-3 font-sans text-sm font-medium tracking-wide"
             >
               <FileDown size={14} />
               Download Brief PDF
@@ -991,7 +991,7 @@ export default function UniformBuilderPanel() {
             <button
               type="button"
               onClick={copyShareLink}
-              className="w-full flex items-center justify-center gap-2 border border-charcoal-800/15 hover:border-oxblood-700 text-charcoal-700 hover:text-oxblood-700 py-3 font-sans text-sm font-medium tracking-wide transition-all duration-200"
+              className="btn-glass w-full flex items-center justify-center gap-2 text-charcoal-700 hover:text-oxblood-700 py-3 font-sans text-sm font-medium tracking-wide"
             >
               {linkCopied ? <Check size={14} /> : <Link2 size={14} />}
               {linkCopied ? 'Link Copied' : 'Copy Share Link'}

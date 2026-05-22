@@ -452,6 +452,37 @@ export const products: Product[] = [
     leadTime: '7–10 business days',
     customisationMethods: ['Embroidery', 'Screen Print', 'Heat Transfer'],
   },
+  {
+    id: 'ppe-017',
+    name: 'Rainsuit (Jacket + Pants)',
+    slug: 'rainsuit',
+    category: 'ppe-safety',
+    description: 'Two-piece waterproof rainsuit — lightweight nylon jacket and matching pants with high-visibility reflective tape on the torso and legs. Built for outdoor crews, security details, traffic marshals, and field staff working through Zimbabwe\'s wet season. Elasticated cuffs, full-length front zip with storm flap, and drawcord hem. Available in many different colours and ideal for heat press or screen-print branding.',
+    specs: [
+      { label: 'Set', value: 'Two-piece — jacket + pants' },
+      { label: 'Fabric', value: 'Waterproof nylon shell with PU coating' },
+      { label: 'Reflective', value: 'High-visibility silver tape on torso & legs' },
+      { label: 'Jacket', value: 'Full zip with storm flap, drawcord hem, stand collar' },
+      { label: 'Pants', value: 'Elasticated waist, side seam pockets' },
+      { label: 'Sizes', value: 'S – 4XL' },
+    ],
+    materials: ['Waterproof nylon shell', 'PU coating', 'Reflective tape'],
+    availableColors: [
+      { name: 'Black',       hex: '#1a1a1a' },
+      { name: 'Navy',        hex: '#1a3a5c' },
+      { name: 'Hi-Vis Yellow', hex: '#facc15' },
+      { name: 'Hi-Vis Orange', hex: '#f97316' },
+      { name: 'Royal Blue',  hex: '#2563EB' },
+      { name: 'Bottle Green', hex: '#1a4731' },
+    ],
+    sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'],
+    image: '/images/products/rainsuit-black.png',
+    relatedIds: ['ppe-002', 'ppe-008', 'ppe-012'],
+    tags: ['rainsuit', 'waterproof', 'wet weather', 'reflective', 'ppe', 'safety', 'outdoor'],
+    moq: 25,
+    leadTime: '10–14 business days',
+    customisationMethods: ['Heat Transfer', 'Screen Print'],
+  },
 
   // CORPORATE WEAR
   {

@@ -17,7 +17,6 @@ const companyLinks = [
 
 const quoteLinks = [
   { label: 'Request a quote', href: '/quote' },
-  { label: 'Uniform Builder', href: '/catalog' },
   { label: 'Browse catalogue', href: '/catalog' },
   { label: 'Contact us', href: '/contact' },
 ]

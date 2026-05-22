@@ -3,7 +3,7 @@ import { useReducer, useMemo, useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import { Palette, X, ArrowRight } from 'lucide-react'
+import { X, ArrowRight } from 'lucide-react'
 import { products } from '@/data/products'
 import {
   KS_CATEGORIES,
@@ -18,10 +18,9 @@ import {
 } from '@/data/catalog-meta'
 import type { Product } from '@/types'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
-import UniformBuilderPanel from '@/components/catalog/UniformBuilderPanel'
 import styles from './page.module.css'
 
-type Path = 'catalog' | 'bundles' | 'builder'
+type Path = 'catalog' | 'bundles'
 type SortKey = 'requested' | 'lead' | 'moq'
 
 interface CatalogState {
@@ -117,7 +116,6 @@ function CatalogContent() {
     pdpId: null,
     sort: 'requested',
   })
-  const [builderOpen, setBuilderOpen] = useState(false)
 
   // Keep reducer state in sync when the URL category or industry param changes
   // (e.g. when the user clicks the navbar dropdown, a homepage tile, or the
@@ -153,34 +151,13 @@ function CatalogContent() {
           <h1>Pick a category, then <em>pick a path.</em></h1>
         </div>
         <div className="lede">
-          {products.length} products in six categories — browse by SKU, drop a curated kit into your quote,
-          or design a custom uniform from scratch.
-          <div className="mt-4">
-            <button
-              onClick={() => setBuilderOpen(prev => !prev)}
-              className="inline-flex items-center gap-2 border border-oxblood-700 text-oxblood-700 hover:bg-oxblood-900 hover:text-white px-4 py-2 text-xs font-sans font-medium tracking-wide uppercase transition-all duration-200"
-            >
-              <Palette size={13} />
-              {builderOpen ? 'Close Builder' : 'Uniform Builder'}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Collapsible Uniform Builder */}
-      <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          builderOpen ? 'max-h-[900px] opacity-100 mb-10' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="px-9 pt-6">
-          <UniformBuilderPanel />
+          {products.length} products in six categories — browse by SKU or drop a curated kit straight into your quote.
         </div>
       </div>
 
       {/* Path row */}
       <div className={styles.pathRow}>
-        <div className={styles.stepLabel}><b>02 ·</b> How you want to start</div>
+        <div className={styles.stepLabel}><b>02 ·</b> Pick a path</div>
         <div className={styles.pathGrid}>
           <PathCard
             n="A"
@@ -204,17 +181,6 @@ function CatalogContent() {
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8l9-5 9 5-9 5z" /><path d="M3 8v9l9 5 9-5V8" /><path d="M12 13v9" /></svg>
             }
           />
-          <PathCard
-            n="C"
-            title="Open Uniform Builder"
-            desc="Configure a uniform piece-by-piece — colours, logo positions, sizing breakdowns."
-            meta="Visual · made-to-spec"
-            active={state.path === 'builder'}
-            onClick={() => dispatch({ type: 'SET_PATH', path: 'builder' })}
-            glyph={
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 4l-4 5v11h6v-6h4v6h6V9l-4-5z" /><circle cx="12" cy="11" r="1.4" /></svg>
-            }
-          />
         </div>
       </div>
 
@@ -227,7 +193,6 @@ function CatalogContent() {
         {state.path === 'bundles' && (
           <BundlesPane state={state} dispatch={dispatch} catObj={catObj} />
         )}
-        {state.path === 'builder' && <BuilderPane onOpen={() => setBuilderOpen(true)} />}
       </div>
 
       <PDPDrawer state={state} dispatch={dispatch} />
@@ -631,31 +596,6 @@ function BundleCard({ bundle }: { bundle: typeof KS_BUNDLES[number] }) {
         </button>
       </div>
     </div>
-  )
-}
-
-// ── Builder pane ──────────────────────────────────────────────────────
-function BuilderPane({ onOpen }: { onOpen: () => void }) {
-  return (
-    <section className={styles.builderPane}>
-      <div className={styles.builderCard}>
-        <div className={styles.builderCopy}>
-          <div className={styles.stepLabel}>Made-to-spec</div>
-          <h2>Configure your <em>uniform</em>, piece-by-piece.</h2>
-          <p>
-            Pick a garment, then dial in fabric, colour, logo positions (chest, sleeve, back), embroidery
-            versus print, and a full size breakdown. We&rsquo;ll send a branded mock-up with your quote.
-          </p>
-          <button type="button" onClick={onOpen} className={styles.builderCta}>
-            Open Uniform Builder
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-          </button>
-        </div>
-        <div className={styles.builderArt}>
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3"><path d="M8 4l-4 5v11h6v-6h4v6h6V9l-4-5z" /><circle cx="12" cy="11" r="1.4" /></svg>
-        </div>
-      </div>
-    </section>
   )
 }
 

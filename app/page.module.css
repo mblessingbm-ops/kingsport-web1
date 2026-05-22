@@ -409,7 +409,7 @@
 .pathsHead h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 56px; font-weight: 500; letter-spacing: -1.4px; line-height: 1; max-width: 600px; color: var(--ink); margin: 0; }
 .pathsHead h2 em { color: var(--accent-italic); font-style: italic; }
 .pathsHead p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.65; max-width: 420px; margin: 0; }
-.pathsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pathsGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .path { background: #fff; border: 1px solid var(--line); padding: 28px; display: flex; flex-direction: column; gap: 18px; transition: all .2s; text-decoration: none; color: inherit; }
 .path:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 36px rgba(128,0,32,0.08); }
 .pathHead { display: flex; align-items: center; gap: 16px; }

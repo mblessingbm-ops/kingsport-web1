@@ -205,9 +205,9 @@ export default function HomePage() {
           <div className={styles.heroPlateText}>
             <div className={styles.heroPlateTag}>Plate I</div>
             <div className={styles.heroPlateRule} />
-            <div className={styles.heroPlateCat}>PPE · Corporate · Promo · Event · Sports</div>
+            <div className={styles.heroPlateCat}>PPE · Corp &amp; Promo Wear · Gifts · Event · Sports · School</div>
             <h2 className={styles.heroPlateName}>
-              Five ranges,<br />one factory floor.
+              Six ranges,<br />one factory floor.
             </h2>
             <p className={styles.heroPlateBody}>
               From hi-vis softshells to executive polos, sublimated sports kits to branded promo &mdash; every garment cut, stitched and finished under one roof in Harare.
@@ -225,14 +225,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 3 quote paths ──────────────────────────────────────────── */}
+      {/* ── 2 quote paths ──────────────────────────────────────────── */}
       <section className={styles.paths}>
         <div className={styles.wrap}>
           <div className={styles.pathsHead}>
             <h2>
-              Three ways<br />to start <em>a quote.</em>
+              Two ways<br />to start <em>a quote.</em>
             </h2>
-            <p>Whether you know exactly what you want, want us to choose, or want to design something custom — pick a path.</p>
+            <p>Whether you know exactly what you want or want us to choose — pick a path.</p>
           </div>
           <div className={styles.pathsGrid}>
             <Link className={styles.path} href="/catalog">
@@ -263,19 +263,6 @@ export default function HomePage() {
               <div className="foot"><span className="metaTag">6 bundles · fastest</span><span className="go">→</span></div>
             </Link>
 
-            <Link className={styles.path} href="/catalog">
-              <div className={styles.pathHead}>
-                <div className="glyph">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 4l-4 5v11h6v-6h4v6h6V9l-4-5z"/><circle cx="12" cy="11" r="1.4"/></svg>
-                </div>
-                <div>
-                  <div className="num">C</div>
-                  <h3>Open Uniform Builder</h3>
-                </div>
-              </div>
-              <p>Configure your uniform piece-by-piece — fabric, colour, logo positions, embroidery vs print, size breakdown.</p>
-              <div className="foot"><span className="metaTag">Visual · made-to-spec</span><span className="go">→</span></div>
-            </Link>
           </div>
         </div>
       </section>

@@ -84,7 +84,7 @@
 }
 .pathGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
@@ -366,76 +366,6 @@
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
-}
-
-/* ── Builder pane ────────────────────────────────────────────────── */
-.builderPane {
-  padding: 32px;
-  background: var(--bg);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.builderCard {
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  align-items: center;
-}
-@media (max-width: 1024px) { .builderCard { grid-template-columns: 1fr; } }
-.builderCopy h2 {
-  margin: 12px 0 0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 36px;
-  font-weight: 500;
-  letter-spacing: -0.6px;
-  line-height: 1.05;
-}
-.builderCopy h2 em { color: var(--accent-italic); font-style: italic; font-weight: 500; }
-.builderCopy p {
-  margin-top: 14px;
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.65;
-}
-.builderCta {
-  margin-top: 22px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: linear-gradient(180deg, rgba(172, 24, 64, 0.95) 0%, rgba(128, 0, 32, 0.95) 100%);
-  color: #fff;
-  padding: 13px 22px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
-    0 8px 22px -6px rgba(128, 0, 32, 0.55),
-    0 2px 6px rgba(128, 0, 32, 0.25);
-  transition: all .18s;
-  cursor: pointer;
-}
-.builderCta:hover {
-  background: linear-gradient(180deg, rgba(192, 32, 76, 1) 0%, rgba(144, 8, 40, 1) 100%);
-  transform: translateY(-1px);
-}
-.builderArt {
-  background: var(--soft);
-  aspect-ratio: 4/3;
-  border: 1px solid var(--line);
-  background-image: repeating-linear-gradient(135deg, rgba(128,0,32,0.07) 0 14px, transparent 14px 28px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--mute-light);
 }
 
 /* ── Drawer overlay/panel shared ─────────────────────────────────── */

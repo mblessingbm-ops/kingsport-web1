@@ -684,7 +684,7 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
                 ['Compliance', meta.compliance],
                 ['MOQ', `${meta.moq} ${meta.unit}${meta.moq > 1 ? 's' : ''}`],
                 ['Lead time', meta.lead],
-                ['Branding', 'Embroidery · Screen print · Heat transfer'],
+                ['Branding', p.customisationMethods.join(' · ')],
               ].map(([k, v]) => (
                 <div key={k} className={styles.pdpSpecRow}>
                   <div className={styles.pdpSpecK}>{k}</div>

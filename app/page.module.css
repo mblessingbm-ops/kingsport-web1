@@ -463,8 +463,9 @@
   align-items: center;
   gap: 72px;
   padding: 0 36px;
-  /* Move by exactly 50% so the duplicated half lands where the first half started */
-  animation: clientsScroll 36s linear infinite;
+  /* Move by exactly 50% so the duplicated half lands where the first half started.
+     Duration is scaled to the roster size — keeps per-item dwell readable. */
+  animation: clientsScroll 75s linear infinite;
   white-space: nowrap;
   will-change: transform;
 }

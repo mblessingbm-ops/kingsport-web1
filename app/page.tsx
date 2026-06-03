@@ -177,19 +177,19 @@ export default function HomePage() {
       <section className={styles.heroPlate}>
         <div className={styles.heroPlateBg}>
           <div className="panel">
-            <Image src="/images/hero/plate-1.png" alt="Cargo workwear" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+            <Image src="/images/hero/plate-1.png" alt="Royal blue hi-vis conti suit" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
           </div>
           <div className="panel">
-            <Image src="/images/hero/plate-2.png" alt="Heavy duty conti suit" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+            <Image src="/images/hero/plate-2.png" alt="Branded corporate shirt" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
           </div>
           <div className="panel">
-            <Image src="/images/hero/plate-3.png" alt="Pink polo" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+            <Image src="/images/hero/plate-3.png" alt="Yellow cotton tee" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
           </div>
           <div className="panel">
-            <Image src="/images/hero/plate-4.png" alt="Green branded vest" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+            <Image src="/images/hero/plate-4.png" alt="Pink striped corporate polo" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
           </div>
           <div className="panel">
-            <Image src="/images/hero/plate-5.png" alt="Navy tee and tan shorts" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
+            <Image src="/images/hero/plate-5.png" alt="Black hi-vis rain jacket" fill sizes="20vw" priority style={{ objectFit: 'cover', objectPosition: 'bottom center' }} />
           </div>
         </div>
         <div className={styles.heroPlateScrim} />

@@ -136,23 +136,6 @@ export const fabrics: FabricEntry[] = [
     ],
   },
   {
-    slug: 'hdpe-shell',
-    name: 'High-Density Polyethylene (HDPE)',
-    group: 'Workwear & PPE',
-    weight: '—',
-    composition: '100% HDPE Shell, Nylon Suspension',
-    weave: 'N/A',
-    finish: 'UV-stabilised, impact-resistant',
-    care: [
-      { label: 'Wipe clean with mild soap' },
-      { label: 'Do not use solvents' },
-      { label: 'Replace after impact' },
-    ],
-    suitedFor: 'Construction, mining, and any overhead hazard environment.',
-    usedIn: ['Industrial Hard Hat'],
-    swatchImage: '/images/swatches/hdpe-shell.jpg',
-  },
-  {
     slug: 'latex-cotton-gloves',
     name: 'Natural Latex with Cotton Liner',
     group: 'Workwear & PPE',

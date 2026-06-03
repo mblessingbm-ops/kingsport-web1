@@ -23,7 +23,6 @@ grid in the expanded glossary panel.
   - 14 colour variants in `poly-cotton-poplin/` subdirectory ✓ *(provided)*
 - `polyester-mesh.webp` ✓ *(provided)*
   - 4 colour variants in `polyester-mesh/` subdirectory ✓ *(provided)*
-- `hdpe-shell.jpg`
 - `latex-cotton-gloves.jpg`
 - `synthetic-leather-nylon-gloves.jpg`
 - `oxford-polyester-600d.jpg`

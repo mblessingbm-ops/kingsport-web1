@@ -1,8 +1,0 @@
-# Swatch directory — placeholder
-# Drop real fabric swatch photography here, named to match
-# product slugs in data/products.ts:
-#   /images/swatches/heavy-duty-conti-suit.jpg
-#   /images/swatches/executive-pique-polo.jpg
-#   ...
-# Until real photos are added, the PDP renders a dark gradient
-# fallback automatically.

@@ -55,6 +55,8 @@ grid in the expanded glossary panel.
 - `aluminium-composite-flex.jpg`
 
 ### Sports
+- `triacetate.webp` ✓ *(provided)*
+  - 15 colour variants in `triacetate/` subdirectory ✓ *(provided)*
 - `polyester-spandex-interlock.jpg`
 - `moisture-wicking-polyester-150g.jpg`
 - `sweat-management-honeycomb.webp` ✓ *(provided)*

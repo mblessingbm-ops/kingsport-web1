@@ -17,7 +17,8 @@ grid in the expanded glossary panel.
 ## Expected filenames
 
 ### Workwear & PPE
-- `poly-cotton-drill.jpg`
+- `poly-cotton-drill.webp` ✓ *(provided)*
+  - 7 colour variants in `poly-cotton-drill/` subdirectory ✓ *(provided)*
 - `poly-cotton-poplin.jpg`
 - `full-grain-leather.jpg`
 - `split-leather.jpg`

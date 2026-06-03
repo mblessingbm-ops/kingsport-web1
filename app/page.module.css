@@ -435,15 +435,69 @@
 .cat :global(.metaTag) { display: flex; gap: 18px; margin-top: 14px; font-size: 10.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--mute); font-weight: 500; }
 .cat :global(.metaTag) b { color: var(--ink); font-weight: 600; }
 
-/* ── Trust strip ─────────────────────────────────────────────────── */
-.trust { padding: 72px 0; background: var(--soft); border-bottom: 1px solid var(--line); }
-.trustRow { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: flex-start; }
-.trustRow h3 { font-size: 11px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--mute); margin: 0 0 22px; }
-.compliance { display: flex; gap: 8px; flex-wrap: wrap; }
-.cb { padding: 11px 16px; border: 1px solid var(--line); font-size: 12px; letter-spacing: 0.3px; color: var(--ink); background: #fff; font-weight: 500; display: inline-flex; align-items: baseline; gap: 5px; }
-.cb b { color: var(--accent); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 15px; font-weight: 600; }
-.clients { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.client { aspect-ratio: 2.2/1; background: #fff; display: flex; align-items: center; justify-content: center; color: var(--ink-soft); font-weight: 500; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; letter-spacing: 0.4px; }
+/* ── Trusted by — revolving marquee ──────────────────────────────── */
+.trust { padding: 72px 0 80px; background: var(--soft); border-bottom: 1px solid var(--line); overflow: hidden; }
+.trustHeading {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 36px;
+  text-align: center;
+}
+
+/* The marquee itself sits outside .wrap so it goes edge-to-edge.
+   Fade masks on the left/right hide the seam where items appear/disappear. */
+.clientsMarquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* fade to background on each edge */
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.clientsTrack {
+  display: inline-flex;
+  align-items: center;
+  gap: 72px;
+  padding: 0 36px;
+  /* Move by exactly 50% so the duplicated half lands where the first half started */
+  animation: clientsScroll 36s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* The duplicate set of items inherits the same gap, so we add a left
+   "spacer" gap before the second copy via gap on the flex parent. */
+
+@keyframes clientsScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.client {
+  flex-shrink: 0;
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  font-style: italic;
+  /* keep the marquee feeling editorial — subtle muted tone */
+  opacity: 0.62;
+  transition: opacity 0.25s;
+}
+.client:hover { opacity: 1; color: var(--accent-italic); }
+
+/* Pause the marquee on hover so a reader can study a logo if they want */
+.clientsMarquee:hover .clientsTrack { animation-play-state: paused; }
+
+/* Honor reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .clientsTrack { animation: none; }
+}
 
 /* ── Made in Zim ─────────────────────────────────────────────────── */
 .made { padding: 120px 0; background: var(--ink-deep); color: #fdfbf7; }
@@ -500,8 +554,9 @@
   .heroImage { min-height: 480px; }
   .pathsGrid, .catsGrid, .journalGrid { grid-template-columns: repeat(2, 1fr); }
   .industriesGrid { grid-template-columns: repeat(3, 1fr); }
-  .trustRow, .madeGrid { grid-template-columns: 1fr; gap: 48px; }
-  .clients { grid-template-columns: repeat(3, 1fr); }
+  .madeGrid { grid-template-columns: 1fr; gap: 48px; }
+  .clientsTrack { gap: 56px; }
+  .client { font-size: 24px; }
   .sectionHead, .pathsHead { flex-direction: column; align-items: flex-start; gap: 16px; }
   .sectionHead h2 { font-size: 56px; }
   .made h2 { font-size: 64px; }
@@ -515,7 +570,8 @@
   .heroItalic { font-size: 32px; letter-spacing: -0.8px; }
   .pathsGrid, .catsGrid, .journalGrid { grid-template-columns: 1fr; }
   .industriesGrid { grid-template-columns: repeat(2, 1fr); }
-  .clients { grid-template-columns: repeat(2, 1fr); }
+  .clientsTrack { gap: 44px; }
+  .client { font-size: 20px; }
   .sectionHead h2 { font-size: 44px; letter-spacing: -1px; }
   .pathsHead h2 { font-size: 40px; }
   .made { padding: 80px 0; }

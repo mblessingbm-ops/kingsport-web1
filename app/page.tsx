@@ -116,15 +116,19 @@ const industries = [
   },
 ]
 
-const clients = ['Delta Corp', 'Econet', 'CBZ Bank', 'Old Mutual', 'UNICEF Zim', 'Hippo Valley', 'Schweppes', '+ 200 more']
-
-const compliance = [
-  { prefix: 'EN ISO', tag: '20471 · Hi-vis' },
-  { prefix: 'EN ISO', tag: '20345 · Safety footwear' },
-  { prefix: 'EN', tag: '397 · Industrial helmets' },
-  { prefix: 'EN', tag: '388 · Mech. gloves' },
-  { prefix: 'EN', tag: '166 · Eye protection' },
-  { prefix: 'ISO', tag: '9001 · Quality' },
+const clients = [
+  'Delta Corp',
+  'Econet',
+  'CBZ Bank',
+  'Old Mutual',
+  'UNICEF Zim',
+  'Hippo Valley',
+  'Schweppes',
+  'NetOne',
+  'Cresta Mining',
+  'Nyaradzo',
+  'TelOne',
+  'ZB Bank',
 ]
 
 const journalPosts = [
@@ -288,28 +292,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Trust strip ────────────────────────────────────────────── */}
+      {/* ── Trusted by — revolving client marquee ──────────────────── */}
       <section className={styles.trust}>
         <div className={styles.wrap}>
-          <div className={styles.trustRow}>
-            <div>
-              <h3>Compliance &amp; standards</h3>
-              <div className={styles.compliance}>
-                {compliance.map((c) => (
-                  <div key={c.tag} className={styles.cb}>
-                    <b>{c.prefix}</b> {c.tag}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3>Trusted by</h3>
-              <div className={styles.clients}>
-                {clients.map((c) => (
-                  <div key={c} className={styles.client}>{c}</div>
-                ))}
-              </div>
-            </div>
+          <h3 className={styles.trustHeading}>Trusted by</h3>
+        </div>
+        <div className={styles.clientsMarquee}>
+          {/* Repeat the list twice so the loop seams without a gap */}
+          <div className={styles.clientsTrack} aria-hidden={false}>
+            {clients.map((c) => (
+              <span key={`a-${c}`} className={styles.client}>{c}</span>
+            ))}
+            {clients.map((c) => (
+              <span key={`b-${c}`} className={styles.client} aria-hidden="true">{c}</span>
+            ))}
           </div>
         </div>
       </section>

@@ -43,7 +43,7 @@ grid in the expanded glossary panel.
 - `cotton-elastane-chino.jpg`
 - `poly-viscose-suiting.jpg`
 - `poly-viscose-blend.jpg`
-- `cotton-denim.jpg`
+- `cotton-denim.webp` ✓ *(provided)*
 - `heavy-duty-denim.jpg`
 
 ### Promotional & Gifts

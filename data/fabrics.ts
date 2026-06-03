@@ -267,23 +267,6 @@ export const fabrics: FabricEntry[] = [
       { name: 'Black', image: '/images/swatches/rubberised-oxford/black.webp' },
     ],
   },
-  {
-    slug: 'abs-polycarbonate-shell',
-    name: 'ABS / Polycarbonate Shell',
-    group: 'Workwear & PPE',
-    weight: '—',
-    composition: 'ABS outer shell, EPS inner liner, nylon strap',
-    weave: 'N/A',
-    finish: 'DOT-rated impact resistance',
-    care: [
-      { label: 'Wipe clean with damp cloth' },
-      { label: 'Do not use abrasive cleaners' },
-      { label: 'Replace after impact' },
-    ],
-    suitedFor: 'Motorcycle delivery and industrial environments requiring head protection.',
-    usedIn: ['Delivery Helmet', 'Safety Goggles', 'Kidney Belt'],
-    swatchImage: '/images/swatches/abs-polycarbonate-shell.jpg',
-  },
 
   // ─── Corporate Apparel ──────────────────────────────────────────────────
   {

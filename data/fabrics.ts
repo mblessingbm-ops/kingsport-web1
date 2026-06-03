@@ -35,6 +35,10 @@ export interface FabricEntry {
       Drop into /public/images/swatches/[slug].jpg. The glossary renders
       a dark gradient fallback when the file is missing. */
   swatchImage?: string
+  /** Optional palette of colour variants — each entry is a swatch photo of
+      the same fabric in a specific colourway. Rendered as a thumbnail grid
+      in the expanded glossary panel when present. */
+  colourSwatches?: Array<{ name: string; image: string }>
 }
 
 export const fabricGroups: FabricGroup[] = [
@@ -406,7 +410,7 @@ export const fabrics: FabricEntry[] = [
       { label: 'Do not bleach' },
     ],
     suitedFor: 'Events, promotions, staff gifting, and branded merchandise.',
-    usedIn: ['Cotton T-Shirt', 'Honeycomb Performance Tee'],
+    usedIn: ['Cotton T-Shirt'],
     swatchImage: '/images/swatches/combed-cotton-jersey-180g.jpg',
   },
   {
@@ -578,6 +582,46 @@ export const fabrics: FabricEntry[] = [
     suitedFor: 'Athletic training, team sports, and corporate wellness programmes.',
     usedIn: ['Full Sports Tracksuit'],
     swatchImage: '/images/swatches/polyester-spandex-interlock.jpg',
+  },
+  {
+    slug: 'sweat-management-honeycomb',
+    name: 'Sweat Management Knit (Honeycomb / Birds-Eye)',
+    group: 'Sports',
+    weight: '135g/m²',
+    composition: '100% Polyester',
+    weave: 'Birds-Eye Knit (Honeycomb structure)',
+    finish: 'Moisture-wicking, quick-dry, breathable',
+    care: [
+      { label: 'Machine wash 30°C' },
+      { label: 'Do not tumble dry' },
+      { label: 'Iron low heat' },
+      { label: 'Do not bleach' },
+    ],
+    suitedFor: 'Performance t-shirts, school sports tees, event giveaways, and any garment that needs to wick sweat and dry fast. Light enough for hot-weather wear.',
+    usedIn: ['Honeycomb Performance Tee'],
+    swatchImage: '/images/swatches/sweat-management-honeycomb.webp',
+    colourSwatches: [
+      { name: 'White',          image: '/images/swatches/sweat-management/white.webp' },
+      { name: 'Black',          image: '/images/swatches/sweat-management/black.webp' },
+      { name: 'Light Grey',     image: '/images/swatches/sweat-management/light-grey.webp' },
+      { name: 'Charcoal Grey',  image: '/images/swatches/sweat-management/charcoal-grey.webp' },
+      { name: 'Dark Navy',      image: '/images/swatches/sweat-management/dark-navy.webp' },
+      { name: 'Royal Blue',     image: '/images/swatches/sweat-management/royal-blue.webp' },
+      { name: 'Cobalt',         image: '/images/swatches/sweat-management/cobalt.webp' },
+      { name: 'Turquoise Blue', image: '/images/swatches/sweat-management/turquoise-blue.webp' },
+      { name: 'Powder Blue',    image: '/images/swatches/sweat-management/powder-blue.webp' },
+      { name: 'Bottle Green',   image: '/images/swatches/sweat-management/bottle-green.webp' },
+      { name: 'Dark Emerald',   image: '/images/swatches/sweat-management/dark-emerald.webp' },
+      { name: 'Light Emerald',  image: '/images/swatches/sweat-management/light-emerald.webp' },
+      { name: 'Lumo Green',     image: '/images/swatches/sweat-management/lumo-green.webp' },
+      { name: 'Yellow',         image: '/images/swatches/sweat-management/yellow.webp' },
+      { name: 'Golden Yellow',  image: '/images/swatches/sweat-management/golden-yellow.webp' },
+      { name: 'Orange',         image: '/images/swatches/sweat-management/orange.webp' },
+      { name: 'Red',            image: '/images/swatches/sweat-management/red.webp' },
+      { name: 'Bright Red',     image: '/images/swatches/sweat-management/bright-red.webp' },
+      { name: 'Burgundy',       image: '/images/swatches/sweat-management/burgundy.webp' },
+      { name: 'Lumo Pink',      image: '/images/swatches/sweat-management/lumo-pink.webp' },
+    ],
   },
   {
     slug: 'moisture-wicking-polyester-150g',

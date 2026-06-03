@@ -3,9 +3,16 @@
 Drop fabric close-up photos here. Each filename must match a fabric's
 `slug` in `data/fabrics.ts`.
 
-**Format:** JPG, square crop (recommended), ~1000–1500 px per edge.
+**Format:** JPG or WEBP, square crop (recommended), ~1000–1500 px per edge.
 **Style:** Tight, well-lit close-up showing the actual weave/texture
 (zoom into the cloth — model shots belong on the product pages).
+
+**Per-colour palettes:** if a fabric ships in many colourways and you have
+a swatch photo of each colour, drop them into a subdirectory like
+`/swatches/sweat-management/charcoal-grey.webp`, `/black.webp`, etc., and
+list them under `colourSwatches` in `data/fabrics.ts` (see the
+`sweat-management-honeycomb` entry as an example). They render as a small
+grid in the expanded glossary panel.
 
 ## Expected filenames
 
@@ -50,6 +57,8 @@ Drop fabric close-up photos here. Each filename must match a fabric's
 ### Sports
 - `polyester-spandex-interlock.jpg`
 - `moisture-wicking-polyester-150g.jpg`
+- `sweat-management-honeycomb.webp` ✓ *(provided)*
+  - 20 colour variants in `sweat-management/` subdirectory ✓ *(provided)*
 
 ### Schoolwear
 - `poly-cotton-twill-school.jpg`

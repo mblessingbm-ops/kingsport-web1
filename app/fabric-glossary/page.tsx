@@ -255,6 +255,25 @@ function FabricRow({
             </div>
           </div>
 
+          {/* Colour palette (when the fabric ships in multiple colourways) */}
+          {fabric.colourSwatches && fabric.colourSwatches.length > 0 && (
+            <div className="mb-8">
+              <div className="flex items-baseline justify-between gap-3 mb-3">
+                <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40">
+                  Available Colourways
+                </p>
+                <span className="font-sans text-[11px] text-charcoal-600/50">
+                  {fabric.colourSwatches.length} colours
+                </span>
+              </div>
+              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2.5">
+                {fabric.colourSwatches.map((c) => (
+                  <ColourSwatch key={c.name} colour={c} />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Care */}
           {fabric.care.length > 0 && (
             <div className="mb-8">
@@ -330,6 +349,38 @@ function SwatchThumb({ fabric, size }: { fabric: FabricEntry; size: number }) {
           <Layers size={Math.round(size * 0.32)} className="text-white/20" />
         </div>
       )}
+    </div>
+  )
+}
+
+function ColourSwatch({ colour }: { colour: { name: string; image: string } }) {
+  const [errored, setErrored] = useState(false)
+  return (
+    <div className="group flex flex-col items-center">
+      <div
+        className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900 ring-1 ring-charcoal-800/8 transition-transform duration-200 group-hover:scale-[1.04] group-hover:ring-oxblood-700/50"
+        style={{ borderRadius: 4 }}
+        title={colour.name}
+      >
+        {!errored && (
+          <Image
+            src={colour.image}
+            alt={`${colour.name} colourway`}
+            fill
+            sizes="80px"
+            className="object-cover"
+            onError={() => setErrored(true)}
+          />
+        )}
+        {errored && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Layers size={14} className="text-white/20" />
+          </div>
+        )}
+      </div>
+      <span className="mt-1.5 font-sans text-[10px] text-charcoal-700/70 text-center leading-tight group-hover:text-charcoal-800 transition-colors">
+        {colour.name}
+      </span>
     </div>
   )
 }

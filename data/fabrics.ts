@@ -679,6 +679,38 @@ export const fabrics: FabricEntry[] = [
 
   // ─── Sports ─────────────────────────────────────────────────────────────
   {
+    slug: 'micro-active-polyester',
+    name: 'Micro Active (100% Polyester)',
+    group: 'Sports',
+    weight: 'Lightweight',
+    composition: '100% Polyester',
+    weave: 'Microfibre Woven',
+    finish: 'Water-resistant or waterproof finishes, breathable, fast-drying',
+    care: [
+      { label: 'Machine wash 30°C' },
+      { label: 'Do not bleach' },
+      { label: 'Tumble dry low' },
+      { label: 'Iron low heat' },
+    ],
+    suitedFor: 'A lightweight, durable, breathable performance cloth available in water-resistant or waterproof finishes. Outerwear and raincoats — windbreakers, running shells, rain jackets. Tracksuits and sportswear — track jackets, track pants, sports shorts. School and team uniforms — sports tops, matric jackets, lined and unlined school tracksuits. Takes embroidery, sublimation, and screen printing cleanly for corporate branding.',
+    usedIn: [],
+    swatchImage: '/images/swatches/micro-active.webp',
+    colourSwatches: [
+      { name: 'White',         image: '/images/swatches/micro-active/white.webp' },
+      { name: 'Light Grey',    image: '/images/swatches/micro-active/light-grey.webp' },
+      { name: 'Grey',          image: '/images/swatches/micro-active/grey.webp' },
+      { name: 'Black',         image: '/images/swatches/micro-active/black.webp' },
+      { name: 'Dark Navy',     image: '/images/swatches/micro-active/dark-navy.webp' },
+      { name: 'Royal Blue',    image: '/images/swatches/micro-active/royal-blue.webp' },
+      { name: 'Light Blue',    image: '/images/swatches/micro-active/light-blue.webp' },
+      { name: 'Bottle Green',  image: '/images/swatches/micro-active/bottle-green.webp' },
+      { name: 'Emerald Green', image: '/images/swatches/micro-active/emerald-green.webp' },
+      { name: 'Yellow',        image: '/images/swatches/micro-active/yellow.webp' },
+      { name: 'Orange',        image: '/images/swatches/micro-active/orange.webp' },
+      { name: 'Red',           image: '/images/swatches/micro-active/red.webp' },
+    ],
+  },
+  {
     slug: 'taslon-nylon',
     name: 'Taslon (Woven Nylon)',
     group: 'Sports',

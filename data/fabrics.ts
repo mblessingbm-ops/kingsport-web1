@@ -82,7 +82,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'poly-cotton-poplin',
     name: '65/35 Poly-Cotton Poplin (Shirting)',
-    group: 'Workwear & PPE',
+    group: 'Corporate Apparel',
     weight: '115g/m²',
     composition: '65% Polyester, 35% Cotton',
     weave: 'Plain Weave',

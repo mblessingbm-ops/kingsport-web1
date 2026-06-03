@@ -33,7 +33,8 @@ grid in the expanded glossary panel.
 
 ### Corporate Apparel
 - `cotton-pique.jpg`
-- `cotton-oxford.jpg`
+- `cotton-poplin.webp` ✓ *(provided)*
+  - 7 colour variants in `cotton-poplin/` subdirectory ✓ *(provided)*
 - `polyester-satin-blouse.jpg`
 - `softshell-3-layer.webp` ✓ *(provided)*
   - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*

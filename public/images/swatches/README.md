@@ -17,8 +17,8 @@ grid in the expanded glossary panel.
 ## Expected filenames
 
 ### Workwear & PPE
-- `polycotton-twill-80-20.webp` ✓ *(provided)*
-  - 17 colour variants in `polycotton-twill-80-20/` subdirectory ✓ *(provided)*
+- `polycotton-twill-85-15.webp` ✓ *(provided)*
+  - 8 colour variants in `polycotton-twill-85-15/` subdirectory ✓ *(provided)*
 - `poly-cotton-drill.webp` ✓ *(provided)*
   - 7 colour variants in `poly-cotton-drill/` subdirectory ✓ *(provided)*
 - `poly-cotton-poplin.webp` ✓ *(provided)*

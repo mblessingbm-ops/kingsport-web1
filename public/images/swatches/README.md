@@ -63,6 +63,8 @@ grid in the expanded glossary panel.
 - `aluminium-composite-flex.jpg`
 
 ### Sports
+- `taslon.webp` ✓ *(provided)*
+  - 8 colour variants in `taslon/` subdirectory ✓ *(provided)*
 - `triacetate.webp` ✓ *(provided)*
   - 15 colour variants in `triacetate/` subdirectory ✓ *(provided)*
 - `polyester-spandex-interlock.jpg`

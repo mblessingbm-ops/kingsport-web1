@@ -613,6 +613,34 @@ export const fabrics: FabricEntry[] = [
 
   // ─── Sports ─────────────────────────────────────────────────────────────
   {
+    slug: 'taslon-nylon',
+    name: 'Taslon (Woven Nylon)',
+    group: 'Sports',
+    weight: 'Various',
+    composition: '100% Nylon',
+    weave: 'Woven Nylon — textured Taslon weave',
+    finish: 'Water-resistant, wind-resistant, lightweight, durable',
+    care: [
+      { label: 'Machine wash 30°C' },
+      { label: 'Do not bleach' },
+      { label: 'Do not tumble dry' },
+      { label: 'Iron low heat' },
+    ],
+    suitedFor: 'A high-performance, durable woven fabric — activewear, sportswear, windbreakers, hiking pants, trousers, rain jackets, and accessories like heavy-duty bags, travel gear, and outdoor covers.',
+    usedIn: [],
+    swatchImage: '/images/swatches/taslon.webp',
+    colourSwatches: [
+      { name: 'White',         image: '/images/swatches/taslon/white.webp' },
+      { name: 'Black',         image: '/images/swatches/taslon/black.webp' },
+      { name: 'Royal Blue',    image: '/images/swatches/taslon/royal-blue.webp' },
+      { name: 'Green',         image: '/images/swatches/taslon/green.webp' },
+      { name: 'Orange',        image: '/images/swatches/taslon/orange.webp' },
+      { name: 'Golden Yellow', image: '/images/swatches/taslon/golden-yellow.webp' },
+      { name: 'Red',           image: '/images/swatches/taslon/red.webp' },
+      { name: 'Maroon',        image: '/images/swatches/taslon/maroon.webp' },
+    ],
+  },
+  {
     slug: 'triacetate-polyester',
     name: 'Triacetate (100% Polyester)',
     group: 'Sports',

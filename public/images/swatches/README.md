@@ -44,6 +44,8 @@ grid in the expanded glossary panel.
 - `poly-viscose-suiting.jpg`
 - `poly-viscose-blend.jpg`
 - `cotton-denim.webp` ✓ *(provided)*
+- `cotton-poly-denim.webp` ✓ *(provided)*
+  - 3 weight×colour variants in `cotton-poly-denim/` subdirectory ✓ *(provided)*
 - `heavy-duty-denim.jpg`
 
 ### Promotional & Gifts

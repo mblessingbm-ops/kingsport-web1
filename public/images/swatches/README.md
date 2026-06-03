@@ -23,7 +23,8 @@ grid in the expanded glossary panel.
   - 14 colour variants in `poly-cotton-poplin/` subdirectory ✓ *(provided)*
 - `polyester-mesh.webp` ✓ *(provided)*
   - 4 colour variants in `polyester-mesh/` subdirectory ✓ *(provided)*
-- `oxford-polyester-600d.jpg`
+- `rubberised-oxford.webp` ✓ *(provided)*
+  - 2 colour variants in `rubberised-oxford/` subdirectory ✓ *(provided)*
 - `abs-polycarbonate-shell.jpg`
 
 ### Corporate Apparel

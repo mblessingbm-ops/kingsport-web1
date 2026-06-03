@@ -51,6 +51,7 @@ grid in the expanded glossary panel.
 - `heavy-duty-denim.jpg`
 
 ### Promotional & Gifts
+- `loomstate-calico.webp` ✓ *(provided)*
 - `combed-cotton-jersey-180g.jpg`
 - `brushed-cotton-twill.jpg`
 - `acrylic-rib-knit.jpg`

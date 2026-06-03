@@ -122,13 +122,14 @@ const clients = [
   'CBZ Bank',
   'Old Mutual',
   'UNICEF Zim',
-  'Hippo Valley',
+  'UNDP',
   'Schweppes',
   'NetOne',
   'Cresta Mining',
   'Nyaradzo',
   'TelOne',
   'ZB Bank',
+  'Flint Junior School',
 ]
 
 const journalPosts = [

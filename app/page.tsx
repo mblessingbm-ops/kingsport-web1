@@ -157,8 +157,10 @@ export default function HomePage() {
           <div className={styles.heroCoverStack}>
             <div className={styles.heroCoverEyebrow}>Manufactured in Harare &mdash; since 1998</div>
             <h1 className={styles.heroCoverH1}>
-              <span className="word">If you are proud</span>
-              <span className="word">of your corporate image&hellip;</span>
+              <span className="word">If you are</span>
+              <span className="word">proud of your</span>
+              <span className="word">corporate</span>
+              <span className="word">image&hellip;</span>
             </h1>
             <p className={styles.heroCoverItalic}>show it!</p>
           </div>

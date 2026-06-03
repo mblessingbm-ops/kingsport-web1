@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ShoppingBag, Download, Check, ArrowLeft, ChevronRight, Link2, Paintbrush } from 'lucide-react'
+import Image from 'next/image'
+import { ShoppingBag, Download, Check, ArrowLeft, ChevronRight, Link2, Paintbrush, Droplets } from 'lucide-react'
 import { getProductBySlug, getRelatedProducts, categories } from '@/data/products'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import ProductCardStatic from '@/components/catalog/ProductCardStatic'
@@ -340,6 +341,108 @@ Incorporated 1998
             </table>
           </div>
         </div>
+
+        {/* Fabric & Materials */}
+        {product.fabrics && product.fabrics.length > 0 && (
+          <section className="mt-16 pt-12 mb-16 border-t border-charcoal-800/8">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="block w-10 h-px bg-oxblood-900" />
+              <span className="text-[10px] font-sans tracking-widest uppercase text-oxblood-700">
+                Fabric &amp; Materials
+              </span>
+            </div>
+
+            {product.fabrics.map((fabric, index) => (
+              <div key={index} className="grid grid-cols-1 sm:grid-cols-3 gap-8 items-start">
+
+                {/* Swatch image */}
+                <div className="sm:col-span-1">
+                  <div className="relative aspect-square bg-charcoal-800 overflow-hidden">
+                    <Image
+                      src={fabric.swatchImage}
+                      alt={`${fabric.name} fabric swatch`}
+                      fill
+                      className="object-cover object-center transition-transform duration-500 hover:scale-110"
+                      onError={(e) => {
+                        // Fallback gradient if swatch image not yet available
+                        (e.target as HTMLImageElement).style.display = 'none'
+                      }}
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                    {/* Fallback shown behind image */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900 flex items-center justify-center -z-10">
+                      <span className="text-white/15 font-display text-sm italic">swatch</span>
+                    </div>
+                  </div>
+                  <p className="text-[9px] font-sans text-charcoal-600/30 tracking-wide mt-2 text-center uppercase">
+                    Fabric swatch — actual texture may vary slightly
+                  </p>
+                </div>
+
+                {/* Fabric details */}
+                <div className="sm:col-span-2 space-y-5">
+
+                  {/* Name */}
+                  <div>
+                    <h3 className="font-display text-2xl font-light text-charcoal-800">
+                      {fabric.name}
+                    </h3>
+                  </div>
+
+                  {/* Specs grid */}
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                    {[
+                      { label: 'Weight',      value: fabric.weight },
+                      { label: 'Composition', value: fabric.composition },
+                      { label: 'Weave',       value: fabric.weave },
+                      { label: 'Finish',      value: fabric.finish },
+                    ].filter(s => s.value && s.value !== '—' && s.value !== 'N/A').map(spec => (
+                      <div key={spec.label}>
+                        <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-0.5">
+                          {spec.label}
+                        </p>
+                        <p className="font-sans text-sm text-charcoal-800 leading-snug">
+                          {spec.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Suited for */}
+                  <div className="bg-cream-50 border border-charcoal-800/8 px-4 py-3">
+                    <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1">
+                      Best Suited For
+                    </p>
+                    <p className="font-sans text-sm text-charcoal-700/80 leading-relaxed">
+                      {fabric.suitedFor}
+                    </p>
+                  </div>
+
+                  {/* Care instructions */}
+                  {fabric.care && fabric.care.length > 0 && (
+                    <div>
+                      <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-3">
+                        Care Instructions
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {fabric.care.map((instruction, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center gap-1.5 border border-charcoal-800/10 bg-white text-charcoal-700 text-[10px] font-sans px-2.5 py-1.5 leading-none"
+                          >
+                            <Droplets size={9} className="text-oxblood-700 flex-shrink-0" />
+                            {instruction.label}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
 
         {/* Related Products */}
         {related.length > 0 && (

@@ -33,7 +33,8 @@ grid in the expanded glossary panel.
 - `cotton-pique.jpg`
 - `cotton-oxford.jpg`
 - `polyester-satin-blouse.jpg`
-- `softshell-3-layer.jpg`
+- `softshell-3-layer.webp` ✓ *(provided)*
+  - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*
 - `cotton-elastane-chino.jpg`
 - `poly-viscose-suiting.jpg`
 - `poly-viscose-blend.jpg`

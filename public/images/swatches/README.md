@@ -31,7 +31,6 @@ grid in the expanded glossary panel.
   - 4 colour variants in `polyester-mesh/` subdirectory ✓ *(provided)*
 - `rubberised-oxford.webp` ✓ *(provided)*
   - 2 colour variants in `rubberised-oxford/` subdirectory ✓ *(provided)*
-- `abs-polycarbonate-shell.jpg`
 
 ### Corporate Apparel
 - `cotton-pique.jpg`
@@ -57,13 +56,6 @@ grid in the expanded glossary panel.
 - `acrylic-rib-knit.jpg`
 - `polyester-600d.jpg`
 - `polyester-pongee-190t.jpg`
-- `polyester-satin-lanyard.jpg`
-
-### Event & Signage
-- `knitted-polyester-satin-flag.jpg`
-- `pvc-coated-polyester-banner.jpg`
-- `frontlit-pvc-440g.jpg`
-- `aluminium-composite-flex.jpg`
 
 ### Sports
 - `micro-active.webp` ✓ *(provided)*

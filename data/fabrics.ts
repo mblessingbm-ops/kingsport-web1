@@ -13,7 +13,6 @@ export type FabricGroup =
   | 'Workwear & PPE'
   | 'Corporate Apparel'
   | 'Promotional & Gifts'
-  | 'Event & Signage'
   | 'Sports'
   | 'Schoolwear'
 
@@ -45,7 +44,6 @@ export const fabricGroups: FabricGroup[] = [
   'Workwear & PPE',
   'Corporate Apparel',
   'Promotional & Gifts',
-  'Event & Signage',
   'Sports',
   'Schoolwear',
 ]
@@ -592,89 +590,6 @@ export const fabrics: FabricEntry[] = [
     suitedFor: 'Corporate branded umbrellas for events, promotions, and executive gifting.',
     usedIn: ['Executive Umbrella', 'Ordinary Umbrella'],
     swatchImage: '/images/swatches/polyester-pongee-190t.jpg',
-  },
-  {
-    slug: 'polyester-satin-lanyard',
-    name: 'Polyester Satin (Lanyards)',
-    group: 'Promotional & Gifts',
-    weight: '—',
-    composition: '100% Polyester',
-    weave: 'Satin Weave',
-    finish: 'Safety breakaway clip, metal lobster claw',
-    care: [
-      { label: 'Hand wash cold' },
-      { label: 'Air dry' },
-    ],
-    suitedFor: 'Events, conferences, exhibitions, and corporate ID lanyards.',
-    usedIn: ['Branded Lanyard'],
-    swatchImage: '/images/swatches/polyester-satin-lanyard.jpg',
-  },
-
-  // ─── Event & Signage ────────────────────────────────────────────────────
-  {
-    slug: 'knitted-polyester-satin-flag',
-    name: 'Knitted Polyester Satin',
-    group: 'Event & Signage',
-    weight: '115g/m²',
-    composition: '100% Polyester',
-    weave: 'Knitted Satin',
-    finish: 'Sublimation-ready, wind-resistant weave',
-    care: [
-      { label: 'Machine wash 30°C' },
-      { label: 'Do not tumble dry' },
-      { label: 'Iron low heat' },
-    ],
-    suitedFor: 'Outdoor and indoor branded flags, events, and point-of-sale displays.',
-    usedIn: ['Sharkfin Flag', 'Teardrop Flag', 'Telescopic Flag'],
-    swatchImage: '/images/swatches/knitted-polyester-satin-flag.jpg',
-  },
-  {
-    slug: 'pvc-coated-polyester-banner',
-    name: 'PVC Coated Polyester',
-    group: 'Event & Signage',
-    weight: '510g/m²',
-    composition: 'PVC-coated woven polyester base',
-    weave: 'Scrim Weave',
-    finish: 'Full-colour digital print, matte laminate finish',
-    care: [
-      { label: 'Wipe clean with damp cloth' },
-      { label: 'Roll loosely for storage — do not fold' },
-    ],
-    suitedFor: 'Indoor exhibitions, retail environments, and event backdrop displays.',
-    usedIn: ['Pull-Up Banner', 'Exhibition Backdrop Wall'],
-    swatchImage: '/images/swatches/pvc-coated-polyester-banner.jpg',
-  },
-  {
-    slug: 'frontlit-pvc-440g',
-    name: '440g Frontlit PVC',
-    group: 'Event & Signage',
-    weight: '440g/m²',
-    composition: 'PVC with polyester scrim reinforcement',
-    weave: 'Scrim reinforced',
-    finish: 'Rope and eyelets, weather-resistant, full-colour print',
-    care: [
-      { label: 'Wipe clean with mild detergent' },
-      { label: 'Store rolled in a dry location' },
-    ],
-    suitedFor: 'Outdoor advertising, building wraps, and event perimeter signage.',
-    usedIn: ['PVC Banner (Rope & Eyelets)'],
-    swatchImage: '/images/swatches/frontlit-pvc-440g.jpg',
-  },
-  {
-    slug: 'aluminium-composite-flex',
-    name: 'Aluminium Composite Panel / Flex Face',
-    group: 'Event & Signage',
-    weight: '—',
-    composition: 'Aluminium composite structure with printed flex face',
-    weave: 'N/A',
-    finish: 'Weather-resistant, UV-stable inks',
-    care: [
-      { label: 'Clean with mild detergent and soft cloth' },
-      { label: 'Inspect fixings periodically' },
-    ],
-    suitedFor: 'Permanent and semi-permanent outdoor advertising installations.',
-    usedIn: ['Billboard Construction'],
-    swatchImage: '/images/swatches/aluminium-composite-flex.jpg',
   },
 
   // ─── Sports ─────────────────────────────────────────────────────────────

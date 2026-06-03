@@ -151,31 +151,25 @@ const journalPosts = [
 export default function HomePage() {
   return (
     <div className={styles.home}>
-      {/* ── Hero · Cover (C) ─────────────────────────────────────── */}
+      {/* ── Hero · Cover (C · Liquid Glass) ─────────────────────── */}
       <section className={styles.heroCover}>
-        <div className={styles.heroCoverMast}>
-          <span className="left">Kingsport Investments</span>
-          <span className="center">Vol. XXVI · 2026</span>
-          <span className="right">Issue 01</span>
-        </div>
-
         <div className={styles.heroCoverBody}>
           <div className={styles.heroCoverStack}>
             <div className={styles.heroCoverEyebrow}>Manufactured in Harare &mdash; since 1998</div>
             <h1 className={styles.heroCoverH1}>
-              <span className="word">If you are proud</span>
-              <span className="word">of your corporate image&hellip;</span>
+              <span className="word">Outfit</span>
+              <span className="word">your team.</span>
             </h1>
-            <p className={styles.heroCoverItalic}>Show it!</p>
+            <p className={styles.heroCoverItalic}>We&rsquo;ll handle the rest.</p>
           </div>
         </div>
 
         <div className={styles.heroCoverFoot}>
-          <span className="left">Edition XXVI &middot; Autumn 2026</span>
+          <span className="left" />
           <Link className="center" href="/catalog">
             Browse the catalogue <span className="arrow">→</span>
           </Link>
-          <span className="right">Turn the page ↓</span>
+          <span className="right" />
         </div>
       </section>
 
@@ -207,10 +201,10 @@ export default function HomePage() {
             <div className={styles.heroPlateRule} />
             <div className={styles.heroPlateCat}>PPE · Corp &amp; Promo Wear · Gifts · Event · Sports · School</div>
             <h2 className={styles.heroPlateName}>
-              Six ranges,<br />one factory floor.
+              Whatever the<br />workday demands.
             </h2>
             <p className={styles.heroPlateBody}>
-              From hi-vis softshells to executive polos, sublimated sports kits to branded promo &mdash; every garment cut, stitched and finished under one roof in Harare.
+              Hi-vis and conti suits for the field, polos and corporate shirts for the front of house &mdash; every garment cut, stitched and finished under one roof in Harare.
             </p>
             <dl className={styles.heroPlateSpecs}>
               <dt>Ranges</dt><dd>Six categories</dd>

@@ -21,6 +21,8 @@ grid in the expanded glossary panel.
   - 7 colour variants in `poly-cotton-drill/` subdirectory ✓ *(provided)*
 - `poly-cotton-poplin.webp` ✓ *(provided)*
   - 14 colour variants in `poly-cotton-poplin/` subdirectory ✓ *(provided)*
+- `hi-vis-vesting.webp` ✓ *(provided)*
+  - 2 colour variants in `hi-vis-vesting/` subdirectory ✓ *(provided)*
 - `polyester-mesh.webp` ✓ *(provided)*
   - 4 colour variants in `polyester-mesh/` subdirectory ✓ *(provided)*
 - `rubberised-oxford.webp` ✓ *(provided)*

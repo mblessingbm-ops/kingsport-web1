@@ -113,6 +113,28 @@ export const fabrics: FabricEntry[] = [
     ],
   },
   {
+    slug: 'hi-vis-vesting',
+    name: 'Hi-Visibility Vesting',
+    group: 'Workwear & PPE',
+    weight: '245g/m²',
+    composition: '100% Polyester',
+    weave: 'Plain Weave Woven',
+    finish: 'EN ISO 20471 colour-fast hi-vis pigments, reflective tape ready',
+    care: [
+      { label: 'Machine wash 40°C' },
+      { label: 'Do not iron reflective tape' },
+      { label: 'Do not bleach' },
+      { label: 'Tumble dry low' },
+    ],
+    suitedFor: 'Perfect for hi-vis safety vests and outer wear — traffic marshals, road construction, security, mining and any environment where workers need to be seen.',
+    usedIn: ['Reflective Vest (High-Vis)'],
+    swatchImage: '/images/swatches/hi-vis-vesting.webp',
+    colourSwatches: [
+      { name: 'Hi-Vis Yellow', image: '/images/swatches/hi-vis-vesting/yellow.webp' },
+      { name: 'Hi-Vis Orange', image: '/images/swatches/hi-vis-vesting/orange.webp' },
+    ],
+  },
+  {
     slug: 'polyester-mesh',
     name: '100% Polyester Mesh',
     group: 'Workwear & PPE',

@@ -55,7 +55,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polycotton-twill-80-20',
     name: '80/20 Poly-Cotton Twill',
-    group: 'Workwear & PPE',
+    group: 'Corporate Apparel',
     weight: 'Various',
     composition: '80% Polyester, 20% Cotton',
     weave: 'Twill Weave',

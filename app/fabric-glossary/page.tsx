@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronRight, Droplets, Layers, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { ChevronRight, Droplets, Layers, ArrowRight } from 'lucide-react'
 import { fabrics, fabricGroups, type FabricEntry } from '@/data/fabrics'
 
 export default function FabricGlossaryPage() {
@@ -180,12 +181,15 @@ function FabricRow({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="w-full flex items-center justify-between gap-6 py-6 text-left transition-colors hover:bg-cream-100/60 px-2 -mx-2"
+        className="w-full flex items-center justify-between gap-6 py-5 text-left transition-colors hover:bg-cream-100/60 px-2 -mx-2"
       >
-        <div className="flex items-start gap-4 min-w-0 flex-1">
+        <div className="flex items-center gap-4 min-w-0 flex-1">
+          {/* Swatch thumbnail */}
+          <SwatchThumb fabric={fabric} size={56} />
+
           <ChevronRight
             size={14}
-            className={`text-oxblood-700 mt-1.5 flex-shrink-0 transition-transform duration-200 ${
+            className={`text-oxblood-700 flex-shrink-0 transition-transform duration-200 ${
               isOpen ? 'rotate-90' : ''
             }`}
           />
@@ -214,29 +218,41 @@ function FabricRow({
 
       {/* Expanded panel */}
       {isOpen && (
-        <div className="pb-10 pl-9 pr-2 -mt-2 animate-fade-in">
-          {/* Specs grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5 mb-8">
-            {specs.map((s) => (
-              <div key={s.label}>
-                <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1">
-                  {s.label}
+        <div className="pb-10 pl-9 pr-2 -mt-1 animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 mb-8">
+            {/* Large swatch */}
+            <div>
+              <SwatchHero fabric={fabric} />
+              <p className="text-[9px] font-sans text-charcoal-600/30 tracking-wide mt-2 text-center uppercase">
+                Fabric swatch — actual texture may vary slightly
+              </p>
+            </div>
+
+            {/* Specs + suited-for */}
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
+                {specs.map((s) => (
+                  <div key={s.label}>
+                    <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1">
+                      {s.label}
+                    </p>
+                    <p className="font-sans text-[14px] text-charcoal-800 leading-snug">
+                      {s.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Best suited for */}
+              <div className="bg-cream-100/70 border border-charcoal-800/8 px-5 py-4">
+                <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1.5">
+                  Best Suited For
                 </p>
-                <p className="font-sans text-[14px] text-charcoal-800 leading-snug">
-                  {s.value}
+                <p className="font-sans text-[14px] text-charcoal-700/85 leading-[1.65]">
+                  {fabric.suitedFor}
                 </p>
               </div>
-            ))}
-          </div>
-
-          {/* Best suited for */}
-          <div className="bg-cream-100/70 border border-charcoal-800/8 px-5 py-4 mb-8">
-            <p className="text-[10px] font-sans tracking-widest uppercase text-charcoal-600/40 mb-1.5">
-              Best Suited For
-            </p>
-            <p className="font-sans text-[14px] text-charcoal-700/85 leading-[1.65]">
-              {fabric.suitedFor}
-            </p>
+            </div>
           </div>
 
           {/* Care */}
@@ -284,6 +300,58 @@ function FabricRow({
               </Link>
             </div>
           )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ─── Swatch image components ────────────────────────────────────────────── */
+
+function SwatchThumb({ fabric, size }: { fabric: FabricEntry; size: number }) {
+  const [errored, setErrored] = useState(false)
+  return (
+    <div
+      className="relative flex-shrink-0 overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900"
+      style={{ width: size, height: size, borderRadius: 6 }}
+    >
+      {fabric.swatchImage && !errored && (
+        <Image
+          src={fabric.swatchImage}
+          alt=""
+          fill
+          sizes={`${size}px`}
+          className="object-cover"
+          onError={() => setErrored(true)}
+        />
+      )}
+      {(errored || !fabric.swatchImage) && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <Layers size={Math.round(size * 0.32)} className="text-white/20" />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SwatchHero({ fabric }: { fabric: FabricEntry }) {
+  const [errored, setErrored] = useState(false)
+  return (
+    <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900 group">
+      {fabric.swatchImage && !errored && (
+        <Image
+          src={fabric.swatchImage}
+          alt={`${fabric.name} fabric swatch close-up`}
+          fill
+          sizes="(max-width: 768px) 100vw, 260px"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={() => setErrored(true)}
+        />
+      )}
+      {(errored || !fabric.swatchImage) && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+          <Layers size={32} className="text-white/15" />
+          <span className="text-white/20 font-display text-sm italic">swatch · pending</span>
         </div>
       )}
     </div>

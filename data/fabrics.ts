@@ -31,6 +31,10 @@ export interface FabricEntry {
   suitedFor: string
   /** Concrete examples of products woven from this fabric. */
   usedIn: string[]
+  /** Optional close-up photo of the fabric (square crop preferred).
+      Drop into /public/images/swatches/[slug].jpg. The glossary renders
+      a dark gradient fallback when the file is missing. */
+  swatchImage?: string
 }
 
 export const fabricGroups: FabricGroup[] = [
@@ -60,6 +64,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Heavy industrial and manufacturing environments requiring durability and abrasion resistance.',
     usedIn: ['Heavy Duty Conti Suit', 'Acid Resistant Conti Suit'],
+    swatchImage: '/images/swatches/poly-cotton-drill.jpg',
   },
   {
     slug: 'poly-cotton-poplin',
@@ -76,6 +81,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Light industrial, laboratory, and food service environments.',
     usedIn: ['Industrial Dustcoat'],
+    swatchImage: '/images/swatches/poly-cotton-poplin.jpg',
   },
   {
     slug: 'full-grain-leather',
@@ -92,6 +98,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Construction sites, warehouses, and heavy industrial environments requiring foot protection.',
     usedIn: ['S5 Safety Boots', 'Rider Boots'],
+    swatchImage: '/images/swatches/full-grain-leather.jpg',
   },
   {
     slug: 'split-leather',
@@ -107,6 +114,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Light industrial and warehouse environments requiring comfort and protection.',
     usedIn: ['Safety Shoes (Low Cut)'],
+    swatchImage: '/images/swatches/split-leather.jpg',
   },
   {
     slug: 'polyester-mesh',
@@ -123,6 +131,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Road construction, traffic control, and any environment requiring high visibility.',
     usedIn: ['Reflective Vest (High-Vis)'],
+    swatchImage: '/images/swatches/polyester-mesh.jpg',
   },
   {
     slug: 'hdpe-shell',
@@ -139,6 +148,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Construction, mining, and any overhead hazard environment.',
     usedIn: ['Industrial Hard Hat'],
+    swatchImage: '/images/swatches/hdpe-shell.jpg',
   },
   {
     slug: 'natural-rubber',
@@ -154,6 +164,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Agriculture, mining, construction, and wet or chemical environments.',
     usedIn: ['Heavy Duty Gumboots'],
+    swatchImage: '/images/swatches/natural-rubber.jpg',
   },
   {
     slug: 'latex-cotton-gloves',
@@ -169,6 +180,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Chemical handling, wet work, and general industrial hand protection.',
     usedIn: ['Latex Safety Gloves', 'Heavy Duty Work Gloves'],
+    swatchImage: '/images/swatches/latex-cotton-gloves.jpg',
   },
   {
     slug: 'synthetic-leather-nylon-gloves',
@@ -184,6 +196,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Motorcycle delivery riders requiring grip and knuckle protection.',
     usedIn: ['Motorcycle Gloves'],
+    swatchImage: '/images/swatches/synthetic-leather-nylon-gloves.jpg',
   },
   {
     slug: 'oxford-polyester-600d',
@@ -200,6 +213,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Motorcycle and bicycle delivery riders, outdoor crews, and wet-season field staff.',
     usedIn: ['Delivery Rider Suit', 'Rainsuit (Jacket + Pants)', 'Event Gazebo', 'Drawstring Bag', 'Sports Bag', 'Cooler Bag'],
+    swatchImage: '/images/swatches/oxford-polyester-600d.jpg',
   },
   {
     slug: 'abs-polycarbonate-shell',
@@ -216,6 +230,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Motorcycle delivery and industrial environments requiring head protection.',
     usedIn: ['Delivery Helmet', 'Safety Goggles', 'Kidney Belt'],
+    swatchImage: '/images/swatches/abs-polycarbonate-shell.jpg',
   },
 
   // ─── Corporate Apparel ──────────────────────────────────────────────────
@@ -235,6 +250,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Everyday corporate and client-facing environments.',
     usedIn: ['Executive Pique Polo', 'Knitted Stripe Polo', 'Corporate Uniform Pack'],
+    swatchImage: '/images/swatches/cotton-pique.jpg',
   },
   {
     slug: 'cotton-oxford',
@@ -251,6 +267,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Formal corporate and executive office environments.',
     usedIn: ['Oxford Long Sleeve Shirt', 'Short-Sleeve Corporate Shirt'],
+    swatchImage: '/images/swatches/cotton-oxford.jpg',
   },
   {
     slug: 'polyester-satin-blouse',
@@ -267,6 +284,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Corporate office and client-facing roles requiring a professional finish.',
     usedIn: ['Ladies Blouse', 'Ladies 3/4 Sleeve Blouse'],
+    swatchImage: '/images/swatches/polyester-satin-blouse.jpg',
   },
   {
     slug: 'softshell-3-layer',
@@ -284,6 +302,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Outdoor corporate environments, site supervisors, and cold-climate office wear.',
     usedIn: ['Softshell Jacket', 'Softshell School Jacket'],
+    swatchImage: '/images/swatches/softshell-3-layer.jpg',
   },
   {
     slug: 'cotton-elastane-chino',
@@ -300,6 +319,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Smart-casual and corporate office environments requiring comfort and durability.',
     usedIn: ['Chino Trousers'],
+    swatchImage: '/images/swatches/cotton-elastane-chino.jpg',
   },
   {
     slug: 'poly-viscose-suiting',
@@ -316,6 +336,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Executive and boardroom environments requiring a sharp, professional appearance.',
     usedIn: ['Corporate Blazer'],
+    swatchImage: '/images/swatches/poly-viscose-suiting.jpg',
   },
   {
     slug: 'poly-viscose-blend',
@@ -332,6 +353,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Corporate office and client-facing professional environments.',
     usedIn: ['Formal Pencil Skirt'],
+    swatchImage: '/images/swatches/poly-viscose-blend.jpg',
   },
   {
     slug: 'cotton-denim',
@@ -348,6 +370,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Smart-casual, retail, and hospitality corporate environments.',
     usedIn: ['Denim Shirt'],
+    swatchImage: '/images/swatches/cotton-denim.jpg',
   },
   {
     slug: 'heavy-duty-denim',
@@ -364,6 +387,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Industrial, maintenance, and trade environments requiring maximum durability.',
     usedIn: ['Industrial Jeans'],
+    swatchImage: '/images/swatches/heavy-duty-denim.jpg',
   },
 
   // ─── Promotional & Gifts ────────────────────────────────────────────────
@@ -383,6 +407,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Events, promotions, staff gifting, and branded merchandise.',
     usedIn: ['Cotton T-Shirt', 'Honeycomb Performance Tee'],
+    swatchImage: '/images/swatches/combed-cotton-jersey-180g.jpg',
   },
   {
     slug: 'brushed-cotton-twill',
@@ -399,6 +424,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Branded promotions, events, sports teams, and corporate gifting.',
     usedIn: ['Snapback Cap', 'Baseball Cap (6-Panel)', 'Trucker Cap', 'Floppy Hat', 'Reversible Bucket Hat'],
+    swatchImage: '/images/swatches/brushed-cotton-twill.jpg',
   },
   {
     slug: 'acrylic-rib-knit',
@@ -415,6 +441,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Cold-weather promotions, school jerseys, events, and branded gifting.',
     usedIn: ['Knitted Beanie', 'Sleeveless Knitted School Jersey', 'Full Knitted School Jersey'],
+    swatchImage: '/images/swatches/acrylic-rib-knit.jpg',
   },
   {
     slug: 'polyester-600d',
@@ -431,6 +458,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Promotional giveaways, sports teams, and corporate gifting.',
     usedIn: ['Drawstring Bag', 'Team Sports Bag', 'Insulated Cooler Bag', 'School Backpack'],
+    swatchImage: '/images/swatches/polyester-600d.jpg',
   },
   {
     slug: 'polyester-pongee-190t',
@@ -446,6 +474,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Corporate branded umbrellas for events, promotions, and executive gifting.',
     usedIn: ['Executive Umbrella', 'Ordinary Umbrella'],
+    swatchImage: '/images/swatches/polyester-pongee-190t.jpg',
   },
   {
     slug: 'polyester-satin-lanyard',
@@ -461,6 +490,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Events, conferences, exhibitions, and corporate ID lanyards.',
     usedIn: ['Branded Lanyard'],
+    swatchImage: '/images/swatches/polyester-satin-lanyard.jpg',
   },
 
   // ─── Event & Signage ────────────────────────────────────────────────────
@@ -479,6 +509,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Outdoor and indoor branded flags, events, and point-of-sale displays.',
     usedIn: ['Sharkfin Flag', 'Teardrop Flag', 'Telescopic Flag'],
+    swatchImage: '/images/swatches/knitted-polyester-satin-flag.jpg',
   },
   {
     slug: 'pvc-coated-polyester-banner',
@@ -494,6 +525,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Indoor exhibitions, retail environments, and event backdrop displays.',
     usedIn: ['Pull-Up Banner', 'Exhibition Backdrop Wall'],
+    swatchImage: '/images/swatches/pvc-coated-polyester-banner.jpg',
   },
   {
     slug: 'frontlit-pvc-440g',
@@ -509,6 +541,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Outdoor advertising, building wraps, and event perimeter signage.',
     usedIn: ['PVC Banner (Rope & Eyelets)'],
+    swatchImage: '/images/swatches/frontlit-pvc-440g.jpg',
   },
   {
     slug: 'aluminium-composite-flex',
@@ -524,6 +557,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Permanent and semi-permanent outdoor advertising installations.',
     usedIn: ['Billboard Construction'],
+    swatchImage: '/images/swatches/aluminium-composite-flex.jpg',
   },
 
   // ─── Sports ─────────────────────────────────────────────────────────────
@@ -543,6 +577,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Athletic training, team sports, and corporate wellness programmes.',
     usedIn: ['Full Sports Tracksuit'],
+    swatchImage: '/images/swatches/polyester-spandex-interlock.jpg',
   },
   {
     slug: 'moisture-wicking-polyester-150g',
@@ -559,6 +594,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Competitive and recreational team sports kits.',
     usedIn: ['Soccer Kit', 'Netball Kit', 'Volleyball Kit'],
+    swatchImage: '/images/swatches/moisture-wicking-polyester-150g.jpg',
   },
 
   // ─── Schoolwear ─────────────────────────────────────────────────────────
@@ -578,6 +614,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Primary and secondary school daily wear requiring durability and easy care.',
     usedIn: ['School Uniform Set'],
+    swatchImage: '/images/swatches/poly-cotton-twill-school.jpg',
   },
   {
     slug: 'cotton-jersey-160g-kids',
@@ -595,6 +632,7 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'School events, sports days, and general school branded apparel.',
     usedIn: ['Kids Cotton T-Shirt'],
+    swatchImage: '/images/swatches/cotton-jersey-160g-kids.jpg',
   },
 ]
 

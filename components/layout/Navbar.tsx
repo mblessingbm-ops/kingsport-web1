@@ -12,11 +12,9 @@ import {
   Flag,
   Trophy,
   GraduationCap,
-  Layers,
   type LucideIcon,
 } from 'lucide-react'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
-import { fabricGroups, fabrics } from '@/data/fabrics'
 
 const navLinks: { label: string; href: string; badge?: string }[] = [
   { label: 'Home', href: '/' },
@@ -27,10 +25,6 @@ const navLinks: { label: string; href: string; badge?: string }[] = [
   { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/contact' },
 ]
-
-function slugifyFabricGroup(g: string): string {
-  return g.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-}
 
 interface CatalogCategory {
   id: string
@@ -88,17 +82,13 @@ const catalogCategories: CatalogCategory[] = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [catalogOpen, setCatalogOpen] = useState(false)
-  const [fabricsOpen, setFabricsOpen] = useState(false)
   const { count } = useQuoteCart()
   const countLabel = String(count).padStart(2, '0')
 
-  // Close dropdowns on Escape
+  // Close catalog dropdown on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setCatalogOpen(false)
-        setFabricsOpen(false)
-      }
+      if (e.key === 'Escape') setCatalogOpen(false)
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
@@ -136,84 +126,7 @@ export default function Navbar() {
           {/* Desktop nav */}
           <nav className="relative hidden lg:flex gap-[22px] text-[13px] font-medium items-center">
             {navLinks.map((link) =>
-              link.label === 'Fabric Glossary' ? (
-                <div
-                  key="fabrics-dropdown"
-                  className="relative"
-                  onMouseEnter={() => setFabricsOpen(true)}
-                  onMouseLeave={() => setFabricsOpen(false)}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setFabricsOpen(prev => !prev)}
-                    aria-expanded={fabricsOpen}
-                    aria-haspopup="true"
-                    className={`py-1 inline-flex items-center gap-1.5 whitespace-nowrap transition-colors ${
-                      fabricsOpen ? 'text-oxblood-800' : 'text-charcoal-700 hover:text-oxblood-800'
-                    }`}
-                  >
-                    Fabric Glossary
-                    <ChevronDown
-                      size={13}
-                      className={`transition-transform duration-200 ${fabricsOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 transition-all duration-200 ${
-                      fabricsOpen
-                        ? 'opacity-100 translate-y-0 pointer-events-auto'
-                        : 'opacity-0 -translate-y-2 pointer-events-none'
-                    }`}
-                  >
-                    <div className="absolute -top-3 left-0 right-0 h-3" />
-                    <div className="bg-white border border-charcoal-800/10 shadow-2xl shadow-charcoal-900/20 w-[560px] p-2 rounded-xl">
-                      <div className="grid grid-cols-2 gap-1">
-                        {fabricGroups.map((group) => {
-                          const sample = fabrics.filter(f => f.group === group).slice(0, 2)
-                          const total = fabrics.filter(f => f.group === group).length
-                          return (
-                            <Link
-                              key={group}
-                              href={`/fabric-glossary#group-${slugifyFabricGroup(group)}`}
-                              onClick={() => setFabricsOpen(false)}
-                              className="group flex items-start gap-3 px-4 py-3 hover:bg-cream-50 rounded-lg transition-colors duration-150"
-                            >
-                              <div className="w-8 h-8 flex-shrink-0 bg-oxblood-900/[0.08] flex items-center justify-center mt-0.5 rounded-lg group-hover:bg-oxblood-900 transition-colors duration-150">
-                                <Layers
-                                  size={14}
-                                  className="text-oxblood-700 group-hover:text-white transition-colors duration-150"
-                                />
-                              </div>
-                              <div className="min-w-0">
-                                <p className="font-sans font-medium text-charcoal-800 text-sm leading-none mb-1 group-hover:text-oxblood-800 transition-colors">
-                                  {group}
-                                </p>
-                                <p className="font-sans text-charcoal-600/50 text-[11px] leading-snug">
-                                  {sample.map(f => f.name).join(' · ')}
-                                  {total > 2 ? ' · …' : ''}
-                                </p>
-                              </div>
-                            </Link>
-                          )
-                        })}
-                      </div>
-                      <div className="border-t border-charcoal-800/8 mt-1 px-4 py-3 flex items-center justify-between gap-3">
-                        <Link
-                          href="/fabric-glossary"
-                          onClick={() => setFabricsOpen(false)}
-                          className="btn-glass-primary inline-flex items-center gap-1.5 px-4 py-2 font-sans text-[11px] font-medium tracking-widest uppercase"
-                        >
-                          Open full glossary
-                          <ArrowRight size={11} />
-                        </Link>
-                        <span className="font-sans text-[11px] text-charcoal-600/40 tracking-wide text-right">
-                          {fabrics.length} fabrics · {fabricGroups.length} groups
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : link.label === 'Catalog' ? (
+              link.label === 'Catalog' ? (
                 <div
                   key="catalog-dropdown"
                   className="relative"
@@ -351,53 +264,7 @@ export default function Navbar() {
           <div className="lg:hidden mt-2 topbar-pill pointer-events-auto !rounded-[22px] px-5 py-5 animate-fade-in">
             <nav className="relative flex flex-col gap-3">
               {navLinks.map((link) =>
-                link.label === 'Fabric Glossary' ? (
-                  <div key="fabrics-mobile" className="border-b border-charcoal-800/10 pb-2">
-                    <button
-                      onClick={() => setFabricsOpen(prev => !prev)}
-                      aria-expanded={fabricsOpen}
-                      className="flex items-center justify-between w-full py-1 font-sans text-base font-medium text-charcoal-800"
-                    >
-                      Fabric Glossary
-                      <ChevronDown
-                        size={15}
-                        className={`transition-transform duration-200 ${fabricsOpen ? 'rotate-180' : ''}`}
-                      />
-                    </button>
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${
-                        fabricsOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
-                      }`}
-                    >
-                      <div className="pl-3 pt-2 pb-2 space-y-1 border-l border-oxblood-700/30 ml-1">
-                        {fabricGroups.map((group) => (
-                          <Link
-                            key={group}
-                            href={`/fabric-glossary#group-${slugifyFabricGroup(group)}`}
-                            onClick={() => {
-                              setFabricsOpen(false)
-                              setMobileOpen(false)
-                            }}
-                            className="flex items-center gap-3 py-2 text-charcoal-700 hover:text-oxblood-800 transition-colors"
-                          >
-                            <Layers size={13} className="text-oxblood-700 flex-shrink-0" />
-                            <span className="font-sans text-sm">{group}</span>
-                          </Link>
-                        ))}
-                        <Link
-                          href="/fabric-glossary"
-                          onClick={() => {
-                            setFabricsOpen(false)
-                            setMobileOpen(false)
-                          }}
-                          className="flex items-center gap-1.5 py-2 text-oxblood-800 hover:text-oxblood-900 font-sans text-xs tracking-wide transition-colors"
-                        >
-                          Open full glossary <ArrowRight size={10} />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ) : link.label === 'Catalog' ? (
+                link.label === 'Catalog' ? (
                   <div key="catalog-mobile" className="border-b border-charcoal-800/10 pb-2">
                     <button
                       onClick={() => setCatalogOpen(prev => !prev)}

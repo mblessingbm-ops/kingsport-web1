@@ -19,7 +19,8 @@ grid in the expanded glossary panel.
 ### Workwear & PPE
 - `poly-cotton-drill.webp` ✓ *(provided)*
   - 7 colour variants in `poly-cotton-drill/` subdirectory ✓ *(provided)*
-- `poly-cotton-poplin.jpg`
+- `poly-cotton-poplin.webp` ✓ *(provided)*
+  - 14 colour variants in `poly-cotton-poplin/` subdirectory ✓ *(provided)*
 - `full-grain-leather.jpg`
 - `split-leather.jpg`
 - `polyester-mesh.jpg`

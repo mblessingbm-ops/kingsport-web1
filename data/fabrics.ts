@@ -116,7 +116,7 @@ export const fabrics: FabricEntry[] = [
     slug: 'polyester-mesh',
     name: '100% Polyester Mesh',
     group: 'Workwear & PPE',
-    weight: '120g/m²',
+    weight: '~150g/m²',
     composition: '100% Polyester',
     weave: 'Open Mesh Knit',
     finish: 'EN ISO 20471 reflective tape bonded',
@@ -127,7 +127,13 @@ export const fabrics: FabricEntry[] = [
     ],
     suitedFor: 'Road construction, traffic control, and any environment requiring high visibility.',
     usedIn: ['Reflective Vest (High-Vis)'],
-    swatchImage: '/images/swatches/polyester-mesh.jpg',
+    swatchImage: '/images/swatches/polyester-mesh.webp',
+    colourSwatches: [
+      { name: 'Hi-Vis Yellow', image: '/images/swatches/polyester-mesh/yellow-hi-vis.webp' },
+      { name: 'Hi-Vis Orange', image: '/images/swatches/polyester-mesh/orange-hi-vis.webp' },
+      { name: 'Navy',          image: '/images/swatches/polyester-mesh/navy.webp' },
+      { name: 'Black',         image: '/images/swatches/polyester-mesh/black.webp' },
+    ],
   },
   {
     slug: 'hdpe-shell',

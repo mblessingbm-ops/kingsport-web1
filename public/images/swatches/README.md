@@ -35,6 +35,8 @@ grid in the expanded glossary panel.
 - `cotton-pique.jpg`
 - `cotton-poplin.webp` ✓ *(provided)*
   - 7 colour variants in `cotton-poplin/` subdirectory ✓ *(provided)*
+- `cotton-shirting-twill.webp` ✓ *(provided)*
+  - 4 colour variants in `cotton-shirting-twill/` subdirectory ✓ *(provided)*
 - `polyester-satin-blouse.jpg`
 - `softshell-3-layer.webp` ✓ *(provided)*
   - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*

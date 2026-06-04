@@ -41,6 +41,8 @@ grid in the expanded glossary panel.
 - `cotton-shirting-twill.webp` ✓ *(provided)*
   - 4 colour variants in `cotton-shirting-twill/` subdirectory ✓ *(provided)*
 - `polyester-satin-blouse.jpg`
+- `brushed-fleece.webp` ✓ *(provided)*
+  - 3 colour variants in `brushed-fleece/` subdirectory ✓ *(provided)*
 - `polar-fleece.webp` ✓ *(provided)*
   - 12 colour variants in `polar-fleece/` subdirectory ✓ *(provided)*
 - `softshell-3-layer.webp` ✓ *(provided)*

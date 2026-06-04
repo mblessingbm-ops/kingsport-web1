@@ -55,6 +55,8 @@ grid in the expanded glossary panel.
   - 12 colour variants in `polar-fleece/` subdirectory ✓ *(provided)*
 - `softshell-3-layer.webp` ✓ *(provided)*
   - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*
+- `baby-gabardine.webp` ✓ *(provided)*
+  - 8 colour variants in `baby-gabardine/` subdirectory ✓ *(provided)*
 - `tetrex.webp` ✓ *(provided)*
   - 6 colour variants in `tetrex/` subdirectory ✓ *(provided)*
 - `gabardine.webp` ✓ *(provided)*

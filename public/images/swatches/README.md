@@ -33,6 +33,8 @@ grid in the expanded glossary panel.
   - 2 colour variants in `rubberised-oxford/` subdirectory ✓ *(provided)*
 
 ### Corporate Apparel
+- `lacoste-pique.webp` ✓ *(provided)*
+  - 13 colour variants in `lacoste-pique/` subdirectory ✓ *(provided)*
 - `cotton-pique.jpg`
 - `cotton-poplin.webp` ✓ *(provided)*
   - 7 colour variants in `cotton-poplin/` subdirectory ✓ *(provided)*

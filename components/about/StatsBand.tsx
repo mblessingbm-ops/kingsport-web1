@@ -18,7 +18,7 @@ const STATS: StatItem[] = [
   { target: 26,   suffix: '+', label: 'Years in\nOperation' },
   { target: 6,                 label: 'Product\nCategories' },
   { target: 500,  suffix: '+', label: 'Products\nin Range' },
-  { target: 1000, suffix: '+', group: true, label: 'Clients\nServed' },
+  { target: 150,  suffix: '+', label: 'Clients\nServed' },
   { target: 100,  suffix: '%', label: 'Locally\nProduced' },
 ]
 

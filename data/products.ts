@@ -132,7 +132,7 @@ export const products: Product[] = [
   },
   {
     id: 'ppe-004',
-    name: 'S5 Safety Boots',
+    name: 'Safety Boots',
     slug: 's5-safety-boots',
     category: 'ppe-safety',
     description: 'S5-rated full-grain leather safety boots with steel toecap, steel midsole, and anti-static sole. Meets EN ISO 20345 standards for heavy industrial use including construction, mining, and manufacturing.',
@@ -150,7 +150,8 @@ export const products: Product[] = [
       { name: 'Brown', hex: '#7c4b2c' },
     ],
     sizes: ['4', '5', '6', '7', '8', '9', '10', '11', '12', '13'],
-    image: '/images/products/safety-boots.png',
+    image: '/images/products/safety-boots-lifestyle.png',
+    additionalImages: ['/images/products/safety-boots.png'],
     relatedIds: ['ppe-005', 'ppe-001', 'ppe-006'],
     featured: true,
     tags: ['boots', 'footwear', 'S5', 'steel toecap'],

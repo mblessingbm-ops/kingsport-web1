@@ -56,6 +56,8 @@ grid in the expanded glossary panel.
 - `softshell-3-layer.webp` ✓ *(provided)*
   - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*
 - `cotton-elastane-chino.jpg`
+- `tetrex.webp` ✓ *(provided)*
+  - 6 colour variants in `tetrex/` subdirectory ✓ *(provided)*
 - `gabardine.webp` ✓ *(provided)*
   - 3 colour variants in `gabardine/` subdirectory ✓ *(provided)*
 - `poly-viscose-suiting.jpg`

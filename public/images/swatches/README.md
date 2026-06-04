@@ -36,7 +36,7 @@ grid in the expanded glossary panel.
 - `rubberised-oxford.webp` ✓ *(provided)*
   - 2 colour variants in `rubberised-oxford/` subdirectory ✓ *(provided)*
 
-### Corporate Apparel
+### Corporate and Promotional Apparel
 - `lacoste-pique.webp` ✓ *(provided)*
   - 13 colour variants in `lacoste-pique/` subdirectory ✓ *(provided)*
 - `cotton-pique.jpg`
@@ -67,8 +67,6 @@ grid in the expanded glossary panel.
   - 4 colour variants in `bull-denim/` subdirectory ✓ *(provided)*
 - `cotton-poly-denim.webp` ✓ *(provided)*
   - 3 weight×colour variants in `cotton-poly-denim/` subdirectory ✓ *(provided)*
-
-### Promotional & Gifts
 - `loomstate-calico.webp` ✓ *(provided)*
 - `combed-cotton-jersey-180g.jpg`
 - `brushed-cotton-twill.jpg`

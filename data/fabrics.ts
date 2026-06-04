@@ -11,8 +11,7 @@ export interface FabricCare {
 
 export type FabricGroup =
   | 'Workwear & PPE'
-  | 'Corporate Apparel'
-  | 'Promotional & Gifts'
+  | 'Corporate and Promotional Apparel'
   | 'Sports'
   | 'Schoolwear'
 
@@ -42,8 +41,7 @@ export interface FabricEntry {
 
 export const fabricGroups: FabricGroup[] = [
   'Workwear & PPE',
-  'Corporate Apparel',
-  'Promotional & Gifts',
+  'Corporate and Promotional Apparel',
   'Sports',
   'Schoolwear',
 ]
@@ -53,7 +51,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polycotton-twill-80-20',
     name: '80/20 Poly-Cotton Twill',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: '80% Polyester, 20% Cotton',
     weave: 'Twill Weave',
@@ -145,7 +143,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'poly-cotton-poplin',
     name: '65/35 Poly-Cotton Poplin (Shirting)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '115g/m²',
     composition: '65% Polyester, 35% Cotton',
     weave: 'Plain Weave',
@@ -327,7 +325,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'lacoste-pique-polyester',
     name: 'Lacoste / Pique (100% Polyester)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: '100% Polyester',
     weave: 'Pique Knit (Lacoste / honeycomb tuck-and-loop)',
@@ -360,7 +358,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'cotton-pique',
     name: '100% Cotton Pique',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '180g/m²',
     composition: '100% Combed Cotton',
     weave: 'Pique Knit',
@@ -378,7 +376,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'stretch-poplin',
     name: 'Stretch Poplin',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: 'Polyester / Cotton with Spandex',
     weave: 'Plain Weave Poplin with Elastane',
@@ -424,7 +422,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'chambray-polycotton',
     name: '65/35 Poly-Cotton Chambray',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: '65% Polyester, 35% Cotton',
     weave: 'Plain Weave (Chambray — white warp / coloured weft)',
@@ -448,7 +446,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'cotton-shirting-twill',
     name: '100% Cotton Shirting Twill',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '145g/m²',
     composition: '100% Cotton',
     weave: 'Twill Weave',
@@ -472,7 +470,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'cotton-poplin',
     name: '100% Cotton Poplin',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '125–130g/m²',
     composition: '100% Cotton',
     weave: 'Plain Weave Poplin',
@@ -498,7 +496,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polyester-satin-blouse',
     name: 'Polyester Satin Weave',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '110g/m²',
     composition: '100% Polyester',
     weave: 'Satin Weave',
@@ -515,7 +513,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'brushed-fleece',
     name: 'Brushed Fleece',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: 'Cotton / Polyester Blend',
     weave: 'Brushed Knit Fleece',
@@ -538,7 +536,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polar-fleece',
     name: 'Polar Fleece (100% Polyester)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Various',
     composition: '100% Polyester',
     weave: 'Brushed knit (synthetic wool-like)',
@@ -570,7 +568,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'softshell-3-layer',
     name: '3-Layer Softshell',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '~325g/m²',
     composition: '100% Polyester',
     weave: '3-layer laminate — woven shell, membrane, bonded fleece inner',
@@ -596,7 +594,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'baby-gabardine',
     name: 'Baby Gabardine (80/20 Poly-Viscose)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: 'Lightweight',
     composition: '80% Polyester, 20% Viscose',
     weave: 'Twill Weave (lightweight gabardine)',
@@ -624,7 +622,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'tetrex-poly-viscose',
     name: 'Tetrex (Poly-Viscose Blend)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '185g/m²',
     composition: '65% Polyester, 35% Viscose',
     weave: 'Plain Weave',
@@ -650,7 +648,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'gabardine-polyester',
     name: 'Gabardine (100% Polyester)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '210g/m²',
     composition: '100% Polyester',
     weave: 'Tight Twill Weave',
@@ -673,7 +671,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'poly-viscose-suiting',
     name: 'Poly-Viscose Suiting',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '280g/m²',
     composition: '70% Polyester, 30% Viscose',
     weave: 'Plain Weave',
@@ -690,7 +688,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'cotton-denim',
     name: '100% Cotton Denim',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '4.5oz (~152g/m²)',
     composition: '100% Combed Cotton',
     weave: 'Twill Weave (Denim)',
@@ -707,7 +705,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'bull-denim',
     name: 'Bull Denim (100% Cotton, 275gsm)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '275g/m²',
     composition: '100% Cotton',
     weave: '3x1 Twill (Bull Denim)',
@@ -731,7 +729,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'cotton-poly-denim',
     name: 'Cotton-Poly Denim (75/25)',
-    group: 'Corporate Apparel',
+    group: 'Corporate and Promotional Apparel',
     weight: '255–312g/m² (9oz · 11.5oz)',
     composition: '75% Cotton, 25% Polyester',
     weave: 'Twill Weave (Denim)',
@@ -756,7 +754,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'combed-cotton-jersey-180g',
     name: '100% Combed Cotton Jersey (180g)',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '180g/m²',
     composition: '100% Ring-Spun Combed Cotton',
     weave: 'Single Jersey Knit',
@@ -774,7 +772,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'brushed-cotton-twill',
     name: 'Brushed Cotton Twill',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '260g/m²',
     composition: '100% Brushed Cotton',
     weave: 'Twill Weave',
@@ -791,7 +789,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'acrylic-rib-knit',
     name: '100% Acrylic Rib Knit',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '—',
     composition: '100% Acrylic',
     weave: 'Rib Knit',
@@ -808,7 +806,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'loomstate-calico',
     name: 'Loomstate (100% Cotton Calico)',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '130–510g/m²',
     composition: '100% Cotton',
     weave: 'Plain Weave (unbleached, undyed loomstate)',
@@ -826,7 +824,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polyester-600d',
     name: '600D Polyester',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '400g/m²',
     composition: '100% Polyester, 600 Denier',
     weave: 'Oxford Weave (600×600 denier)',
@@ -851,7 +849,7 @@ export const fabrics: FabricEntry[] = [
   {
     slug: 'polyester-pongee-190t',
     name: '190T Polyester Pongee',
-    group: 'Promotional & Gifts',
+    group: 'Corporate and Promotional Apparel',
     weight: '—',
     composition: '100% Polyester, 190 Thread Count',
     weave: 'Pongee Weave',

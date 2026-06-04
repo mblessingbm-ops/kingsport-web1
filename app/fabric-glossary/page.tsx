@@ -172,6 +172,14 @@ function FabricRow({
     { label: 'Finish',      value: fabric.finish },
   ].filter((s) => s.value && s.value !== '—' && s.value !== 'N/A')
 
+  // Which colourway is currently shown in the hero image. `null` means the
+  // fabric's default `swatchImage` is shown (the "as-supplied" hero).
+  const [selectedColour, setSelectedColour] = useState<{ name: string; image: string } | null>(null)
+
+  // The hero displays the selected colour if any, else the fabric default.
+  const heroImage = selectedColour?.image ?? fabric.swatchImage
+  const heroColourName = selectedColour?.name ?? null
+
   return (
     <div
       id={fabric.slug}
@@ -220,11 +228,17 @@ function FabricRow({
       {isOpen && (
         <div className="pb-10 pl-9 pr-2 -mt-1 animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 mb-8">
-            {/* Large swatch */}
+            {/* Large swatch — reflects the colour swatch selection below */}
             <div>
-              <SwatchHero fabric={fabric} />
+              <SwatchHero
+                image={heroImage}
+                fabricName={fabric.name}
+                colourName={heroColourName}
+              />
               <p className="text-[9px] font-sans text-charcoal-600/30 tracking-wide mt-2 text-center uppercase">
-                Fabric swatch — actual texture may vary slightly
+                {heroColourName
+                  ? `Showing: ${heroColourName} · click another colourway to change`
+                  : 'Fabric swatch — click a colourway below to view it here'}
               </p>
             </div>
 
@@ -268,7 +282,12 @@ function FabricRow({
               </div>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2.5">
                 {fabric.colourSwatches.map((c) => (
-                  <ColourSwatch key={c.name} colour={c} />
+                  <ColourSwatch
+                    key={c.name}
+                    colour={c}
+                    isActive={selectedColour?.name === c.name}
+                    onSelect={() => setSelectedColour(c)}
+                  />
                 ))}
               </div>
             </div>
@@ -353,14 +372,31 @@ function SwatchThumb({ fabric, size }: { fabric: FabricEntry; size: number }) {
   )
 }
 
-function ColourSwatch({ colour }: { colour: { name: string; image: string } }) {
+function ColourSwatch({
+  colour,
+  isActive,
+  onSelect,
+}: {
+  colour: { name: string; image: string }
+  isActive: boolean
+  onSelect: () => void
+}) {
   const [errored, setErrored] = useState(false)
   return (
-    <div className="group flex flex-col items-center">
+    <button
+      type="button"
+      onClick={onSelect}
+      aria-pressed={isActive}
+      title={`View ${colour.name}`}
+      className="group flex flex-col items-center cursor-pointer focus:outline-none"
+    >
       <div
-        className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900 ring-1 ring-charcoal-800/8 transition-transform duration-200 group-hover:scale-[1.04] group-hover:ring-oxblood-700/50"
+        className={`relative w-full aspect-square overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900 transition-all duration-200 group-hover:scale-[1.04] group-focus-visible:scale-[1.04] ${
+          isActive
+            ? 'ring-2 ring-oxblood-700 ring-offset-2 ring-offset-cream-50 shadow-md'
+            : 'ring-1 ring-charcoal-800/8 group-hover:ring-oxblood-700/50'
+        }`}
         style={{ borderRadius: 4 }}
-        title={colour.name}
       >
         {!errored && (
           <Image
@@ -378,31 +414,64 @@ function ColourSwatch({ colour }: { colour: { name: string; image: string } }) {
           </div>
         )}
       </div>
-      <span className="mt-1.5 font-sans text-[10px] text-charcoal-700/70 text-center leading-tight group-hover:text-charcoal-800 transition-colors">
+      <span
+        className={`mt-1.5 font-sans text-[10px] text-center leading-tight transition-colors ${
+          isActive
+            ? 'text-oxblood-800 font-medium'
+            : 'text-charcoal-700/70 group-hover:text-charcoal-800'
+        }`}
+      >
         {colour.name}
       </span>
-    </div>
+    </button>
   )
 }
 
-function SwatchHero({ fabric }: { fabric: FabricEntry }) {
+function SwatchHero({
+  image,
+  fabricName,
+  colourName,
+}: {
+  image: string | undefined
+  fabricName: string
+  colourName: string | null
+}) {
   const [errored, setErrored] = useState(false)
+  // Reset error state whenever the displayed image changes
+  // (otherwise a previous failed colour would prevent the new one from rendering)
+  useEffect(() => { setErrored(false) }, [image])
+
+  const alt = colourName
+    ? `${fabricName} swatch — ${colourName}`
+    : `${fabricName} fabric swatch close-up`
+
   return (
     <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-charcoal-700 to-charcoal-900 group">
-      {fabric.swatchImage && !errored && (
+      {image && !errored && (
         <Image
-          src={fabric.swatchImage}
-          alt={`${fabric.name} fabric swatch close-up`}
+          key={image} // forces a fresh DOM image element on swap (no fade between cached + new)
+          src={image}
+          alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 260px"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           onError={() => setErrored(true)}
         />
       )}
-      {(errored || !fabric.swatchImage) && (
+      {(errored || !image) && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
           <Layers size={32} className="text-white/15" />
           <span className="text-white/20 font-display text-sm italic">swatch · pending</span>
+        </div>
+      )}
+      {colourName && (
+        <div className="absolute bottom-0 inset-x-0 px-3 py-2 bg-gradient-to-t from-charcoal-900/85 to-transparent">
+          <p className="text-[9px] font-sans tracking-widest uppercase text-cream-50/55">
+            Colour
+          </p>
+          <p className="font-display italic text-cream-50 text-[15px] leading-tight">
+            {colourName}
+          </p>
         </div>
       )}
     </div>

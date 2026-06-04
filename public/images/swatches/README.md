@@ -73,7 +73,8 @@ grid in the expanded glossary panel.
 - `combed-cotton-jersey-180g.jpg`
 - `brushed-cotton-twill.jpg`
 - `acrylic-rib-knit.jpg`
-- `polyester-600d.jpg`
+- `polyester-600d.webp` ✓ *(provided)*
+  - 6 colour variants in `polyester-600d/` subdirectory ✓ *(provided)*
 - `polyester-pongee-190t.jpg`
 
 ### Sports

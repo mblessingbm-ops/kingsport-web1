@@ -55,19 +55,16 @@ grid in the expanded glossary panel.
   - 12 colour variants in `polar-fleece/` subdirectory ✓ *(provided)*
 - `softshell-3-layer.webp` ✓ *(provided)*
   - 6 colour variants in `softshell-3-layer/` subdirectory ✓ *(provided)*
-- `cotton-elastane-chino.jpg`
 - `tetrex.webp` ✓ *(provided)*
   - 6 colour variants in `tetrex/` subdirectory ✓ *(provided)*
 - `gabardine.webp` ✓ *(provided)*
   - 3 colour variants in `gabardine/` subdirectory ✓ *(provided)*
 - `poly-viscose-suiting.jpg`
-- `poly-viscose-blend.jpg`
 - `cotton-denim.webp` ✓ *(provided)*
 - `bull-denim.webp` ✓ *(provided)*
   - 4 colour variants in `bull-denim/` subdirectory ✓ *(provided)*
 - `cotton-poly-denim.webp` ✓ *(provided)*
   - 3 weight×colour variants in `cotton-poly-denim/` subdirectory ✓ *(provided)*
-- `heavy-duty-denim.jpg`
 
 ### Promotional & Gifts
 - `loomstate-calico.webp` ✓ *(provided)*

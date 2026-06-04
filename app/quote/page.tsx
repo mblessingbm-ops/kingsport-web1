@@ -24,8 +24,58 @@ export default function QuotePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
-    // Simulate submission
-    await new Promise(r => setTimeout(r, 1500))
+
+    // Build a clean text email body for the sales team
+    const itemsBlock = items
+      .map((item, i) => {
+        const product = getProduct(item.productId)
+        return [
+          `${i + 1}. ${item.productName}`,
+          `   ID: ${item.productId}`,
+          product?.slug && `   Slug: ${product.slug}`,
+          `   Quantity: ${item.quantity} units`,
+          item.color && `   Colour: ${item.color}`,
+          item.size && `   Size: ${item.size}`,
+          item.notes && `   Notes: ${item.notes}`,
+        ]
+          .filter(Boolean)
+          .join('\n')
+      })
+      .join('\n\n')
+
+    const bodyLines = [
+      'New quote request — submitted via kingsport.co.zw',
+      '====================================================',
+      '',
+      '— Contact —',
+      `Company:     ${form.companyName}`,
+      `Contact:     ${form.contactName}`,
+      `Email:       ${form.email}`,
+      `Phone:       ${form.phone}`,
+      form.deliveryDate && `Required by: ${form.deliveryDate}`,
+      '',
+      `— Products (${items.length} item${items.length === 1 ? '' : 's'}) —`,
+      '',
+      itemsBlock,
+      '',
+      form.additionalNotes && '— Additional Notes —',
+      form.additionalNotes && form.additionalNotes,
+    ].filter(Boolean).join('\n')
+
+    const subject = `Quote Request — ${form.companyName} (${items.length} item${items.length === 1 ? '' : 's'})`
+    const mailto = `mailto:sales@kingsport.co.zw?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`
+
+    // Open the user's mail client with everything pre-filled.
+    // Using window.location triggers the OS handler reliably without
+    // navigating away from the page (the OS opens the mail app in a
+    // separate process; the tab stays on the current URL).
+    if (typeof window !== 'undefined') {
+      window.location.href = mailto
+    }
+
+    // Brief delay so the OS handoff completes before we tear the form
+    // down — then move to the success state.
+    await new Promise(r => setTimeout(r, 800))
     setSubmitted(true)
     clearCart()
     setSubmitting(false)
@@ -46,10 +96,13 @@ export default function QuotePage() {
             <Check size={28} className="text-white" />
           </div>
           <h1 className="font-display text-4xl md:text-5xl font-light text-charcoal-800 mb-4">
-            Quote Request <span className="italic text-oxblood-800">Received</span>
+            Quote Request <span className="italic text-oxblood-800">Sent</span>
           </h1>
-          <p className="text-charcoal-600/70 font-sans leading-relaxed mb-8">
-            Thank you. Our team will review your request and get back to you with a detailed quotation within 1–2 business days.
+          <p className="text-charcoal-600/70 font-sans leading-relaxed mb-4">
+            Your mail client just opened with the request pre-filled for <b className="text-charcoal-800">sales@kingsport.co.zw</b>. Hit send there and our team will get back to you with a detailed quotation within 1–2 business days.
+          </p>
+          <p className="text-xs text-charcoal-600/40 font-sans mb-8 leading-relaxed">
+            Didn&apos;t see your mail client open? Email <a className="text-oxblood-700 hover:underline" href="mailto:sales@kingsport.co.zw">sales@kingsport.co.zw</a> directly or call <b className="text-charcoal-700">+263 24 277 0712</b>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

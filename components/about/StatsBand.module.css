@@ -1,0 +1,153 @@
+/* ── Stats band — scroll-triggered reveal ─────────────────────────
+   Recreated from the Claude Design handoff "Kingsport About — Stats
+   Animation". The accent rule draws out, dividers grow down, numbers
+   count up while rising from behind a clip mask, labels trail.
+   Active state is toggled via the .isIn class (set by JS when the
+   section crosses the 35% intersection threshold). ────────────── */
+
+.stats {
+  color: #f4f1ec;
+}
+
+/* ── Eyebrow ────────────────────────────────────────────────────── */
+.eyebrow {
+  /* layout (gap/margin) handled by Tailwind in TSX */
+}
+.rule {
+  width: 56px;
+  height: 1px;
+  background: #ac1840;          /* oxblood-700 */
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(.16,1,.3,1);
+}
+.eyebrowLabel {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #6f6a64;               /* mute-on-dark */
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity .9s ease .2s,
+    transform .9s cubic-bezier(.16,1,.3,1) .2s;
+}
+
+/* ── Row ────────────────────────────────────────────────────────── */
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.stat {
+  position: relative;
+  padding: 4px 0 4px 40px;
+}
+.stat:first-child {
+  padding-left: 0;
+}
+
+/* Vertical divider that grows downward */
+.divider {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: rgba(244, 241, 236, 0.16);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform .9s cubic-bezier(.16,1,.3,1);
+}
+.stat:first-child .divider {
+  display: none;
+}
+
+/* Number — clip-mask reveal + rise */
+.numMask {
+  overflow: hidden;
+  display: block;
+}
+.num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(46px, 4.4vw, 92px);
+  line-height: 1;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  color: #f4f1ec;
+  display: block;
+  font-variant-numeric: lining-nums tabular-nums;
+  transform: translateY(105%);
+  transition: transform 1.05s cubic-bezier(.16,1,.3,1);
+}
+
+.statLabel {
+  margin-top: 26px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  line-height: 1.45;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #6f6a64;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+/* ── Active state ───────────────────────────────────────────────── */
+.isIn .rule { transform: scaleX(1); }
+.isIn .eyebrowLabel { opacity: 1; transform: translateX(0); }
+.isIn .divider { transform: scaleY(1); }
+.isIn .num { transform: translateY(0); }
+.isIn .statLabel { opacity: 1; transform: translateY(0); }
+
+/* Per-column stagger (matches the JS BASE_DELAY in StatsBand.tsx) */
+.isIn .stat:nth-child(1) .divider,
+.isIn .stat:nth-child(1) .num,
+.isIn .stat:nth-child(1) .statLabel { transition-delay: .05s; }
+.isIn .stat:nth-child(2) .divider,
+.isIn .stat:nth-child(2) .num,
+.isIn .stat:nth-child(2) .statLabel { transition-delay: .17s; }
+.isIn .stat:nth-child(3) .divider,
+.isIn .stat:nth-child(3) .num,
+.isIn .stat:nth-child(3) .statLabel { transition-delay: .29s; }
+.isIn .stat:nth-child(4) .divider,
+.isIn .stat:nth-child(4) .num,
+.isIn .stat:nth-child(4) .statLabel { transition-delay: .41s; }
+.isIn .stat:nth-child(5) .divider,
+.isIn .stat:nth-child(5) .num,
+.isIn .stat:nth-child(5) .statLabel { transition-delay: .53s; }
+
+/* Labels trail their numbers slightly */
+.isIn .stat:nth-child(1) .statLabel { transition-delay: .30s; }
+.isIn .stat:nth-child(2) .statLabel { transition-delay: .42s; }
+.isIn .stat:nth-child(3) .statLabel { transition-delay: .54s; }
+.isIn .stat:nth-child(4) .statLabel { transition-delay: .66s; }
+.isIn .stat:nth-child(5) .statLabel { transition-delay: .78s; }
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .stat { padding-left: 28px; }
+  .num  { font-size: clamp(40px, 5vw, 64px); }
+}
+@media (max-width: 760px) {
+  .row { grid-template-columns: repeat(2, 1fr); gap: 52px 0; }
+  .stat { padding-left: 28px; }
+  .stat:nth-child(odd) { padding-left: 0; }
+  .stat:nth-child(odd) .divider { display: none; }
+  .num { font-size: clamp(48px, 11vw, 80px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rule         { transform: scaleX(1); }
+  .eyebrowLabel { opacity: 1; transform: none; }
+  .divider      { transform: scaleY(1); }
+  .num          { transform: none; }
+  .statLabel    { opacity: 1; transform: none; }
+}

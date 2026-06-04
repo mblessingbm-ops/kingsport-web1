@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ChevronDown, ArrowRight } from 'lucide-react'
+import StatsBand from '@/components/about/StatsBand'
 
 export default function AboutPage() {
   return (
@@ -146,38 +147,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Section 4 — The Numbers ───────────────────────────────── */}
-      <section className="bg-charcoal-900 py-24 md:py-32 grain-overlay">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-          <div className="flex items-center gap-4 mb-16">
-            <span className="block w-10 h-px bg-oxblood-700" />
-            <span className="text-white/30 text-[10px] tracking-[0.35em] uppercase font-sans">
-              By the Numbers
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-0 lg:divide-x lg:divide-white/8">
-            {[
-              { number: '26+',    label: 'Years in\nOperation' },
-              { number: '6',      label: 'Product\nCategories' },
-              { number: '500+',   label: 'Products\nin Range' },
-              { number: '1,000+', label: 'Clients\nServed' },
-              { number: '100%',   label: 'Locally\nProduced' },
-            ].map((stat) => (
-              <div key={stat.label} className="lg:px-10 first:pl-0 last:pr-0">
-                <p className="font-display text-6xl md:text-7xl font-light text-white leading-none mb-3">
-                  {stat.number}
-                </p>
-                <p className="text-white/30 text-[10px] tracking-widest uppercase font-sans leading-relaxed whitespace-pre-line">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      {/* ── Section 4 — By the Numbers (scroll-animated) ──────────── */}
+      <StatsBand />
 
       {/* ── Section 5 — How We Make Things (Photo Editorial Grid) ── */}
       <section className="bg-white py-24 md:py-32">

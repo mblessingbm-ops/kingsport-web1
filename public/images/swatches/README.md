@@ -29,6 +29,8 @@ grid in the expanded glossary panel.
   - 2 colour variants in `hi-vis-vesting/` subdirectory ✓ *(provided)*
 - `polyester-mesh.webp` ✓ *(provided)*
   - 4 colour variants in `polyester-mesh/` subdirectory ✓ *(provided)*
+- `oxford-waterproof-420d.webp` ✓ *(provided)*
+  - 13 colour variants in `oxford-waterproof-420d/` subdirectory ✓ *(provided)*
 - `rubberised-oxford.webp` ✓ *(provided)*
   - 2 colour variants in `rubberised-oxford/` subdirectory ✓ *(provided)*
 

@@ -42,6 +42,8 @@ grid in the expanded glossary panel.
 - `cotton-pique.jpg`
 - `cotton-poplin.webp` ✓ *(provided)*
   - 7 colour variants in `cotton-poplin/` subdirectory ✓ *(provided)*
+- `stretch-poplin.webp` ✓ *(provided)*
+  - 26 colour variants in `stretch-poplin/` subdirectory ✓ *(provided)*
 - `chambray.webp` ✓ *(provided)*
   - 4 colour variants in `chambray/` subdirectory ✓ *(provided)*
 - `cotton-shirting-twill.webp` ✓ *(provided)*

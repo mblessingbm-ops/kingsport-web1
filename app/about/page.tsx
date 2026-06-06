@@ -181,17 +181,20 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* 2×2 production-flow grid: Cutting → Sewing → Embroidery → Printing */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* 5-panel production-flow grid (2 + 3 asymmetric editorial layout):
+              Cutting → Sewing → Embroidery → Printing → Finishing.
+              On desktop the foundation steps (Cutting, Sewing) get larger top
+              panels; the branding & QC steps tile across the bottom. */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
 
-            {/* 1. Cutting */}
-            <div className="relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+            {/* 1. Cutting — top left */}
+            <div className="lg:col-span-6 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
               <Image
                 src="/images/about/cutting-department.jpg"
                 alt="Kingsport cutting department — worker rolling out fabric on the cutting table, colour-coded stock shelves behind"
                 fill
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                sizes="(max-width: 640px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5">
@@ -202,14 +205,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 2. Sewing */}
-            <div className="relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+            {/* 2. Sewing — top right */}
+            <div className="lg:col-span-6 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
               <Image
                 src="/images/about/sewing-department.jpg"
                 alt="Kingsport sewing department — rows of industrial sewing machines on the Harare factory floor"
                 fill
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                sizes="(max-width: 640px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5">
@@ -220,14 +223,14 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 3. Embroidery */}
-            <div className="relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+            {/* 3. Embroidery — bottom left */}
+            <div className="lg:col-span-4 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
               <Image
                 src="/images/about/embroidery-department.jpg"
                 alt="Kingsport embroidery department — industrial multi-head embroidery machines"
                 fill
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                sizes="(max-width: 640px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5">
@@ -238,20 +241,38 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 4. Printing */}
-            <div className="relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+            {/* 4. Printing — bottom centre */}
+            <div className="lg:col-span-4 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
               <Image
                 src="/images/about/printing-department.jpg"
                 alt="Kingsport printing department — screen printing carousel"
                 fill
                 className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
-                sizes="(max-width: 640px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5">
                 <p className="font-display text-xl font-light text-white italic">Printing</p>
                 <p className="text-white/60 text-[10px] font-sans tracking-widest uppercase mt-1">
                   Screen print &amp; sublimation
+                </p>
+              </div>
+            </div>
+
+            {/* 5. Finishing — bottom right */}
+            <div className="lg:col-span-4 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+              <Image
+                src="/images/about/finishing-department.jpg"
+                alt="Kingsport finishing department — folded garments staged for QC and packaging, batch shelves behind"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
+              <div className="absolute bottom-5 left-5">
+                <p className="font-display text-xl font-light text-white italic">Finishing</p>
+                <p className="text-white/60 text-[10px] font-sans tracking-widest uppercase mt-1">
+                  Quality, packing &amp; dispatch
                 </p>
               </div>
             </div>

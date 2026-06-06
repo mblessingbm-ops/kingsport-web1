@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import StatsBand from '@/components/about/StatsBand'
 
@@ -132,12 +133,19 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Placeholder image below pull quote */}
-              <div className="mt-12 relative aspect-[4/3] bg-charcoal-800 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900 flex items-end p-6">
-                  {/* Replace with: <Image src="/images/about/factory-detail.jpg" fill className="object-cover opacity-60" alt="Factory detail" /> */}
-                  <p className="text-white/20 text-[10px] font-sans tracking-widest uppercase">
-                    Factory photography — coming soon
+              {/* Sewing floor — Harare factory */}
+              <div className="mt-12 relative aspect-[4/3] bg-charcoal-800 overflow-hidden group">
+                <Image
+                  src="/images/about/sewing-floor.jpg"
+                  alt="Kingsport sewing floor — industrial machines, thread spools, and folded denim stock in the Harare factory"
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+                {/* Subtle bottom gradient + caption stamp */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal-900/85 via-charcoal-900/30 to-transparent p-5">
+                  <p className="text-white/85 text-[10px] font-sans tracking-widest uppercase">
+                    Sewing floor · Harare
                   </p>
                 </div>
               </div>

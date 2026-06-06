@@ -36,6 +36,7 @@ export const journalPosts: JournalPost[] = [
     date: '2024-11-18',
     readTime: '3 min read',
     coverImage: '/images/journal/event-checklist.jpg',
+    imageReady: true,
     embeddedProductIds: ['event-001', 'event-002', 'event-005'],
   },
 ]

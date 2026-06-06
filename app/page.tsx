@@ -345,10 +345,14 @@ export default function HomePage() {
             </div>
           </div>
           <div className={styles.madeImage}>
-            <div className="ph">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 16l5-4 4 3 3-2 6 5"/><circle cx="9" cy="10" r="1.2"/></svg>
-              <div className="label">Factory floor · Harare</div>
-              <div>photo · pending</div>
+            <div className="photo">
+              <Image
+                src="/images/home/factory-floor.jpg"
+                alt="Kingsport factory floor in Harare — industrial production line on the workshop floor"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
             <div className="footerTag"><span>Harare · Zimbabwe</span><span className="live">Live · operating 24/6</span></div>
           </div>

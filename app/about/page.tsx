@@ -184,16 +184,20 @@ export default function AboutPage() {
           {/* Asymmetric editorial grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
 
-            {/* Panel 1 — large, left, tall */}
+            {/* Panel 1 — large, left, tall — Sewing floor */}
             <div className="lg:col-span-7 relative aspect-[4/3] lg:aspect-auto lg:min-h-[500px] bg-charcoal-800 overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900">
-                {/* Replace with: <Image src="/images/about/cutting.jpg" fill className="object-cover opacity-70 group-hover:opacity-80 group-hover:scale-[1.02] transition-all duration-700" alt="Fabric cutting" /> */}
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent" />
+              <Image
+                src="/images/about/sewing-department.jpg"
+                alt="Kingsport sewing department — rows of industrial sewing machines on the Harare factory floor"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-6">
-                <p className="font-display text-2xl font-light text-white italic">Cutting</p>
-                <p className="text-white/30 text-[10px] font-sans tracking-widest uppercase mt-1">
-                  Fabric preparation
+                <p className="font-display text-2xl font-light text-white italic">Sewing</p>
+                <p className="text-white/60 text-[10px] font-sans tracking-widest uppercase mt-1">
+                  Assembly &amp; seaming
                 </p>
               </div>
             </div>
@@ -201,39 +205,44 @@ export default function AboutPage() {
             {/* Panels 2 + 3 — stacked right */}
             <div className="lg:col-span-5 grid grid-rows-2 gap-4">
 
+              {/* Panel 2 — Embroidery */}
               <div className="relative aspect-[4/3] lg:aspect-auto bg-charcoal-700 overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal-600 to-charcoal-800">
-                  {/* Replace with: <Image src="/images/about/stitching.jpg" fill className="object-cover opacity-70 group-hover:opacity-80 group-hover:scale-[1.02] transition-all duration-700" alt="Stitching" /> */}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent" />
+                <Image
+                  src="/images/about/embroidery-department.jpg"
+                  alt="Kingsport embroidery department — industrial multi-head embroidery machines"
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
                 <div className="absolute bottom-5 left-5">
-                  <p className="font-display text-xl font-light text-white italic">Stitching</p>
-                  <p className="text-white/30 text-[10px] font-sans tracking-widest uppercase mt-1">
-                    Assembly &amp; seaming
+                  <p className="font-display text-xl font-light text-white italic">Embroidery</p>
+                  <p className="text-white/60 text-[10px] font-sans tracking-widest uppercase mt-1">
+                    Branded application
                   </p>
                 </div>
               </div>
 
-              <div className="relative aspect-[4/3] lg:aspect-auto bg-oxblood-950 overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-oxblood-900 to-charcoal-900">
-                  {/* Replace with: <Image src="/images/about/finishing.jpg" fill className="object-cover opacity-50 group-hover:opacity-60 group-hover:scale-[1.02] transition-all duration-700" alt="Finishing" /> */}
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 to-transparent" />
+              {/* Panel 3 — Printing */}
+              <div className="relative aspect-[4/3] lg:aspect-auto bg-charcoal-800 overflow-hidden group">
+                <Image
+                  src="/images/about/printing-department.jpg"
+                  alt="Kingsport printing department — screen printing carousel"
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/10 to-transparent pointer-events-none" />
                 <div className="absolute bottom-5 left-5">
-                  <p className="font-display text-xl font-light text-white italic">Finishing</p>
-                  <p className="text-white/30 text-[10px] font-sans tracking-widest uppercase mt-1">
-                    Quality &amp; dispatch
+                  <p className="font-display text-xl font-light text-white italic">Printing</p>
+                  <p className="text-white/60 text-[10px] font-sans tracking-widest uppercase mt-1">
+                    Screen print &amp; sublimation
                   </p>
                 </div>
               </div>
 
             </div>
           </div>
-
-          {/* Production note */}
-          <p className="text-charcoal-600/40 font-sans text-xs tracking-wide mt-6 text-right italic">
-            Photography coming soon — production documentation in progress.
-          </p>
 
         </div>
       </section>

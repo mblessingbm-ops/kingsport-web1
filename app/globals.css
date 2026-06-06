@@ -300,4 +300,29 @@ body {
     color: #999;
     font-family: sans-serif;
   }
+
+  /* Hide all images on print so the page can't be exported
+     to PDF as a workaround for saving them */
+  img, picture {
+    display: none !important;
+  }
+}
+
+/* ── Image protection ────────────────────────────────────────────────
+   Companion to <ImageProtection /> in the root layout. CSS handles the
+   passive blocks (drag, selection, iOS long-press menu) so the JS
+   handler can focus on right-click / save shortcuts. */
+img,
+picture,
+[data-protected] {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  /* Disable the iOS long-press "Save Image" menu */
+  -webkit-touch-callout: none;
 }

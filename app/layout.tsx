@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import QuoteWidget from '@/components/ui/QuoteWidget'
+import ImageProtection from '@/components/ui/ImageProtection'
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ImageProtection />
         <Navbar />
         <main>{children}</main>
         <Footer />

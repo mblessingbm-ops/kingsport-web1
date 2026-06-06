@@ -74,5 +74,9 @@ export interface JournalPost {
   date: string
   readTime: string
   coverImage: string
+  /** Set to `true` once a real photograph has been added at the
+      `coverImage` path. Posts where this is false (or absent) render
+      the dark gradient placeholder instead of the broken image. */
+  imageReady?: boolean
   embeddedProductIds: string[]
 }

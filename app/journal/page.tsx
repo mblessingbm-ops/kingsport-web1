@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import { journalPosts } from '@/data/journal'
@@ -52,9 +53,23 @@ export default function JournalIndexPage() {
             >
               {/* Cover */}
               <div className="relative aspect-[16/9] bg-charcoal-800 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900" />
+                {post.imageReady ? (
+                  <>
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                    {/* Bottom gradient keeps the category label legible */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-transparent to-transparent pointer-events-none" />
+                  </>
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900" />
+                )}
                 <div className="absolute bottom-4 left-4">
-                  <span className="text-white/20 text-[10px] font-sans tracking-widest uppercase">
+                  <span className={`text-[10px] font-sans tracking-widest uppercase ${post.imageReady ? 'text-white/70' : 'text-white/20'}`}>
                     {post.category}
                   </span>
                 </div>

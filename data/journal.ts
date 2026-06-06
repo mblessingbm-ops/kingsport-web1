@@ -11,6 +11,7 @@ export const journalPosts: JournalPost[] = [
     date: '2024-09-12',
     readTime: '4 min read',
     coverImage: '/images/journal/ppe-kit-guide.jpg',
+    imageReady: true,
     embeddedProductIds: ['ppe-001', 'ppe-004', 'ppe-006', 'ppe-007'],
   },
   {

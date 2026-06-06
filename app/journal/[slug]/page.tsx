@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ChevronRight } from 'lucide-react'
 import { getJournalPostBySlug } from '@/data/journal'
@@ -215,13 +216,25 @@ export default function JournalPostPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Cover image placeholder */}
+      {/* Cover image — real photo when post.imageReady is true, gradient placeholder otherwise */}
       <div className="relative aspect-[16/9] bg-charcoal-800 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900" />
-        {/* Replace with <Image src={post.coverImage} fill className="object-cover" alt={post.title} /> */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/15 text-[10px] font-sans tracking-widest uppercase">
-          Photography coming soon
-        </div>
+        {post.imageReady ? (
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-charcoal-700 to-charcoal-900" />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/15 text-[10px] font-sans tracking-widest uppercase">
+              Photography coming soon
+            </div>
+          </>
+        )}
       </div>
 
       {/* Article body */}

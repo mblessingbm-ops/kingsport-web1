@@ -24,6 +24,7 @@ export const journalPosts: JournalPost[] = [
     date: '2024-10-03',
     readTime: '5 min read',
     coverImage: '/images/journal/uniform-brief-guide.jpg',
+    imageReady: true,
     embeddedProductIds: ['corp-001', 'corp-002', 'corp-004'],
   },
   {

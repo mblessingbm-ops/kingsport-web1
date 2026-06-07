@@ -859,7 +859,7 @@ export const fabrics: FabricEntry[] = [
       { label: 'Open and air dry after use' },
     ],
     suitedFor: 'Corporate branded umbrellas for events, promotions, and executive gifting.',
-    usedIn: ['Executive Umbrella', 'Ordinary Umbrella'],
+    usedIn: ['Executive Umbrella'],
     swatchImage: '/images/swatches/polyester-pongee-190t.jpg',
   },
 
@@ -1031,7 +1031,7 @@ export const fabrics: FabricEntry[] = [
       { label: 'Do not iron print areas' },
     ],
     suitedFor: 'Competitive and recreational team sports kits.',
-    usedIn: ['Soccer Kit', 'Netball Kit', 'Volleyball Kit'],
+    usedIn: ['Soccer Kit (Full Set)', 'Netball Kit', 'Volleyball Kit'],
     swatchImage: '/images/swatches/moisture-wicking-polyester-150g.jpg',
   },
 

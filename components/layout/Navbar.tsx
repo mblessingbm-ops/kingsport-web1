@@ -94,6 +94,20 @@ export default function Navbar() {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
+  // Close the mobile menu automatically when the viewport grows past
+  // the lg breakpoint (1024px) — the desktop nav takes over and the
+  // mobile panel would otherwise stay open invisibly behind it.
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileOpen(false)
+        setCatalogOpen(false)
+      }
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   return (
     <header className="fixed top-[18px] inset-x-0 z-50 pointer-events-none">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6">

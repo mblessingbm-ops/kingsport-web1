@@ -1,5 +1,6 @@
-import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
+import ContactForm from '@/components/contact/ContactForm'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -170,94 +171,3 @@ export default function ContactPage() {
   )
 }
 
-// Client component for the form
-function ContactForm() {
-  return (
-    <form className="space-y-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-            Full Name *
-          </label>
-          <input
-            required
-            type="text"
-            className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 placeholder:text-charcoal-600/30 focus:outline-none focus:border-oxblood-700 transition-colors"
-            placeholder="Your full name"
-          />
-        </div>
-        <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-            Company
-          </label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 placeholder:text-charcoal-600/30 focus:outline-none focus:border-oxblood-700 transition-colors"
-            placeholder="Your company name"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-            Email *
-          </label>
-          <input
-            required
-            type="email"
-            className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 placeholder:text-charcoal-600/30 focus:outline-none focus:border-oxblood-700 transition-colors"
-            placeholder="you@company.com"
-          />
-        </div>
-        <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-            Phone
-          </label>
-          <input
-            type="tel"
-            className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 placeholder:text-charcoal-600/30 focus:outline-none focus:border-oxblood-700 transition-colors"
-            placeholder="+263 77..."
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-          Subject *
-        </label>
-        <select
-          required
-          className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 focus:outline-none focus:border-oxblood-700 transition-colors appearance-none"
-        >
-          <option value="">Select a subject...</option>
-          <option>General Enquiry</option>
-          <option>Product Information</option>
-          <option>Quote Request</option>
-          <option>Partnership / Supplier</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
-          Message *
-        </label>
-        <textarea
-          required
-          rows={5}
-          className="w-full px-4 py-3 border border-charcoal-800/15 bg-cream-50 font-sans text-sm text-charcoal-800 placeholder:text-charcoal-600/30 focus:outline-none focus:border-oxblood-700 transition-colors resize-none"
-          placeholder="How can we help you?"
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="btn-glass-primary w-full py-4 font-sans font-medium text-sm tracking-widest uppercase flex items-center justify-center gap-2"
-      >
-        Send Message
-        <ArrowRight size={15} />
-      </button>
-    </form>
-  )
-}

@@ -113,21 +113,27 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop — soft blur for premium feel */}
       <div
         onClick={onClose}
         aria-hidden="true"
-        className={`fixed inset-0 bg-charcoal-900/60 z-40 transition-opacity duration-350 ${
+        className={`fixed inset-0 bg-charcoal-900/55 backdrop-blur-[3px] z-40 transition-opacity duration-[450ms] ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       />
 
-      {/* Drawer */}
+      {/* Drawer — decel-emphasis curve for an arrival that settles rather than snaps */}
       <aside
         role="dialog"
         aria-label="Imported Gifts Enquiry"
         aria-hidden={!isOpen}
-        className={`fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white z-50 shadow-2xl flex flex-col transition-transform duration-350 ease-in-out ${
+        style={{
+          transitionTimingFunction: isOpen
+            ? 'cubic-bezier(0.16, 1, 0.3, 1)'
+            : 'cubic-bezier(0.7, 0, 0.84, 0)',
+          transitionDuration: isOpen ? '480ms' : '320ms',
+        }}
+        className={`fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white z-50 shadow-2xl flex flex-col transition-transform will-change-transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

@@ -224,9 +224,30 @@ function FabricRow({
         )}
       </button>
 
-      {/* Expanded panel */}
-      {isOpen && (
-        <div className="pb-10 pl-9 pr-2 -mt-1 animate-fade-in">
+      {/* Expanded panel — CSS Grid expand/collapse for smooth height animation.
+          The outer grid container animates grid-template-rows 0fr → 1fr, the
+          overflow-hidden middle layer clips the content during the transition,
+          and the inner panel fades + rises so the reveal feels intentional
+          rather than snapping in. */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: isOpen ? '1fr' : '0fr',
+          transition: 'grid-template-rows 500ms cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+        aria-hidden={!isOpen}
+      >
+        <div style={{ overflow: 'hidden', minHeight: 0 }}>
+          <div
+            className="pb-10 pl-9 pr-2 -mt-1"
+            style={{
+              opacity: isOpen ? 1 : 0,
+              transform: isOpen ? 'translateY(0)' : 'translateY(-10px)',
+              transition: isOpen
+                ? 'opacity 360ms ease 160ms, transform 480ms cubic-bezier(0.16, 1, 0.3, 1) 160ms'
+                : 'opacity 200ms ease, transform 240ms cubic-bezier(0.7, 0, 0.84, 0)',
+            }}
+          >
           <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8 mb-8">
             {/* Large swatch — reflects the colour swatch selection below */}
             <div>
@@ -338,8 +359,9 @@ function FabricRow({
               </Link>
             </div>
           )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }

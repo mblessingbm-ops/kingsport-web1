@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import StatsBand from '@/components/about/StatsBand'
+import ChronicleTimeline from '@/components/about/ChronicleTimeline'
 
 export default function AboutPage() {
   return (
@@ -282,49 +283,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Section 6 — Timeline ──────────────────────────────────── */}
-      <section className="bg-cream-50 py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-          <div className="flex items-center gap-4 mb-16">
-            <span className="block w-10 h-px bg-oxblood-900" />
-            <span className="text-oxblood-700 text-[10px] tracking-[0.35em] uppercase font-sans">
-              Chronicle
-            </span>
-          </div>
-
-          <div className="max-w-3xl">
-            {[
-              { year: '1998', fact: 'Kingsport Investments (Pvt) Ltd incorporated in Harare, Zimbabwe.' },
-              { year: '2001', fact: 'First major institutional supply contract signed with a Harare-based government department.' },
-              { year: '2005', fact: 'PPE and industrial safety wear range formalised as a dedicated product category.' },
-              { year: '2010', fact: 'Expanded into event branding and large-format display materials.' },
-              { year: '2015', fact: 'In-house sublimation and embroidery capabilities established.' },
-              { year: '2019', fact: 'School wear and sports kit range launched in response to institutional demand.' },
-              { year: '2024', fact: 'Twenty-six years in operation. Still 100% locally produced. Still family-owned.' },
-            ].map((entry, i) => (
-              <div
-                key={entry.year}
-                className={`grid grid-cols-5 gap-8 py-8 ${
-                  i < 6 ? 'border-b border-charcoal-800/8' : ''
-                }`}
-              >
-                <div className="col-span-1">
-                  <p className="font-display text-4xl md:text-5xl font-light text-oxblood-700 leading-none">
-                    {entry.year}
-                  </p>
-                </div>
-                <div className="col-span-4 flex items-center">
-                  <p className="font-sans text-charcoal-700/80 text-base leading-relaxed">
-                    {entry.fact}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      {/* ── Section 6 — Chronicle (scroll-animated timeline) ──────── */}
+      <ChronicleTimeline />
 
       {/* ── Section 7 — What We Believe ───────────────────────────── */}
       <section className="bg-charcoal-900 py-24 md:py-32 grain-overlay">

@@ -531,9 +531,11 @@
 /* ── Journal preview ─────────────────────────────────────────────── */
 .journal { padding: 104px 0; background: var(--warm); border-bottom: 1px solid var(--line); }
 .journalGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.post { background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; transition: all .2s; }
+.post { background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; transition: all .2s; text-decoration: none; color: inherit; }
 .post:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(15,15,15,0.08); }
-.post :global(.img) { aspect-ratio: 16/10; background: var(--soft); background-image: repeating-linear-gradient(135deg, rgba(128,0,32,0.06) 0 14px, transparent 14px 28px); display: flex; align-items: center; justify-content: center; color: var(--mute); font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; border-bottom: 1px solid var(--line); font-weight: 500; }
+.post :global(.img) { position: relative; aspect-ratio: 16/10; background: var(--soft); background-image: repeating-linear-gradient(135deg, rgba(128,0,32,0.06) 0 14px, transparent 14px 28px); display: flex; align-items: center; justify-content: center; color: var(--mute); font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; border-bottom: 1px solid var(--line); font-weight: 500; overflow: hidden; }
+.post :global(.img) img { transition: transform 0.5s ease; }
+.post:hover :global(.img) img { transform: scale(1.03); }
 .post :global(.body) { padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .post :global(.body) :global(.metaTag) { font-size: 10.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--mute); font-weight: 500; }
 .post :global(.body) h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 500; letter-spacing: -0.5px; line-height: 1.1; color: var(--ink); margin: 0; }

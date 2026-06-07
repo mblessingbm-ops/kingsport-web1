@@ -1,6 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './page.module.css'
+import { journalPosts } from '@/data/journal'
+
+function formatJournalDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-ZW', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  })
+}
 
 const categories = [
   {
@@ -144,27 +153,6 @@ const clients = [
   'Alliance One',
   'Chinhoyi University of Technology',
   'First Capital Bank',
-]
-
-const journalPosts = [
-  {
-    meta: 'Case study · 03 May 2026',
-    title: "Kitting out Cresta Mining's Bindura site in 14 days.",
-    desc: '500 workers, four SKUs, one delivery window. How we coordinated cutting, branding, and dispatch to hit a tight expansion deadline.',
-    cta: 'Read the case →',
-  },
-  {
-    meta: 'Guide · 18 Apr 2026',
-    title: 'Buying hi-vis: what EN ISO 20471 actually means.',
-    desc: 'The plain-English guide for procurement officers. Class 1 vs 2 vs 3, when each is required, and what to look for on the label.',
-    cta: 'Read the guide →',
-  },
-  {
-    meta: 'Factory · 02 Apr 2026',
-    title: 'Inside the embroidery floor.',
-    desc: 'Eight machines, 32,000 stitches per logo, and the quality checks that catch problems before garments ship.',
-    cta: 'Read the post →',
-  },
 ]
 
 export default function HomePage() {
@@ -385,20 +373,39 @@ export default function HomePage() {
             <h2>From <em>the Journal.</em></h2>
             <div className="right">
               Case studies, kit guides, and behind-the-scenes from twenty-six years of dressing Zimbabwean industry.{' '}
-              <span style={{ color: 'var(--accent)', fontWeight: 600 }}>View all →</span>
+              <Link href="/journal" style={{ color: 'var(--accent)', fontWeight: 600 }}>
+                View all →
+              </Link>
             </div>
           </div>
           <div className={styles.journalGrid}>
             {journalPosts.map((p) => (
-              <article key={p.title} className={styles.post}>
-                <div className="img">photo · pending</div>
-                <div className="body">
-                  <div className="metaTag">{p.meta}</div>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                  <div className="read">{p.cta}</div>
+              <Link
+                key={p.id}
+                href={`/journal/${p.slug}`}
+                className={styles.post}
+                aria-label={`${p.title} — ${p.category}`}
+              >
+                <div className="img">
+                  {p.imageReady ? (
+                    <Image
+                      src={p.coverImage}
+                      alt={p.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <span>photo · pending</span>
+                  )}
                 </div>
-              </article>
+                <div className="body">
+                  <div className="metaTag">{p.category} · {formatJournalDate(p.date)}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.excerpt}</p>
+                  <div className="read">Read the article →</div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

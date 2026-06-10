@@ -19,6 +19,7 @@ import {
 import type { Product } from '@/types'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import RainShellHero from '@/components/catalog/RainShellHero'
+import SafetyShoeHero from '@/components/catalog/SafetyShoeHero'
 import styles from './page.module.css'
 
 type Path = 'catalog' | 'bundles'
@@ -772,6 +773,12 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
           On viewports < 1280px there's no room for side-by-side, so it
           falls back to a slide-up-from-bottom over the drawer body. */}
       <RainShellHero active={p.slug === 'long-hooded-raincoat'} />
+
+      {/* Stormline SAFETY SHOE launch card — same drawer behaviour as
+          RainShellHero, only for the Low-Cut Safety Shoe (ppe-005).
+          Different visual language (cool grey + steel blue + autoplay
+          video hero) per the dedicated handoff. */}
+      <SafetyShoeHero active={p.slug === 'safety-shoes-low-cut'} />
     </>
   )
 }

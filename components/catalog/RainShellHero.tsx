@@ -1,29 +1,59 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import styles from './RainShellHero.module.css'
 
 interface Props {
   /**
-   * Whether the parent PDP drawer currently has the raincoat product loaded.
-   * The hero only renders when this is true. The internal `isOpen` flag
-   * controls the slide-up animation and is set true on a short delay so the
-   * main drawer's right-slide finishes before the hero starts its entrance.
+   * Whether the parent PDP drawer currently has the raincoat product
+   * loaded. The card only renders when this is true. The internal
+   * `isOpen` flag is set true on a short delay (280ms) so the main
+   * drawer's right-slide finishes before the card starts its own
+   * slide-out from behind it.
    */
   active: boolean
 }
 
+/* Deterministic seeded random — taken directly from the design handoff
+   so the rain layout matches the comp exactly (seed = 3, n = 60). */
+function buildDrops(seed: number, count: number) {
+  let s = seed * 9301 + 49297
+  const rnd = () => {
+    s = (s * 9301 + 49297) % 233280
+    return s / 233280
+  }
+  const drops: Array<{
+    left: number
+    len: number
+    dur: number
+    delay: number
+    opacity: number
+    thick: number
+  }> = []
+  for (let i = 0; i < count; i++) {
+    const len = 38 + rnd() * 60
+    drops.push({
+      left: rnd() * 100,
+      len,
+      dur: 0.55 + rnd() * 0.7,
+      delay: -rnd() * 2,
+      opacity: (0.25 + rnd() * 0.75) * 0.5,
+      thick: rnd() > 0.78 ? 2 : 1,
+    })
+  }
+  return drops
+}
+
 export default function RainShellHero({ active }: Props) {
   const [isOpen, setIsOpen] = useState(false)
+  const drops = useMemo(() => buildDrops(3, 60), [])
 
   useEffect(() => {
     if (!active) {
       setIsOpen(false)
       return
     }
-    // Wait for the main PDP drawer's right-slide to settle (~280ms),
-    // then start the hero's bottom-slide entrance.
     const t = window.setTimeout(() => setIsOpen(true), 280)
     return () => window.clearTimeout(t)
   }, [active])
@@ -32,39 +62,42 @@ export default function RainShellHero({ active }: Props) {
 
   return (
     <div
-      className={`${styles.heroWrap} ${isOpen ? styles.open : ''}`}
+      className={`${styles.card} ${isOpen ? styles.open : ''}`}
+      role="dialog"
+      aria-label="Stormline Rain Shell launch card"
       aria-hidden={!isOpen}
     >
-      {/* Animated rain streaks — pure CSS, no JS frame cost */}
-      <div className={styles.rainField} aria-hidden="true">
-        {Array.from({ length: 18 }).map((_, i) => (
+      {/* Animated rain layer — seeded so it matches the design comp */}
+      <div className={styles.rain} aria-hidden="true">
+        {drops.map((d, i) => (
           <span
             key={i}
-            className={styles.rainDrop}
-            style={
-              {
-                ['--col' as string]: i,
-                ['--delay' as string]: `${(i * 173) % 2200}ms`,
-                ['--dur' as string]: `${1800 + ((i * 211) % 900)}ms`,
-              } as React.CSSProperties
-            }
+            className={styles.drop}
+            style={{
+              left: `${d.left}%`,
+              width: d.thick,
+              height: d.len,
+              opacity: d.opacity,
+              animationDuration: `${d.dur}s`,
+              animationDelay: `${d.delay}s`,
+            }}
           />
         ))}
       </div>
 
-      {/* Top bar — wordmark + NEW badge + dismiss chevron */}
-      <div className={styles.topRow}>
+      {/* Header — STORMLINE / NEW · AW26 / dismiss */}
+      <div className={styles.header}>
         <div className={styles.wordmark}>STORMLINE</div>
-        <div className={styles.topRight}>
+        <div className={styles.headerRight}>
           <span className={styles.newBadge}>NEW · AW26</span>
           <button
             type="button"
             onClick={() => setIsOpen(false)}
             className={styles.dismiss}
-            aria-label="Dismiss promotional view"
+            aria-label="Close launch card"
             title="Close"
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
               <path
                 d="M2 2L12 12M12 2L2 12"
                 stroke="currentColor"
@@ -76,51 +109,45 @@ export default function RainShellHero({ active }: Props) {
         </div>
       </div>
 
-      {/* Hero image frame — cream backdrop + slatted sun-light, raincoat on top */}
-      <div className={styles.imageFrame}>
-        <div className={styles.sunSlats} aria-hidden="true" />
-        <div className={styles.branch} aria-hidden="true">
-          <span className={styles.ropeL} />
-          <span className={styles.ropeR} />
-        </div>
-        <div className={styles.heroImage}>
-          <Image
-            src="/images/products/long-hooded-raincoat-yellow.png"
-            alt="Marigold rain shell"
-            fill
-            sizes="(max-width: 900px) 100vw, 460px"
-            style={{ objectFit: 'contain' }}
-            priority
-          />
-        </div>
+      {/* Hero photo — marigold raincoat on a hanger, sun-lit cream wall */}
+      <div className={styles.photoFrame}>
+        <Image
+          src="/images/products/rain-shell-hero.png"
+          alt="Marigold rain shell"
+          fill
+          sizes="(max-width: 1280px) 100vw, 640px"
+          className={styles.photo}
+          priority
+        />
         <div className={styles.styleBadge}>STYLE 01 · MARIGOLD</div>
       </div>
 
-      {/* Title block — RAIN white / SHELL marigold, tagline right */}
-      <div className={styles.titleRow}>
-        <div className={styles.title}>
-          <span className={styles.titleLine}>RAIN</span>
-          <span className={`${styles.titleLine} ${styles.titleAccent}`}>SHELL</span>
+      {/* Headline + tagline */}
+      <div className={styles.headlineRow}>
+        <div className={styles.headline}>
+          RAIN
+          <br />
+          <span className={styles.headlineAccent}>SHELL</span>
         </div>
         <div className={styles.tagline}>Rain, handled.</div>
       </div>
 
-      {/* Feature pills + wholesale CTA — CTA dismisses hero to reveal the PDP */}
-      <div className={styles.bottomRow}>
-        <div className={styles.features}>
-          <span>10K WATERPROOF</span>
-          <span className={styles.dot}>·</span>
-          <span>TAPED SEAMS</span>
-          <span className={styles.dot}>·</span>
-          <span>PACKABLE</span>
+      {/* Spec row + wholesale line */}
+      <div className={styles.footerRow}>
+        <div className={styles.specs}>
+          <span className={styles.spec}>10K Waterproof</span>
+          <span className={styles.specDot} aria-hidden="true" />
+          <span className={styles.spec}>Taped Seams</span>
+          <span className={styles.specDot} aria-hidden="true" />
+          <span className={styles.spec}>Packable</span>
         </div>
         <button
           type="button"
           onClick={() => setIsOpen(false)}
           className={styles.wholesaleBtn}
+          aria-label="Close launch card"
         >
-          NOW TAKING WHOLESALE
-          <span className={styles.arrow}>→</span>
+          Now taking wholesale
         </button>
       </div>
     </div>

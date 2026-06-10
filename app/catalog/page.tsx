@@ -761,14 +761,17 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
             </div>
           </div>
         </div>
-
-        {/* Stormline RAIN SHELL promotional sub-drawer — only for the
-            Long Hooded Raincoat. Slides up from the bottom 280ms after
-            the main drawer settles, covers the PDP body, and is
-            dismissed by either the × in its top-right or the
-            "NOW TAKING WHOLESALE →" CTA at the bottom. */}
-        <RainShellHero active={p.slug === 'long-hooded-raincoat'} />
       </aside>
+
+      {/* Stormline RAIN SHELL launch card — only for the Long Hooded
+          Raincoat. A SIBLING of the main drawer so its lower z-index
+          (60 vs the drawer's 61) actually puts it behind the drawer
+          in the global stacking order. 280ms after the main drawer
+          settles, this card slides LEFT from behind the drawer's left
+          edge and parks side-by-side at right: 800px on wide viewports.
+          On viewports < 1280px there's no room for side-by-side, so it
+          falls back to a slide-up-from-bottom over the drawer body. */}
+      <RainShellHero active={p.slug === 'long-hooded-raincoat'} />
     </>
   )
 }

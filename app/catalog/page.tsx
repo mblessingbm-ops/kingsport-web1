@@ -18,6 +18,7 @@ import {
 } from '@/data/catalog-meta'
 import type { Product } from '@/types'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
+import RainShellHero from '@/components/catalog/RainShellHero'
 import styles from './page.module.css'
 
 type Path = 'catalog' | 'bundles'
@@ -760,6 +761,13 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
             </div>
           </div>
         </div>
+
+        {/* Stormline RAIN SHELL promotional sub-drawer — only for the
+            Long Hooded Raincoat. Slides up from the bottom 280ms after
+            the main drawer settles, covers the PDP body, and is
+            dismissed by either the × in its top-right or the
+            "NOW TAKING WHOLESALE →" CTA at the bottom. */}
+        <RainShellHero active={p.slug === 'long-hooded-raincoat'} />
       </aside>
     </>
   )

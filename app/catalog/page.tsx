@@ -18,6 +18,7 @@ import {
 } from '@/data/catalog-meta'
 import type { Product } from '@/types'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import RainShellHero from '@/components/catalog/RainShellHero'
 import SafetyShoeHero from '@/components/catalog/SafetyShoeHero'
 import styles from './page.module.css'
@@ -419,6 +420,18 @@ function ProductCard({ p, onOpen }: { p: Product; onOpen: () => void }) {
   return (
     <div
       onClick={onOpen}
+      // Keyboard access: role + tabIndex instead of <button> because the
+      // card contains a nested "Add to quote" button (nested buttons are
+      // invalid HTML and break focus order).
+      role="button"
+      tabIndex={0}
+      aria-label={`View ${p.name}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpen()
+        }
+      }}
       style={{
         background: '#fff',
         border: '1px solid ' + (inQuote ? '#800020' : '#ece1c8'),
@@ -619,6 +632,20 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
     setSelectedImage(p.image)
   }, [p])
 
+  // Escape closes the drawer (and any launch card riding on it, since
+  // they unmount when pdpId clears).
+  useEffect(() => {
+    if (!p) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') dispatch({ type: 'CLOSE_PDP' })
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [p, dispatch])
+
+  // Page behind the drawer shouldn't scroll while it's open.
+  useBodyScrollLock(!!p)
+
   if (!p) return null
   const meta = productMeta(p)
   const inQuote = items.some(i => i.productId === p.id)
@@ -731,8 +758,15 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
 
             <div className={styles.pdpAddRow}>
               <div className={styles.pdpStepper}>
-                <button onClick={() => setQty(Math.max(0, qty - 10))}>−</button>
-                <input type="number" value={qty} onChange={(e) => setQty(parseInt(e.target.value) || 0)} />
+                <button onClick={() => setQty(Math.max(meta.moq, qty - 10))}>−</button>
+                <input
+                  type="number"
+                  value={qty}
+                  // Allow free typing (including transient empty/low values)…
+                  onChange={(e) => setQty(parseInt(e.target.value) || 0)}
+                  // …but clamp to MOQ once the field loses focus.
+                  onBlur={() => setQty(q => Math.max(meta.moq, q))}
+                />
                 <button onClick={() => setQty(qty + 10)}>+</button>
               </div>
               <div className={styles.pdpMeta}>
@@ -741,10 +775,13 @@ function PDPDrawer({ state, dispatch }: { state: CatalogState; dispatch: React.D
               <button
                 className={`${styles.pdpAddBtn} ${inQuote ? styles.pdpAddBtnInQuote : ''}`}
                 onClick={() => {
+                  // Final guard: a line can never enter the quote below MOQ,
+                  // even if the user submits mid-edit before blur fires.
+                  const finalQty = Math.max(meta.moq, qty)
                   const line = {
                     productId: p.id,
                     productName: p.name,
-                    quantity: qty,
+                    quantity: finalQty,
                     size,
                     color: p.availableColors[colorIdx]?.name,
                   }

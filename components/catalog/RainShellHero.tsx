@@ -112,7 +112,7 @@ export default function RainShellHero({ active }: Props) {
       {/* Hero photo — marigold raincoat on a hanger, sun-lit cream wall */}
       <div className={styles.photoFrame}>
         <Image
-          src="/images/products/rain-shell-hero.png"
+          src="/images/products/rain-shell-hero.webp"
           alt="Marigold rain shell"
           fill
           sizes="(max-width: 1280px) 100vw, 640px"

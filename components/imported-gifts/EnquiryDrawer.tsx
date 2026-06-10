@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { X, Plus, Trash2, ArrowRight, Mail, Check } from 'lucide-react'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 
 interface LineItem {
   id: string
@@ -14,8 +15,12 @@ interface Props {
   onClose: () => void
 }
 
+// Sequential ids instead of Date.now()/Math.random(): the server render
+// and client hydration both start the sequence at 1, so the initial
+// line's id matches and React doesn't see a hydration mismatch.
+let lineSeq = 0
 const emptyLine = (): LineItem => ({
-  id: `line-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+  id: `line-${++lineSeq}`,
   code: '',
   qty: '',
 })
@@ -26,18 +31,22 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [notes, setNotes] = useState('')
-  const [lines, setLines] = useState<LineItem[]>([emptyLine()])
+  const [lines, setLines] = useState<LineItem[]>(() => [emptyLine()])
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
 
   // Escape closes
   useEffect(() => {
+    if (!isOpen) return
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [onClose])
+  }, [isOpen, onClose])
+
+  // Page behind the drawer shouldn't scroll while it's open.
+  useBodyScrollLock(isOpen)
 
   // Reset success state when drawer reopens
   useEffect(() => {
@@ -172,6 +181,13 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
               Your enquiry has opened in your mail client, pre-addressed to{' '}
               <span className="text-charcoal-800 font-medium">sales@kingsport.co.zw</span>. Click{' '}
               <em>Send</em> there to deliver it. Our sales team responds within one business day.
+            </p>
+            <p className="mt-3 font-sans text-[11px] text-charcoal-600/40 leading-relaxed max-w-xs">
+              Didn&apos;t see your mail client open? Email{' '}
+              <a className="text-oxblood-700 hover:underline" href="mailto:sales@kingsport.co.zw">
+                sales@kingsport.co.zw
+              </a>{' '}
+              directly or call <b className="text-charcoal-700">+263 24 277 0712</b>.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-2 w-full max-w-xs">
               <button

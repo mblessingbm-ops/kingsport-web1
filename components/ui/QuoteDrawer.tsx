@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import { X, Trash2, Minus, Plus, ArrowRight, ShoppingBag } from 'lucide-react'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 
 interface Props {
   isOpen: boolean
@@ -14,12 +15,16 @@ export default function QuoteDrawer({ isOpen, onClose }: Props) {
   const { items, removeItem, updateItem, clearCart, count } = useQuoteCart()
 
   useEffect(() => {
+    if (!isOpen) return
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [onClose])
+  }, [isOpen, onClose])
+
+  // Page behind the drawer shouldn't scroll while it's open.
+  useBodyScrollLock(isOpen)
 
   return (
     <>

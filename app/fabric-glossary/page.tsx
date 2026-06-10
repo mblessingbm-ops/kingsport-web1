@@ -28,14 +28,19 @@ export default function FabricGlossaryPage() {
   }, [])
 
   const toggle = (slug: string) => {
-    setOpenSlug((prev) => (prev === slug ? null : slug))
-    // Update the URL hash without triggering a navigation/scroll
-    if (typeof window !== 'undefined') {
-      const newUrl = openSlug === slug
-        ? window.location.pathname
-        : `${window.location.pathname}#${slug}`
-      window.history.replaceState(null, '', newUrl)
-    }
+    setOpenSlug((prev) => {
+      const next = prev === slug ? null : slug
+      // Update the URL hash inside the updater so it reads the same
+      // `prev` the state transition uses — rapid clicks can't desync
+      // the hash from the open panel.
+      if (typeof window !== 'undefined') {
+        const newUrl = next === null
+          ? window.location.pathname
+          : `${window.location.pathname}#${slug}`
+        window.history.replaceState(null, '', newUrl)
+      }
+      return next
+    })
   }
 
   return (

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { Trash2, Plus, Minus, ArrowRight, Check, ShoppingBag, X } from 'lucide-react'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import { products } from '@/data/products'
-import type { Metadata } from 'next'
 
 export default function QuotePage() {
   const { items, removeItem, updateItem, clearCart } = useQuoteCart()
@@ -84,7 +83,9 @@ export default function QuotePage() {
   const updateQty = (productId: string, delta: number) => {
     const item = items.find(i => i.productId === productId)
     if (!item) return
-    const newQty = Math.max(1, item.quantity + delta)
+    // Floor at the product's MOQ so a quote can't be sent below minimum.
+    const moq = getProduct(productId)?.moq ?? 1
+    const newQty = Math.max(moq, item.quantity + delta)
     updateItem(productId, { quantity: newQty })
   }
 

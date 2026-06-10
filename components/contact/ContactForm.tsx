@@ -81,10 +81,10 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+          <label htmlFor="contact-name" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
             Full Name *
           </label>
-          <input
+          <input id="contact-name"
             required
             type="text"
             value={form.name}
@@ -94,10 +94,10 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+          <label htmlFor="contact-company" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
             Company
           </label>
-          <input
+          <input id="contact-company"
             type="text"
             value={form.company}
             onChange={e => setForm(f => ({ ...f, company: e.target.value }))}
@@ -109,10 +109,10 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+          <label htmlFor="contact-email" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
             Email *
           </label>
-          <input
+          <input id="contact-email"
             required
             type="email"
             value={form.email}
@@ -122,10 +122,10 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+          <label htmlFor="contact-phone" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
             Phone
           </label>
-          <input
+          <input id="contact-phone"
             type="tel"
             value={form.phone}
             onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
@@ -136,10 +136,10 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+        <label htmlFor="contact-subject" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
           Subject *
         </label>
-        <select
+        <select id="contact-subject"
           required
           value={form.subject}
           onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
@@ -155,10 +155,10 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
+        <label htmlFor="contact-message" className="block text-[10px] font-sans font-medium tracking-widest text-charcoal-600/50 uppercase mb-1.5">
           Message *
         </label>
-        <textarea
+        <textarea id="contact-message"
           required
           rows={5}
           value={form.message}

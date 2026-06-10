@@ -1,8 +1,16 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import StatsBand from '@/components/about/StatsBand'
 import ChronicleTimeline from '@/components/about/ChronicleTimeline'
+
+export const metadata: Metadata = {
+  title: 'About Us — Manufacturing in Zimbabwe Since 1998',
+  description:
+    'Family-owned and 100% locally produced. The Kingsport Investments story: 26 years of protective clothing, corporate uniforms, and promotional wear manufactured in Harare, Zimbabwe.',
+  alternates: { canonical: '/about' },
+}
 
 export default function AboutPage() {
   return (

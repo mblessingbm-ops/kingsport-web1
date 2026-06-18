@@ -179,31 +179,6 @@
   color: var(--mute-light);
   margin-left: auto;
 }
-.specBtn {
-  margin-top: auto;
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 10px;
-  color: var(--ink);
-  font-family: inherit;
-  font-size: 12.5px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: border-color .15s;
-}
-.specBtn:hover { border-color: var(--ink); }
-.specBtnHint {
-  font-size: 10px;
-  letter-spacing: 0.8px;
-  color: var(--mute-light);
-  text-align: center;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
-
 /* ── Pane (catalog/bundles/builder) ──────────────────────────────── */
 .pane {
   padding: 24px 32px 56px;

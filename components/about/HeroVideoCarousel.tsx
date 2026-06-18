@@ -77,12 +77,17 @@ export default function HeroVideoCarousel() {
     // Fallback in case the threshold is missed (e.g. a tab throttled in
     // the background): a hard end still advances.
     const onEnded = () => advance()
+    // If the active clip fails to load/decode, don't hang the carousel
+    // on a frozen frame — skip straight to the next clip.
+    const onError = () => advance()
 
     video.addEventListener('timeupdate', onTimeUpdate)
     video.addEventListener('ended', onEnded)
+    video.addEventListener('error', onError)
     return () => {
       video.removeEventListener('timeupdate', onTimeUpdate)
       video.removeEventListener('ended', onEnded)
+      video.removeEventListener('error', onError)
     }
   }, [active, advance])
 

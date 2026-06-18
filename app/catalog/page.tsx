@@ -322,12 +322,6 @@ function Sidebar({ state, dispatch }: { state: CatalogState; dispatch: React.Dis
           ))}
         </div>
       </div>
-
-      <button className={styles.specBtn}>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M12 4v12M6 10l6 6 6-6M4 20h16" /></svg>
-        Download spec sheet
-      </button>
-      <div className={styles.specBtnHint}>PDF · 4.8 MB</div>
     </aside>
   )
 }

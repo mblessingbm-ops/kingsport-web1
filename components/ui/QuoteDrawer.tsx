@@ -5,6 +5,12 @@ import Link from 'next/link'
 import { X, Trash2, Minus, Plus, ArrowRight, ShoppingBag } from 'lucide-react'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
+import { products } from '@/data/products'
+
+// Per-product minimum order quantity — keeps the drawer stepper from
+// dropping a line below MOQ, matching the PDP + quote-page steppers.
+const moqFor = (productId: string) =>
+  products.find((p) => p.id === productId)?.moq ?? 1
 
 interface Props {
   isOpen: boolean
@@ -109,7 +115,7 @@ export default function QuoteDrawer({ isOpen, onClose }: Props) {
                   {/* Quantity controls */}
                   <div className="flex items-center gap-0 mt-2">
                     <button
-                      onClick={() => updateItem(item.productId, { quantity: Math.max(1, item.quantity - 1) })}
+                      onClick={() => updateItem(item.productId, { quantity: Math.max(moqFor(item.productId), item.quantity - 1) })}
                       aria-label="Decrease quantity"
                       className="w-6 h-6 border border-charcoal-800/15 flex items-center justify-center hover:bg-oxblood-900 hover:border-oxblood-900 hover:text-white transition-all text-charcoal-700"
                     >

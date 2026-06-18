@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import StatsBand from '@/components/about/StatsBand'
 import ChronicleTimeline from '@/components/about/ChronicleTimeline'
+import HeroVideoCarousel from '@/components/about/HeroVideoCarousel'
 
 export const metadata: Metadata = {
   title: 'About Us — Manufacturing in Zimbabwe Since 1998',
@@ -18,12 +19,15 @@ export default function AboutPage() {
       {/* ── Section 1 — Magazine Cover Opener ─────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-charcoal-900">
 
-        {/* Placeholder image panel — replace with real factory/people photography */}
+        {/* Background — crossfading factory-footage carousel (5 clips) */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-800 to-oxblood-950/40" />
-          {/* When photography is ready: <Image src="/images/about/factory-hero.jpg" alt="Kingsport factory floor" fill className="object-cover object-center opacity-40" /> */}
+          {/* Charcoal base shows behind the video before it loads */}
+          <div className="absolute inset-0 bg-charcoal-900" />
+          <HeroVideoCarousel />
+          {/* Dark scrim so the floating cover text stays legible over the footage */}
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900 via-charcoal-900/55 to-charcoal-900/70" />
           {/* Grain texture */}
-          <div className="absolute inset-0 grain-overlay opacity-60" />
+          <div className="absolute inset-0 grain-overlay opacity-40" />
         </div>
 
         {/* Founding year — large watermark top-right */}

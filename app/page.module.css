@@ -480,17 +480,34 @@
 
 .client {
   flex-shrink: 0;
-  color: var(--ink);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 28px;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  font-style: italic;
-  /* keep the marquee feeling editorial — subtle muted tone */
-  opacity: 0.62;
-  transition: opacity 0.25s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
 }
-.client:hover { opacity: 1; color: var(--accent-italic); }
+
+/* Client logos: greyscale + muted by default so the 19 different brand
+   palettes read as one cohesive editorial strip; restored to full
+   colour on hover (the whole marquee also pauses on hover). Each logo
+   keeps its true aspect ratio — height is fixed, width follows, and
+   wide/tall outliers are bounded so none dominates the strip. */
+.clientLogo {
+  height: 52px !important;
+  width: auto !important;
+  /* Generous cap: only the very widest wordmark grazes it, so every
+     logo renders at the full 52px ink height (uniform height reads more
+     premium than a uniform box that letterboxes wide logos shorter). */
+  max-width: 300px;
+  max-height: 52px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.client:hover .clientLogo {
+  filter: grayscale(0);
+  opacity: 1;
+}
 
 /* Pause the marquee on hover so a reader can study a logo if they want */
 .clientsMarquee:hover .clientsTrack { animation-play-state: paused; }

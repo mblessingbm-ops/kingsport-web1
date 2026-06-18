@@ -125,34 +125,29 @@ const industries = [
   },
 ]
 
+// Client logos for the "Trusted by" marquee. Real organisations Kingsport
+// has supplied over the years — rendered greyscale, restored to full colour
+// on hover (see .clientLogo in page.module.css).
 const clients = [
-  'Delta Corp',
-  'Econet',
-  'CBZ Bank',
-  'Old Mutual',
-  'UNICEF Zim',
-  'UNDP',
-  'Schweppes',
-  'NetOne',
-  'World Vision',
-  'Nyaradzo',
-  'TelOne',
-  'ZB Bank',
-  'Flint Junior School',
-  'CAMFED',
-  'Welt Hunger Hilfe',
-  'WFP',
-  'Higher Life Foundation',
-  'ZINARA',
-  'British American Tobacco',
-  'ZIMRA',
-  'Forestry Commission',
-  'Traffic Safety Council',
-  'Zimbabwe Leaf Tobacco',
-  'NSSA',
-  'Alliance One',
-  'Chinhoyi University of Technology',
-  'First Capital Bank',
+  { name: 'Econet', src: '/images/clients/econet.webp', w: 958, h: 213 },
+  { name: 'Delta Corporation', src: '/images/clients/delta.webp', w: 711, h: 121 },
+  { name: 'Old Mutual', src: '/images/clients/old-mutual.webp', w: 759, h: 167 },
+  { name: 'CBZ Bank', src: '/images/clients/cbz.webp', w: 607, h: 319 },
+  { name: 'UNICEF', src: '/images/clients/unicef.webp', w: 211, h: 113 },
+  { name: 'NetOne', src: '/images/clients/netone.webp', w: 660, h: 405 },
+  { name: 'UNDP', src: '/images/clients/undp.webp', w: 253, h: 514 },
+  { name: 'TelOne', src: '/images/clients/telone.webp', w: 759, h: 283 },
+  { name: 'World Vision', src: '/images/clients/world-vision.webp', w: 704, h: 147 },
+  { name: 'British American Tobacco', src: '/images/clients/bat.webp', w: 659, h: 297 },
+  { name: 'Higherlife Foundation', src: '/images/clients/higherlife.webp', w: 551, h: 444 },
+  { name: 'NSSA', src: '/images/clients/nssa.webp', w: 821, h: 387 },
+  { name: 'CAMFED', src: '/images/clients/camfed.webp', w: 670, h: 230 },
+  { name: 'ZINARA', src: '/images/clients/zinara.webp', w: 496, h: 430 },
+  { name: 'Forestry Commission', src: '/images/clients/forestry-commission.webp', w: 1039, h: 247 },
+  { name: 'Traffic Safety Council', src: '/images/clients/traffic-safety-council.webp', w: 572, h: 572 },
+  { name: 'Zimbabwe Leaf Tobacco', src: '/images/clients/zlt.webp', w: 671, h: 237 },
+  { name: 'Alliance Ginneries', src: '/images/clients/alliance.webp', w: 1069, h: 240 },
+  { name: 'Flint Junior School', src: '/images/clients/flint.webp', w: 429, h: 429 },
 ]
 
 export default function HomePage() {
@@ -302,12 +297,28 @@ export default function HomePage() {
         </div>
         <div className={styles.clientsMarquee}>
           {/* Repeat the list twice so the loop seams without a gap */}
-          <div className={styles.clientsTrack} aria-hidden={false}>
+          <div className={styles.clientsTrack}>
             {clients.map((c) => (
-              <span key={`a-${c}`} className={styles.client}>{c}</span>
+              <span key={`a-${c.name}`} className={styles.client}>
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  width={c.w}
+                  height={c.h}
+                  className={styles.clientLogo}
+                />
+              </span>
             ))}
             {clients.map((c) => (
-              <span key={`b-${c}`} className={styles.client} aria-hidden="true">{c}</span>
+              <span key={`b-${c.name}`} className={styles.client} aria-hidden="true">
+                <Image
+                  src={c.src}
+                  alt=""
+                  width={c.w}
+                  height={c.h}
+                  className={styles.clientLogo}
+                />
+              </span>
             ))}
           </div>
         </div>

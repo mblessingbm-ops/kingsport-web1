@@ -46,8 +46,23 @@ export default function FabricGlossaryPage() {
   return (
     <div className="min-h-screen bg-cream-50">
       {/* Hero */}
-      <section className="bg-charcoal-900 text-cream-50 pt-32 pb-20">
-        <div className="max-w-[1320px] mx-auto px-6 lg:px-9">
+      <section className="relative bg-charcoal-900 text-cream-50 pt-32 pb-20 overflow-hidden">
+        {/* Background video — textile shop b-roll, muted autoplay loop */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/fabric-glossary-hero.mp4" type="video/mp4" />
+        </video>
+        {/* Dark scrim so the floating text stays legible over the footage */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900/90 via-charcoal-900/70 to-charcoal-900/80" />
+
+        <div className="relative max-w-[1320px] mx-auto px-6 lg:px-9">
           <div className="flex items-center gap-3 mb-5 text-oxblood-500/90">
             <Layers size={14} />
             <span className="text-[10px] font-sans tracking-[1.8px] uppercase">

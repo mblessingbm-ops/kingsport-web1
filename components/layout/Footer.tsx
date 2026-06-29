@@ -29,17 +29,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-11">
           {/* Brand block */}
           <div>
-            {/* Logo on a cream plate — the wordmark is black, so it needs a
-                light backing to read on the dark footer */}
-            <div className="inline-flex items-center bg-cream-50 rounded-lg px-3.5 py-2.5">
-              <Image
-                src="/images/kingsport-logo.webp"
-                alt="Kingsport Investments"
-                width={560}
-                height={201}
-                className="h-10 w-auto"
-              />
-            </div>
+            {/* Dark-background logo variant — black ink recoloured to cream,
+                red ribbon kept — so it reads on the dark footer without a
+                light backing plate. */}
+            <Image
+              src="/images/kingsport-logo-dark.webp"
+              alt="Kingsport Investments"
+              width={560}
+              height={201}
+              className="h-12 w-auto"
+            />
             <p className="mt-[18px] text-[13px] leading-[1.65] text-[#fdfbf7]/55 max-w-[280px]">
               Workwear, PPE, corporate uniforms and branded merchandise — manufactured in Harare, Zimbabwe.
             </p>

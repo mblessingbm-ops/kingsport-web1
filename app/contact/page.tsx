@@ -158,7 +158,7 @@ export default function ContactPage() {
           <div className="border border-charcoal-800/8 overflow-hidden aspect-[16/9] md:aspect-[21/9]">
             <iframe
               title="Kingsport Investments — 4 Grant Street, Harare"
-              src="https://www.google.com/maps?q=4+Grant+Street,+Harare,+Zimbabwe&output=embed"
+              src="https://maps.google.com/maps?q=4%20Grant%20Street%2C%20Harare%2C%20Zimbabwe&z=15&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="w-full h-full border-0"

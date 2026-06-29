@@ -31,6 +31,9 @@ const nextConfig = {
               "img-src 'self' data: blob:",
               "media-src 'self'",
               "connect-src 'self'",
+              // Allow the Google Maps embed on the contact page. Without this
+              // an iframe falls back to default-src 'self' and is blocked.
+              "frame-src https://www.google.com https://maps.google.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",

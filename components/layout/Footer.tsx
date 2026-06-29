@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const catalogLinks = [
   { label: 'Personal Protective Equipment', href: '/catalog?category=ppe-safety' },
@@ -28,24 +29,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-11">
           {/* Brand block */}
           <div>
-            <div className="flex items-center gap-3">
-              <div
-                className="w-9 h-9 flex items-center justify-center text-[#fdfbf7] text-[22px] italic font-semibold"
-                style={{ background: '#800020', fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                K
-              </div>
-              <div className="leading-[1.05]">
-                <div
-                  className="text-[#fdfbf7] text-[20px] font-semibold tracking-[1.4px]"
-                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-                >
-                  KINGSPORT
-                </div>
-                <div className="text-[9.5px] text-[#fdfbf7]/55 tracking-[1.5px] uppercase font-medium mt-px">
-                  Investments · Est. 1998
-                </div>
-              </div>
+            {/* Logo on a cream plate — the wordmark is black, so it needs a
+                light backing to read on the dark footer */}
+            <div className="inline-flex items-center bg-cream-50 rounded-lg px-3.5 py-2.5">
+              <Image
+                src="/images/kingsport-logo.webp"
+                alt="Kingsport Investments"
+                width={560}
+                height={201}
+                className="h-10 w-auto"
+              />
             </div>
             <p className="mt-[18px] text-[13px] leading-[1.65] text-[#fdfbf7]/55 max-w-[280px]">
               Workwear, PPE, corporate uniforms and branded merchandise — manufactured in Harare, Zimbabwe.

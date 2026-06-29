@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Menu,
   X,
@@ -113,28 +114,19 @@ export default function Navbar() {
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6">
         <div className="topbar-pill pointer-events-auto flex items-center justify-between pl-4 pr-2 py-2 sm:pl-5 sm:pr-2.5">
           {/* Brand */}
-          <Link href="/" className="relative flex items-center gap-3 group">
-            <div
-              className="w-8 h-8 flex items-center justify-center text-white text-[20px] italic font-semibold rounded-[10px]"
-              style={{
-                background: '#800020',
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.35), 0 4px 10px rgba(128,0,32,0.3)',
-              }}
-            >
-              K
-            </div>
-            <div className="leading-[1.05] hidden sm:block">
-              <div
-                className="text-charcoal-800 text-[18px] font-semibold tracking-[1.2px]"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                KINGSPORT
-              </div>
-              <div className="text-[9px] text-charcoal-600/70 tracking-[1.4px] uppercase font-medium mt-px">
-                Investments · Est. 1998
-              </div>
-            </div>
+          <Link
+            href="/"
+            className="relative flex items-center group"
+            aria-label="Kingsport Investments — home"
+          >
+            <Image
+              src="/images/kingsport-logo.webp"
+              alt="Kingsport Investments"
+              width={560}
+              height={201}
+              priority
+              className="h-9 w-auto sm:h-10"
+            />
           </Link>
 
           {/* Desktop nav */}

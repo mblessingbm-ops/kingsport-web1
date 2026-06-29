@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const catalogLinks = [
   { label: 'Personal Protective Equipment', href: '/catalog?category=ppe-safety' },
@@ -29,16 +28,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-11">
           {/* Brand block */}
           <div>
-            {/* Dark-background logo variant — black ink recoloured to cream,
-                red ribbon kept — so it reads on the dark footer without a
-                light backing plate. */}
-            <Image
-              src="/images/kingsport-logo-dark.webp"
-              alt="Kingsport Investments"
-              width={560}
-              height={201}
-              className="h-12 w-auto"
-            />
+            {/* Wordmark only */}
+            <div className="leading-[1.05]">
+              <div
+                className="text-[#fdfbf7] text-[22px] font-semibold tracking-[1.4px]"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              >
+                KINGSPORT
+              </div>
+              <div className="text-[9.5px] text-[#fdfbf7]/55 tracking-[1.5px] uppercase font-medium mt-px">
+                Investments · Est. 1998
+              </div>
+            </div>
             <p className="mt-[18px] text-[13px] leading-[1.65] text-[#fdfbf7]/55 max-w-[280px]">
               Workwear, PPE, corporate uniforms and branded merchandise — manufactured in Harare, Zimbabwe.
             </p>

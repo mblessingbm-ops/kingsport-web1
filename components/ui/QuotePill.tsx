@@ -32,7 +32,7 @@ export default function QuotePill({ onOpen }: Props) {
       <button
         onClick={onOpen}
         aria-label={`Open quote — ${count} item${count === 1 ? '' : 's'}`}
-        className={`flex items-center gap-3 bg-oxblood-900 hover:bg-oxblood-700 text-white pl-4 pr-5 py-3.5 shadow-2xl shadow-oxblood-950/40 transition-all duration-200 ${
+        className={`flex items-center gap-3 bg-oxblood-900 hover:bg-oxblood-700 text-white pl-4 pr-5 py-3.5 rounded-full shadow-2xl shadow-oxblood-950/40 transition-all duration-200 ${
           isPulsing ? 'animate-quote-pulse' : ''
         }`}
       >

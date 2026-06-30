@@ -7,9 +7,58 @@ export const metadata: Metadata = {
   description: 'Get in touch with Kingsport Investments. Reach our sales team in Harare, Zimbabwe for quotes and enquiries.',
 }
 
+// LocalBusiness structured data — helps Kingsport surface for local
+// searches ("uniform manufacturer Harare") and in Google Maps. Address +
+// hours + phone are the core; Google geocodes the address.
+// TODO: when you have the exact map pin, add a `geo` field for precision:
+//   geo: { '@type': 'GeoCoordinates', latitude: <lat>, longitude: <lng> },
+// (right-click your location in Google Maps to copy the coordinates).
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://kingsport.co.zw/#localbusiness',
+  name: 'Kingsport Investments (Pvt) Ltd',
+  description:
+    'Manufacturer of protective clothing, corporate uniforms, promotional merchandise, and event branding in Harare, Zimbabwe.',
+  url: 'https://kingsport.co.zw',
+  image: 'https://kingsport.co.zw/og-image.jpg',
+  telephone: '+263242770712',
+  email: 'sales@kingsport.co.zw',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '4 Grant Street',
+    addressLocality: 'Harare',
+    addressCountry: 'ZW',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Zimbabwe' },
+    { '@type': 'Place', name: 'SADC region' },
+  ],
+  priceRange: '$$',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '17:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '13:00',
+    },
+  ],
+}
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-cream-50">
+      <script
+        type="application/ld+json"
+        // Static, build-time JSON — no user input flows in here.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
       {/* Header */}
       <div className="bg-charcoal-900 pt-32 pb-16 grain-overlay">
         <div className="max-w-7xl mx-auto px-6">

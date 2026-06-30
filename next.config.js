@@ -25,12 +25,15 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+              // va.vercel-scripts.com serves Vercel Analytics + Speed Insights
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob:",
               "media-src 'self'",
-              "connect-src 'self'",
+              // analytics beacons post same-origin to /_vercel/*; allow the
+              // script host too for completeness
+              "connect-src 'self' https://va.vercel-scripts.com",
               // Allow the Google Maps embed on the contact page. Without this
               // an iframe falls back to default-src 'self' and is blocked.
               "frame-src https://www.google.com https://maps.google.com",

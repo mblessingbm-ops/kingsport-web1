@@ -1,16 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight, Check, AlertCircle } from 'lucide-react'
 
 /**
- * Contact form — routes the submission to sales@kingsport.co.zw via
- * the user's default mail client. Matches the pattern used by the
- * quote form (app/quote/page.tsx) and the imported-gifts enquiry drawer.
+ * Contact form — POSTs to /api/send-email (Resend), which delivers to
+ * sales@kingsport.co.zw. Matches the pattern used by the quote form
+ * (app/quote/page.tsx) and the imported-gifts enquiry drawer.
  */
 export default function ContactForm() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [form, setForm] = useState({
     name: '',
     company: '',
@@ -23,6 +24,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
+    setSubmitError(null)
 
     const bodyLines = [
       `New contact-form enquiry — submitted via kingsport.co.zw`,
@@ -41,15 +43,23 @@ export default function ContactForm() {
     ].filter(Boolean).join('\n')
 
     const subjectLine = `[Contact] ${form.subject || 'General Enquiry'} — ${form.name}`
-    const mailto = `mailto:sales@kingsport.co.zw?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyLines)}`
 
-    if (typeof window !== 'undefined') {
-      window.location.href = mailto
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: subjectLine, text: bodyLines, replyTo: form.email }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send — please try again.')
+      }
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Failed to send — please try again.')
+    } finally {
+      setSubmitting(false)
     }
-
-    await new Promise(r => setTimeout(r, 800))
-    setSubmitted(true)
-    setSubmitting(false)
   }
 
   if (submitted) {
@@ -61,17 +71,8 @@ export default function ContactForm() {
         <h3 className="font-display text-2xl font-light text-charcoal-800 mb-3">
           Message <span className="italic text-oxblood-800">sent</span>
         </h3>
-        <p className="text-charcoal-600/70 font-sans text-sm leading-relaxed max-w-sm mx-auto mb-4">
-          Your mail client just opened with the message pre-filled for{' '}
-          <b className="text-charcoal-800">sales@kingsport.co.zw</b>. Hit send there and we&apos;ll
-          respond within one business day.
-        </p>
-        <p className="text-[11px] text-charcoal-600/40 font-sans">
-          Didn&apos;t see your mail client open? Write to{' '}
-          <a className="text-oxblood-700 hover:underline" href="mailto:sales@kingsport.co.zw">
-            sales@kingsport.co.zw
-          </a>{' '}
-          directly or call <b className="text-charcoal-700">+263 24 277 0712</b>.
+        <p className="text-charcoal-600/70 font-sans text-sm leading-relaxed max-w-sm mx-auto">
+          Your message has been sent to our sales team. We&apos;ll respond within one business day.
         </p>
       </div>
     )
@@ -168,6 +169,19 @@ export default function ContactForm() {
         />
       </div>
 
+      {submitError && (
+        <div className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-4 py-3 text-xs text-oxblood-800 font-sans leading-relaxed">
+          <AlertCircle size={15} className="flex-shrink-0 mt-0.5" />
+          <span>
+            {submitError} You can also email{' '}
+            <a className="underline hover:no-underline" href="mailto:sales@kingsport.co.zw">
+              sales@kingsport.co.zw
+            </a>{' '}
+            or call <b>+263 24 277 0712</b> directly.
+          </span>
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={submitting}
@@ -176,7 +190,7 @@ export default function ContactForm() {
         {submitting ? (
           <>
             <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            Opening mail…
+            Sending…
           </>
         ) : (
           <>

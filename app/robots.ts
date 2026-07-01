@@ -5,8 +5,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      // The quote page is a cart/checkout-style page — no SEO value.
-      disallow: '/quote',
+      disallow: [
+        // The quote page is a cart/checkout-style page — no SEO value.
+        '/quote',
+        // Server-only form-submission endpoint — nothing to crawl.
+        '/api/',
+      ],
     },
     sitemap: 'https://kingsport.co.zw/sitemap.xml',
   }

@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Trash2, Plus, Minus, ArrowRight, Check, ShoppingBag, X } from 'lucide-react'
+import { Trash2, Plus, Minus, ArrowRight, Check, ShoppingBag, X, AlertCircle } from 'lucide-react'
 import { useQuoteCart } from '@/hooks/useQuoteCart'
 import { products } from '@/data/products'
 
@@ -9,6 +9,7 @@ export default function QuotePage() {
   const { items, removeItem, updateItem, clearCart } = useQuoteCart()
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [form, setForm] = useState({
     companyName: '',
     contactName: '',
@@ -23,6 +24,7 @@ export default function QuotePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
+    setSubmitError(null)
 
     // Build a clean text email body for the sales team
     const itemsBlock = items
@@ -62,22 +64,24 @@ export default function QuotePage() {
     ].filter(Boolean).join('\n')
 
     const subject = `Quote Request — ${form.companyName} (${items.length} item${items.length === 1 ? '' : 's'})`
-    const mailto = `mailto:sales@kingsport.co.zw?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines)}`
 
-    // Open the user's mail client with everything pre-filled.
-    // Using window.location triggers the OS handler reliably without
-    // navigating away from the page (the OS opens the mail app in a
-    // separate process; the tab stays on the current URL).
-    if (typeof window !== 'undefined') {
-      window.location.href = mailto
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, text: bodyLines, replyTo: form.email }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send — please try again.')
+      }
+      setSubmitted(true)
+      clearCart()
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Failed to send — please try again.')
+    } finally {
+      setSubmitting(false)
     }
-
-    // Brief delay so the OS handoff completes before we tear the form
-    // down — then move to the success state.
-    await new Promise(r => setTimeout(r, 800))
-    setSubmitted(true)
-    clearCart()
-    setSubmitting(false)
   }
 
   const updateQty = (productId: string, delta: number) => {
@@ -99,11 +103,8 @@ export default function QuotePage() {
           <h1 className="font-display text-4xl md:text-5xl font-light text-charcoal-800 mb-4">
             Quote Request <span className="italic text-oxblood-800">Sent</span>
           </h1>
-          <p className="text-charcoal-600/70 font-sans leading-relaxed mb-4">
-            Your mail client just opened with the request pre-filled for <b className="text-charcoal-800">sales@kingsport.co.zw</b>. Hit send there and our team will get back to you with a detailed quotation within 1–2 business days.
-          </p>
-          <p className="text-xs text-charcoal-600/40 font-sans mb-8 leading-relaxed">
-            Didn&apos;t see your mail client open? Email <a className="text-oxblood-700 hover:underline" href="mailto:sales@kingsport.co.zw">sales@kingsport.co.zw</a> directly or call <b className="text-charcoal-700">+263 24 277 0712</b>.
+          <p className="text-charcoal-600/70 font-sans leading-relaxed mb-8">
+            Your request has been sent to our sales team. We&apos;ll get back to you with a detailed quotation within 1–2 business days.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -348,6 +349,19 @@ export default function QuotePage() {
                       placeholder="Branding details, delivery address, urgency..."
                     />
                   </div>
+
+                  {submitError && (
+                    <div className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-4 py-3 text-xs text-oxblood-800 font-sans leading-relaxed">
+                      <AlertCircle size={15} className="flex-shrink-0 mt-0.5" />
+                      <span>
+                        {submitError} You can also email{' '}
+                        <a className="underline hover:no-underline" href="mailto:sales@kingsport.co.zw">
+                          sales@kingsport.co.zw
+                        </a>{' '}
+                        or call <b>+263 24 277 0712</b> directly.
+                      </span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

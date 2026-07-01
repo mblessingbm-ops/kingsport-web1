@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { X, Plus, Trash2, ArrowRight, Mail, Check } from 'lucide-react'
+import { X, Plus, Trash2, ArrowRight, Mail, Check, AlertCircle } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 
 interface LineItem {
@@ -34,6 +34,7 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
   const [lines, setLines] = useState<LineItem[]>(() => [emptyLine()])
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [sendError, setSendError] = useState<string | null>(null)
 
   // Escape closes
   useEffect(() => {
@@ -48,9 +49,12 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
   // Page behind the drawer shouldn't scroll while it's open.
   useBodyScrollLock(isOpen)
 
-  // Reset success state when drawer reopens
+  // Reset success/error state when drawer reopens
   useEffect(() => {
-    if (isOpen) setSent(false)
+    if (isOpen) {
+      setSent(false)
+      setSendError(null)
+    }
   }, [isOpen])
 
   const addLine = () => setLines(prev => [...prev, emptyLine()])
@@ -63,10 +67,11 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
   const canSubmit =
     company.trim() && email.trim() && /.+@.+\..+/.test(email) && validLines.length > 0
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!canSubmit || sending) return
     setSending(true)
+    setSendError(null)
 
     const lineBlock = validLines
       .map((l, i) => `  ${i + 1}.  Code: ${l.code.trim()}    Qty: ${l.qty.trim()}`)
@@ -94,20 +99,22 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
       .filter((line): line is string => line !== null)
       .join('\n')
 
-    const mailto = `mailto:sales@kingsport.co.zw?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`
-
-    // Trigger the user's mail client
-    window.location.href = mailto
-
-    // Brief delay then show success state. User still has to click Send
-    // in their mail client — we can't observe that — but the form is
-    // complete from our side, so we surface the "Sent" state and clear.
-    setTimeout(() => {
-      setSending(false)
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, text: body, replyTo: email.trim() }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to send — please try again.')
+      }
       setSent(true)
-    }, 400)
+    } catch (err) {
+      setSendError(err instanceof Error ? err.message : 'Failed to send — please try again.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleReset = () => {
@@ -118,6 +125,7 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
     setNotes('')
     setLines([emptyLine()])
     setSent(false)
+    setSendError(null)
   }
 
   return (
@@ -175,19 +183,10 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
               <Check size={22} className="text-emerald-700" />
             </div>
             <h3 className="font-display text-2xl font-light text-charcoal-800 mb-2">
-              Email drafted
+              Enquiry sent
             </h3>
             <p className="font-sans text-sm text-charcoal-600/70 leading-relaxed max-w-xs">
-              Your enquiry has opened in your mail client, pre-addressed to{' '}
-              <span className="text-charcoal-800 font-medium">sales@kingsport.co.zw</span>. Click{' '}
-              <em>Send</em> there to deliver it. Our sales team responds within one business day.
-            </p>
-            <p className="mt-3 font-sans text-[11px] text-charcoal-600/40 leading-relaxed max-w-xs">
-              Didn&apos;t see your mail client open? Email{' '}
-              <a className="text-oxblood-700 hover:underline" href="mailto:sales@kingsport.co.zw">
-                sales@kingsport.co.zw
-              </a>{' '}
-              directly or call <b className="text-charcoal-700">+263 24 277 0712</b>.
+              Your enquiry has been sent to our sales team. We respond within one business day.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-2 w-full max-w-xs">
               <button
@@ -335,6 +334,18 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
 
             {/* Submit */}
             <div className="space-y-2 pt-2">
+              {sendError && (
+                <div className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-3.5 py-2.5 text-xs text-oxblood-800 font-sans leading-relaxed">
+                  <AlertCircle size={14} className="flex-shrink-0 mt-0.5" />
+                  <span>
+                    {sendError} You can also email{' '}
+                    <a className="underline hover:no-underline" href="mailto:sales@kingsport.co.zw">
+                      sales@kingsport.co.zw
+                    </a>{' '}
+                    or call <b>+263 24 277 0712</b> directly.
+                  </span>
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={!canSubmit || sending}
@@ -342,12 +353,12 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
                   !canSubmit || sending ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
-                {sending ? 'Opening mail client…' : 'Send Enquiry'}
+                {sending ? 'Sending…' : 'Send Enquiry'}
                 {!sending && <ArrowRight size={14} />}
               </button>
               <p className="text-[10px] font-sans text-charcoal-600/40 text-center leading-relaxed">
                 <Mail size={10} className="inline mr-1 -mt-0.5" />
-                Opens your email client pre-addressed to{' '}
+                Delivered directly to{' '}
                 <span className="text-charcoal-700 font-medium">sales@kingsport.co.zw</span>
               </p>
             </div>

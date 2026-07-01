@@ -110,8 +110,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Legal */}
-        <div className="mt-14 pt-[26px] border-t border-[#fdfbf7]/10 flex flex-col sm:flex-row justify-between gap-3 text-[10.5px] tracking-[1.2px] text-[#fdfbf7]/50 uppercase font-medium">
+        {/* Legal — data-footer-divider lets the fixed QuotePill (rendered
+            as a sibling in the root layout, not nested here) find this
+            line and dock its bottom edge just above it near page-end. */}
+        <div
+          data-footer-divider
+          className="mt-14 pt-[26px] border-t border-[#fdfbf7]/10 flex flex-col sm:flex-row justify-between gap-3 text-[10.5px] tracking-[1.2px] text-[#fdfbf7]/50 uppercase font-medium"
+        >
           <span>© 2026 Kingsport Investments (Pvt) Ltd · Incorporated 1998</span>
           <span>Privacy · Terms · Sitemap</span>
         </div>

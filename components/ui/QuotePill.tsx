@@ -8,10 +8,16 @@ interface Props {
   onOpen: () => void
 }
 
+// Matches the pill's resting distance from the viewport bottom (the old
+// bottom-8 = 2rem) — reused as the gap kept above the footer's divider
+// line once the pill docks there near the end of the page.
+const GAP = 32
+
 export default function QuotePill({ onOpen }: Props) {
   const { count } = useQuoteCart()
   const prevCountRef = useRef(count)
   const [isPulsing, setIsPulsing] = useState(false)
+  const [bottom, setBottom] = useState(GAP)
 
   useEffect(() => {
     if (count > prevCountRef.current) {
@@ -23,11 +29,45 @@ export default function QuotePill({ onOpen }: Props) {
     prevCountRef.current = count
   }, [count])
 
+  // Dock the pill's bottom edge just above the footer's divider line
+  // (see Footer.tsx's [data-footer-divider]) as the page scrolls toward
+  // the end, instead of letting the fixed pill float over the footer
+  // content. Continuous by construction: Math.max picks whichever value
+  // is larger, and the two formulas agree exactly at the crossover point,
+  // so there's no jump when docking kicks in.
+  useEffect(() => {
+    const divider = document.querySelector<HTMLElement>('[data-footer-divider]')
+    if (!divider) return
+
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const dividerTop = divider.getBoundingClientRect().top
+      const docked = window.innerHeight - dividerTop + GAP
+      setBottom(Math.max(GAP, docked))
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
   return (
     <div
-      className={`fixed bottom-8 right-8 z-50 transition-all duration-300 ${
+      className={`fixed right-8 z-50 transition-[opacity,transform] duration-300 ${
         count > 0 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'
       }`}
+      style={{ bottom }}
     >
       <button
         onClick={onOpen}

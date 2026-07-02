@@ -351,7 +351,7 @@ export default function QuotePage() {
                   </div>
 
                   {submitError && (
-                    <div className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-4 py-3 text-xs text-oxblood-800 font-sans leading-relaxed">
+                    <div role="alert" className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-4 py-3 text-xs text-oxblood-800 font-sans leading-relaxed">
                       <AlertCircle size={15} className="flex-shrink-0 mt-0.5" />
                       <span>
                         {submitError} You can also email{' '}

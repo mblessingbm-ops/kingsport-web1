@@ -335,7 +335,7 @@ export default function EnquiryDrawer({ isOpen, onClose }: Props) {
             {/* Submit */}
             <div className="space-y-2 pt-2">
               {sendError && (
-                <div className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-3.5 py-2.5 text-xs text-oxblood-800 font-sans leading-relaxed">
+                <div role="alert" className="flex items-start gap-2.5 bg-oxblood-50 border border-oxblood-200 px-3.5 py-2.5 text-xs text-oxblood-800 font-sans leading-relaxed">
                   <AlertCircle size={14} className="flex-shrink-0 mt-0.5" />
                   <span>
                     {sendError} You can also email{' '}

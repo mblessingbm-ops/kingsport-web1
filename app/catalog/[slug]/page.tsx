@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, use } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ShoppingBag, Download, Check, ArrowLeft, ChevronRight, Link2, Paintbrush } from 'lucide-react'
@@ -8,7 +8,7 @@ import { useQuoteCart } from '@/hooks/useQuoteCart'
 import ProductCardStatic from '@/components/catalog/ProductCardStatic'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 const placeholderGradients: Record<string, string> = {
@@ -20,7 +20,8 @@ const placeholderGradients: Record<string, string> = {
   'school-wear': 'from-slate-500 to-slate-800',
 }
 
-export default function ProductDetailPage({ params }: Props) {
+export default function ProductDetailPage(props: Props) {
+  const params = use(props.params)
   const product = getProductBySlug(params.slug)
   if (!product) notFound()
 

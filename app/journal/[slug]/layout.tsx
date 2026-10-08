@@ -5,7 +5,7 @@ import { journalPosts } from '@/data/journal'
 // metadata, static params, and Article structured data live here.
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
   children: React.ReactNode
 }
 
@@ -13,7 +13,8 @@ export function generateStaticParams() {
   return journalPosts.map((post) => ({ slug: post.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params
   const post = journalPosts.find((p) => p.slug === params.slug)
   if (!post) return { title: 'Post not found' }
 
@@ -31,8 +32,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default function JournalPostLayout({ params, children }: Props) {
-  const post = journalPosts.find((p) => p.slug === params.slug)
+export default async function JournalPostLayout({ params, children }: Props) {
+  const { slug } = await params
+  const post = journalPosts.find((p) => p.slug === slug)
 
   const jsonLd = post
     ? {

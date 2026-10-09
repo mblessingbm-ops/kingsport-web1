@@ -1,5 +1,6 @@
 'use client'
 
+import { use } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -10,7 +11,7 @@ import type { Product } from '@/types'
 import ProductCardStatic from '@/components/catalog/ProductCardStatic'
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 const bodyBySlug: Record<string, React.ReactNode> = {
@@ -175,7 +176,8 @@ function formatDate(iso: string) {
   })
 }
 
-export default function JournalPostPage({ params }: Props) {
+export default function JournalPostPage(props: Props) {
+  const params = use(props.params)
   const post = getJournalPostBySlug(params.slug)
   if (!post) notFound()
 

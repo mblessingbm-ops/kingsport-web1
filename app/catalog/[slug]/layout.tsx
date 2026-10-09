@@ -6,7 +6,7 @@ import { products } from '@/data/products'
 // (server) segment layout.
 
 interface Props {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
   children: React.ReactNode
 }
 
@@ -14,7 +14,8 @@ export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params
   const product = products.find((p) => p.slug === params.slug)
   if (!product) return { title: 'Product not found' }
 
@@ -36,8 +37,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default function ProductLayout({ params, children }: Props) {
-  const product = products.find((p) => p.slug === params.slug)
+export default async function ProductLayout({ params, children }: Props) {
+  const { slug } = await params
+  const product = products.find((p) => p.slug === slug)
 
   const jsonLd = product
     ? [
